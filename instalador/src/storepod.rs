@@ -34,6 +34,7 @@ use crate::err;
 use crate::pacote::{abrir_tar, conferir_assinatura, hex, ler_tudo, nome_entrada, sha256, unhex32};
 use crate::textos::Idioma;
 use serde::{Deserialize, Serialize};
+use std::cmp::Ordering;
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 
@@ -43,6 +44,9 @@ pub const URL_CATALOGO: &str = "https://zeroproj.github.io/OpenPod/storepod/inde
 pub const PASTA_ROCKBOX: &str = ".rockbox";
 /// Onde o registro do que está instalado fica no cartão.
 pub const ARQUIVO_INSTALADOS: &str = ".rockbox/storepod/instalados.json";
+/// O arquivo do pacote que diz o que é do sistema (o tema OpenPod): o mesmo
+/// formato do registro, mas com uma entrada só, escrita pelo gerador.
+pub const ARQUIVO_SISTEMA: &str = ".rockbox/storepod/sistema.json";
 /// O formato do catálogo (e do pacote do item) que este instalador lê.
 pub const FORMATO: u32 = 1;
 
@@ -403,6 +407,30 @@ pub fn gravar_registro(cartao: &Path, reg: &Registro) -> Result<(), String> {
     std::fs::write(&caminho, &dados).map_err(|e| err!(E560, "gravar {}: {e}", caminho.display()))
 }
 
+/// O `sistema.json` do pacote, se houver: o que vem com o sistema (o tema
+/// OpenPod) e já tem de constar do registro do cartão.
+pub fn sistema_do_pacote(arquivos: &[(String, Vec<u8>)]) -> Result<Option<Registro>, String> {
+    let Some((_, dados)) = arquivos.iter().find(|(n, _)| n == ARQUIVO_SISTEMA) else {
+        return Ok(None);
+    };
+    let texto =
+        std::str::from_utf8(dados).map_err(|_| err!(E561, "o {ARQUIVO_SISTEMA} do pacote não é UTF-8"))?;
+    let reg = serde_json::from_str(texto)
+        .map_err(|e| err!(E562, "o {ARQUIVO_SISTEMA} do pacote não faz sentido: {e}"))?;
+    Ok(Some(reg))
+}
+
+/// Funde o registro do sistema no registro do cartão: grava ou atualiza só
+/// aquelas entradas e mantém as outras (o que foi instalado pela loja). Com
+/// `comecou_do_zero`, o registro começa vazio, com só a entrada do sistema.
+pub fn fundir_sistema(cartao: &Path, sistema: &Registro, comecou_do_zero: bool) -> Result<(), String> {
+    let mut reg = if comecou_do_zero { Registro::new() } else { ler_registro(cartao)? };
+    for (id, instalado) in sistema {
+        reg.insert(id.clone(), instalado.clone());
+    }
+    gravar_registro(cartao, &reg)
+}
+
 /// O caminho do cartão de um arquivo do `.rockbox`: tem de ser seguro e
 /// estar dentro do `.rockbox`.
 fn caminho_do_cartao(cartao: &Path, rel: &str) -> Result<PathBuf, String> {
@@ -483,19 +511,38 @@ pub enum Botao {
     Instalado,
 }
 
-/// O botão do item, dado o que já está instalado no cartão: se a versão do
-/// catálogo é diferente da registrada, o botão vira "Atualizar".
+/// Compara duas versões. Os campos separados por `.` são comparados por
+/// número (`1.10 > 1.9`, `1.2 > 1.1`); no primeiro campo que não for número
+/// dos dois lados, compara o texto (`1.2.822b9f5e99` com `1.2.822b9f5e98`).
+/// Um campo que falta vale zero (`1.2` e `1.2.0` são iguais).
+pub fn comparar_versoes(a: &str, b: &str) -> Ordering {
+    let (mut ca, mut cb) = (a.trim().split('.'), b.trim().split('.'));
+    loop {
+        match (ca.next(), cb.next()) {
+            (None, None) => return Ordering::Equal,
+            (x, y) => {
+                let (x, y) = (x.unwrap_or("0"), y.unwrap_or("0"));
+                let ordem = match (x.parse::<u64>(), y.parse::<u64>()) {
+                    (Ok(nx), Ok(ny)) => nx.cmp(&ny),
+                    _ => x.cmp(y),
+                };
+                if ordem != Ordering::Equal {
+                    return ordem;
+                }
+            }
+        }
+    }
+}
+
+/// O botão do item, dado o que já está instalado no cartão: só é "Atualizar"
+/// quando a versão do catálogo é **maior** que a registrada; igual ou mais
+/// nova no cartão é "Remover", ou "Instalado" se for item do sistema.
 pub fn botao(item: &Item, reg: &Registro) -> Botao {
     match reg.get(&item.id) {
         None => Botao::Instalar,
-        Some(i) if i.versao == item.versao => {
-            if item.sistema {
-                Botao::Instalado
-            } else {
-                Botao::Remover
-            }
-        }
-        Some(_) => Botao::Atualizar,
+        Some(i) if comparar_versoes(&item.versao, &i.versao) == Ordering::Greater => Botao::Atualizar,
+        Some(_) if item.sistema => Botao::Instalado,
+        Some(_) => Botao::Remover,
     }
 }
 
@@ -974,6 +1021,22 @@ mod testes {
 mod testes_sistema {
     use super::*;
 
+    fn dir_teste(nome: &str) -> PathBuf {
+        let d = std::env::current_dir().unwrap().join(".tmp").join(format!("reg-{nome}-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&d);
+        std::fs::create_dir_all(&d).unwrap();
+        d
+    }
+
+    fn sistema(versao: &str, arquivos: &[&str]) -> Registro {
+        let mut reg = Registro::new();
+        reg.insert(
+            "tema-openpod".into(),
+            Instalado { versao: versao.into(), arquivos: arquivos.iter().map(|a| a.to_string()).collect() },
+        );
+        reg
+    }
+
     #[test]
     fn item_do_sistema_nao_vira_remover() {
         let mut item: Item = serde_json::from_str(r#"{"id":"tema-openpod","versao":"1.2","sistema":true}"#).unwrap();
@@ -986,5 +1049,183 @@ mod testes_sistema {
         item.sistema = false;
         item.versao = "1.2".to_string();
         assert_eq!(botao(&item, &reg), Botao::Remover);
+    }
+
+    /// A comparação de versões é por número, campo a campo.
+    #[test]
+    fn a_versao_e_comparada_por_numero() {
+        assert_eq!(comparar_versoes("1.1", "1.2"), Ordering::Less);
+        assert_eq!(comparar_versoes("1.9", "1.10"), Ordering::Less);
+        assert_eq!(comparar_versoes("1.2", "1.1"), Ordering::Greater);
+        assert_eq!(comparar_versoes("1.2", "1.2"), Ordering::Equal);
+        assert_eq!(comparar_versoes("1.2", "1.2.0"), Ordering::Equal);
+        // no primeiro campo não numérico, o texto decide
+        assert_eq!(comparar_versoes("1.2.822b9f5e99", "1.2.822b9f5e98"), Ordering::Greater);
+        assert_eq!(comparar_versoes("1.2.822b9f5e98", "1.2.822b9f5e99"), Ordering::Less);
+        assert_eq!(comparar_versoes("1.2.822b9f5e99", "1.2.822b9f5e99"), Ordering::Equal);
+    }
+
+    /// O botão só diz "Atualizar" quando o site tem uma versão maior.
+    #[test]
+    fn o_botao_so_atualiza_para_versao_maior() {
+        let d = dir_teste("botao");
+        let cartao = d.join("Cartao");
+        std::fs::create_dir_all(&cartao).unwrap();
+        let mut reg = Registro::new();
+        reg.insert("tema".into(), Instalado { versao: "1.10".into(), arquivos: vec![] });
+
+        let mesmo = Item { id: "tema".into(), versao: "1.10".into(), ..Default::default() };
+        assert_eq!(botao(&mesmo, &reg), Botao::Remover);
+        let antigo = Item { id: "tema".into(), versao: "1.9".into(), ..Default::default() };
+        assert_eq!(botao(&antigo, &reg), Botao::Remover, "o cartão é mais novo: não volta atrás");
+        let novo = Item { id: "tema".into(), versao: "1.11".into(), ..Default::default() };
+        assert_eq!(botao(&novo, &reg), Botao::Atualizar);
+
+        // item do sistema: igual ou mais novo no cartão é "Instalado"
+        let mut sis = Item { id: "tema".into(), versao: "1.10".into(), sistema: true, ..Default::default() };
+        assert_eq!(botao(&sis, &reg), Botao::Instalado);
+        sis.versao = "1.9".into();
+        assert_eq!(botao(&sis, &reg), Botao::Instalado);
+        sis.versao = "1.11".into();
+        assert_eq!(botao(&sis, &reg), Botao::Atualizar);
+        let _ = std::fs::remove_dir_all(&d);
+    }
+
+    /// A fusão mantém o que a loja instalou e cria o registro quando não há.
+    #[test]
+    fn a_fusao_mantem_o_que_a_loja_instalou() {
+        let d = dir_teste("fusao");
+        let cartao = d.join("Cartao");
+        std::fs::create_dir_all(&cartao).unwrap();
+        let mut loja = Registro::new();
+        loja.insert("jogo".into(), Instalado { versao: "2.0".into(), arquivos: vec![".rockbox/rocks/jogo.rock".into()] });
+        gravar_registro(&cartao, &loja).unwrap();
+
+        // a primeira instalação: o registro ainda não existe
+        let outro = dir_teste("fusao-novo");
+        let cartao_novo = outro.join("Cartao");
+        std::fs::create_dir_all(&cartao_novo).unwrap();
+        fundir_sistema(&cartao_novo, &sistema("1.2", &[".rockbox/themes/OpenPod128.cfg"]), false).unwrap();
+        let lido = ler_registro(&cartao_novo).unwrap();
+        assert_eq!(lido.len(), 1);
+        assert_eq!(lido["tema-openpod"].versao, "1.2");
+        assert_eq!(lido["tema-openpod"].arquivos, vec![".rockbox/themes/OpenPod128.cfg"]);
+
+        // com um registro existente: as duas entradas ficam
+        fundir_sistema(&cartao, &sistema("1.2", &[".rockbox/themes/OpenPod128.cfg"]), false).unwrap();
+        let lido = ler_registro(&cartao).unwrap();
+        assert_eq!(lido.len(), 2);
+        assert_eq!(lido["jogo"].versao, "2.0", "o que a loja instalou fica");
+        assert_eq!(lido["tema-openpod"].versao, "1.2");
+
+        // atualiza só a entrada do sistema
+        fundir_sistema(&cartao, &sistema("1.3", &[".rockbox/themes/OpenPod128.cfg"]), false).unwrap();
+        let lido = ler_registro(&cartao).unwrap();
+        assert_eq!(lido["tema-openpod"].versao, "1.3");
+        assert_eq!(lido["jogo"].versao, "2.0");
+
+        // "começar do zero": o registro começa vazio, com só a entrada do sistema
+        gravar_registro(&cartao, &Registro::new()).unwrap();
+        fundir_sistema(&cartao, &sistema("1.2", &[".rockbox/wps/OpenPod128.wps"]), true).unwrap();
+        let lido = ler_registro(&cartao).unwrap();
+        assert_eq!(lido.len(), 1);
+        assert_eq!(lido["tema-openpod"].arquivos, vec![".rockbox/wps/OpenPod128.wps"]);
+        let _ = std::fs::remove_dir_all(&d);
+        let _ = std::fs::remove_dir_all(&outro);
+    }
+
+    /// O `sistema.json` do pacote: lido, ausente e sem sentido.
+    #[test]
+    fn o_sistema_do_pacote_e_lido() {
+        let arqs = vec![(
+            ARQUIVO_SISTEMA.to_string(),
+            br#"{"tema-openpod":{"versao":"1.2","arquivos":[".rockbox/themes/OpenPod128.cfg"]}}"#.to_vec(),
+        )];
+        let reg = sistema_do_pacote(&arqs).unwrap().expect("o sistema.json");
+        assert_eq!(reg["tema-openpod"].versao, "1.2");
+        assert_eq!(reg["tema-openpod"].arquivos, vec![".rockbox/themes/OpenPod128.cfg"]);
+
+        assert!(sistema_do_pacote(&[]).unwrap().is_none());
+        let ruim = vec![(ARQUIVO_SISTEMA.to_string(), b"isto nao e json".to_vec())];
+        assert!(sistema_do_pacote(&ruim).unwrap_err().starts_with("E562"));
+    }
+
+    /// O gerador com `--tema-storepod` grava o `sistema.json` assinado.
+    #[test]
+    fn o_gerador_grava_o_sistema_assinado() {
+        if std::process::Command::new("python3").arg("--version").output().is_err() {
+            return;
+        }
+        let raiz = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap().to_path_buf();
+        let d = raiz.join(".tmp").join(format!("gerador-sistema-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&d);
+        std::fs::create_dir_all(&d).unwrap();
+
+        let pem = d.join("teste-ed25519.pem");
+        let pubhex = d.join("teste-ed25519.pub.hex");
+        let criar_chave = format!(
+            "from cryptography.hazmat.primitives import serialization as s\nfrom cryptography.hazmat.primitives.asymmetric import ed25519\nk=ed25519.Ed25519PrivateKey.generate()\nopen(r'{pem}','wb').write(k.private_bytes(s.Encoding.PEM,s.PrivateFormat.PKCS8,s.NoEncryption()))\nopen(r'{pub}','w').write(k.public_key().public_bytes(s.Encoding.Raw,s.PublicFormat.Raw).hex())\n",
+            pem = pem.display(),
+            pub = pubhex.display()
+        );
+        let c = std::process::Command::new("python3").arg("-c").arg(&criar_chave).output().unwrap();
+        assert!(c.status.success(), "não gerei a chave de teste: {}", String::from_utf8_lossy(&c.stderr));
+        let pubkey = unhex32(std::fs::read_to_string(&pubhex).unwrap().trim()).unwrap();
+
+        // entradas: um rockbox .tar.xz (flash + um arquivo de cartão) e o zip do tema
+        let rockbox = d.join("rockbox.tar.xz");
+        let tema = d.join("tema.zip");
+        let criar_entradas = format!(
+            "import io, tarfile, zipfile\n\
+             t = tarfile.open(r'{rb}', 'w:xz')\n\
+             for nome, dados in [('flash/0x0000e000.bin', b'flash'), ('card/.rockbox/langs/pt.lng', b'lang')]:\n\
+             \x20   i = tarfile.TarInfo(nome); i.size = len(dados); t.addfile(i, io.BytesIO(dados))\n\
+             t.close()\n\
+             z = zipfile.ZipFile(r'{tz}', 'w')\n\
+             z.writestr('.rockbox/themes/OpenPod128.cfg', 'wps: /.rockbox/wps/OpenPod128.wps\\n')\n\
+             z.writestr('.rockbox/wps/OpenPod128.wps', 'wps')\n\
+             z.close()\n",
+            rb = rockbox.display(),
+            tz = tema.display()
+        );
+        let c = std::process::Command::new("python3").arg("-c").arg(&criar_entradas).output().unwrap();
+        assert!(c.status.success(), "não criei as entradas: {}", String::from_utf8_lossy(&c.stderr));
+
+        let saida = d.join("saida");
+        let s = std::process::Command::new("python3")
+            .arg(raiz.join("pacotes/gera_pacotes.py"))
+            .args([
+                "--rockbox",
+                &rockbox.to_string_lossy(),
+                "--tema",
+                &tema.to_string_lossy(),
+                "--versao",
+                "1.0",
+                "--tema-storepod",
+                "tema-openpod",
+                "1.2",
+                "--chave",
+                &pem.to_string_lossy(),
+                "--saida",
+                &saida.to_string_lossy(),
+            ])
+            .current_dir(&raiz)
+            .output()
+            .expect("python3");
+        assert!(s.status.success(), "gerador: {}", String::from_utf8_lossy(&s.stderr));
+
+        // o pacote abre com a assinatura de teste e o MANIFEST diz o item
+        let pkg = crate::pacote::Pacote::abrir_com_chave(&saida.join("openpod-rockbox-1.0.tar.gz"), &pubkey)
+            .expect("o pacote gerado não abriu");
+        assert_eq!(pkg.tipo, crate::pacote::Tipo::Rockbox);
+        assert_eq!(pkg.get("storepod"), Some("tema-openpod 1.2"));
+
+        // o sistema.json está no pacote e confere com o SHA256SUMS assinado
+        let arquivos = pkg.ler_cartao().expect("os arquivos do cartão");
+        let reg = sistema_do_pacote(&arquivos).unwrap().expect("o sistema.json no pacote");
+        let i = &reg["tema-openpod"];
+        assert_eq!(i.versao, "1.2");
+        assert_eq!(i.arquivos, vec![".rockbox/themes/OpenPod128.cfg", ".rockbox/wps/OpenPod128.wps"]);
+        let _ = std::fs::remove_dir_all(&d);
     }
 }

@@ -476,6 +476,13 @@ impl Real {
             feito += dados.len() as u64;
             ev.progresso(feito as f32 / total.max(1) as f32 * 0.7);
         }
+        // o sistema (o tema OpenPod) entra no registro do cartão: a StorePod
+        // nasce sabendo que ele já está instalado, e o que a loja instalou fica
+        if let Some(sistema) = crate::storepod::sistema_do_pacote(arquivos)? {
+            crate::storepod::fundir_sistema(&card.mount, &sistema, comecou_do_zero)?;
+            self.ajustar_dono_leve(&crate::storepod::caminho_registro(&card.mount));
+            ev.info("StorePod: o tema do sistema está registrado no cartão");
+        }
         sdcard::drop_cache(&mut card)?;
         ev.info("relendo os arquivos do cartão");
         for (rel, dados) in arquivos {

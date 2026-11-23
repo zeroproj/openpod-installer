@@ -55,7 +55,7 @@ def ler_up(caminho: Path) -> bytes:
     return payload
 
 
-def manifest(linha: str, versao: str, data: str, titulo: str) -> bytes:
+def manifest(linha: str, versao: str, data: str, titulo: str, storepod=None) -> bytes:
     texto = (
         "formato=1\n"
         f"linha={linha}\n"
@@ -65,6 +65,8 @@ def manifest(linha: str, versao: str, data: str, titulo: str) -> bytes:
         f"expect=0 53248 {BOOT_SHA256}\n"
         f"expect=53248 28 {TABELA_GN438}\n"
     )
+    if storepod:
+        texto += f"storepod={storepod}\n"
     return texto.encode()
 
 
@@ -193,11 +195,14 @@ def gera_rockbox(args) -> dict:
         if nome.startswith("card/"):
             cartao[nome[len("card/"):]] = dados
     # o tema OpenPod128 já vem com caminhos .rockbox/...
+    tema_arquivos: list[str] = []
     with zipfile.ZipFile(args.tema) as z:
         for info in z.infolist():
             if info.is_dir():
                 continue
-            cartao[nome_limpo(info.filename)] = z.read(info)
+            nome = nome_limpo(info.filename)
+            cartao[nome] = z.read(info)
+            tema_arquivos.append(nome)
     # O config.cfg do usuário nunca vai no pacote: o instalador cria um quando
     # o cartão ainda não tem (ou aplica só o tema num já existente), a partir
     # deste modelo. O modelo são as diretivas reais do OpenPod128.cfg: o
@@ -207,14 +212,27 @@ def gera_rockbox(args) -> dict:
         raise SystemExit(f"{args.tema}: sem .rockbox/themes/OpenPod128.cfg")
     cartao.pop(".rockbox/config.cfg", None)
     cartao[".rockbox/config-openpod.cfg"] = modelo_config(cfg_tema)
+    # o registro do usuário nunca vai no pacote: sobrescreveria o que a loja instalou
+    cartao.pop(".rockbox/storepod/instalados.json", None)
     if getattr(args, "enxuto", False):
         cartao = enxugar(cartao)
+    # o registro do que é do sistema (o tema OpenPod): a StorePod no cartão
+    # nasce sabendo que ele já está instalado, sem vir o instalados.json (que
+    # apagaria o registro do usuário)
+    storepod_linha = None
+    if args.tema_storepod:
+        tema_id, tema_versao = args.tema_storepod
+        sistema = {tema_id: {"versao": tema_versao, "arquivos": tema_arquivos}}
+        cartao[".rockbox/storepod/sistema.json"] = (
+            json.dumps(sistema, ensure_ascii=False, indent=2) + "\n"
+        ).encode()
+        storepod_linha = f"{tema_id} {tema_versao}"
     versao = args.versao
     data = args.data
     nome = f"openpod-rockbox-{versao}.tar.gz"
     destino = Path(args.saida) / nome
     membros = [
-        ("MANIFEST", manifest("rockbox", versao, data, "OpenPod RockBox")),
+        ("MANIFEST", manifest("rockbox", versao, data, "OpenPod RockBox", storepod_linha)),
         (flash_nome, flash),
     ] + [(f"card/{n}", d) for n, d in sorted(cartao.items())]
     soma = montar(destino, membros, args.chave)
@@ -229,6 +247,12 @@ def main() -> int:
     p.add_argument("--rockbox", help="o rockbox-yp3-*.tar.xz")
     p.add_argument("--enxuto", action="store_true", help="RockBox 1.2+: so os temas OpenPod/Rockbox, sem jogos, apps e demos")
     p.add_argument("--tema", default="assets/openpod/OpenPod128.zip", help="o tema OpenPod128 (zip)")
+    p.add_argument(
+        "--tema-storepod",
+        nargs=2,
+        metavar=("ID", "VERSAO"),
+        help="o id e a versao do tema no catalogo da StorePod (ex.: tema-openpod 1.2); grava o sistema.json",
+    )
     p.add_argument("--versao", required=True)
     p.add_argument("--chave", default="~/.openpod/chave-pacotes-ed25519.pem", help="chave secreta Ed25519 (PEM)")
     p.add_argument("--data", default=dt.date.today().strftime("%d/%m/%Y"))
@@ -237,6 +261,8 @@ def main() -> int:
     args = p.parse_args()
     if bool(args.system) == bool(args.rockbox):
         p.error("escolha --system <kit.up> ou --rockbox <rockbox.tar.xz> (um só)")
+    if args.tema_storepod and not args.rockbox:
+        p.error("--tema-storepod só vale com --rockbox")
 
     indice = gera_sistema(args) if args.system else gera_rockbox(args)
     texto = json.dumps(indice, ensure_ascii=False, indent=2) + "\n"
