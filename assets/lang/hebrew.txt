@@ -1,0 +1,690 @@
+# עברית: rockslop UI
+TARGET
+= יעד
+LINK
+= קישור
+PAYLOAD
+= מטען
+EXECUTE
+= הרצה
+BUS IDLE
+= אין מכשיר
+STOCK
+= מקורי
+awaiting target
+= ממתין ליעד
+scanning usb
+= סורק usb
+awaiting payload
+= ממתין למטען
+executing
+= מריץ
+session complete
+= ההפעלה הושלמה
+session aborted
+= ההפעלה בוטלה
+rolling credits
+= מגללים תודות
+SND
+= צליל
+MUTED
+= מושתק
+NO SND
+= אין צליל
+audio muted
+= השמע מושתק
+audio on
+= השמע פועל
+neural uplink
+= קישור עצבי
+usb stack
+= מחסנית usb
+flash maps
+= מפות פלאש
+payloads
+= מטענים
+glyph cache
+= מטמון גליפים
+SELECT TARGET
+= בחר יעד
+DOWNLOAD MODE
+= מצב הורדה
+STOCK FIRMWARE
+= קושחה מקורית
+ENGAGE
+= הפעל
+CLICK TO ENGAGE
+= לחץ להפעלה
+RESET
+= RESET
+HEADPHONE
+= אוזניות
+VOL
+= עוצמה
+POWER
+= POWER
+POWER OFF
+= כבה
+unplugged: hold the centre key
+= מנותק: החזק את מקש האמצע
+HOLD DOWN
+= החזק DOWN
+bottom of the wheel
+= בתחתית הגלגל
+CONNECT USB
+= חבר USB
+keep holding
+= המשך להחזיק
+RELEASE
+= שחרר
+once linked
+= עם החיבור
+OR
+= או
+hold DOWN and tap RESET
+= החזק DOWN ולחץ RESET
+STAND BY
+= המתן
+it reboots into download mode
+= הוא יאותחל למצב הורדה
+ROCKBOX?
+= ROCKBOX?
+switch it off, then hold POWER ~4 s while connecting
+= כבה אותו, ואז החזק POWER כ-4 שנ' בזמן החיבור
+LINK FAILED
+= הקישור נכשל
+SCANNING
+= סורק
+no player on the bus yet
+= אין עדיין נגן בפס
+ACCESS DENIED
+= הגישה נדחתה
+no permission: install the udev rule (see README)
+= אין הרשאה: התקן את כלל udev (ראה README)
+macOS: run rockslop with sudo to take the device
+= macOS: הרץ את rockslop עם sudo כדי לתפוס את המכשיר
+install the WinUSB driver for it (Zadig)
+= התקן עבורו את מנהל ההתקן WinUSB (Zadig)
+LINK ESTABLISHED
+= הקישור נוצר
+identity verified
+= הזהות אומתה
+PROBING
+= בודק
+boot ROM online
+= boot ROM מחובר
+forcing download mode
+= כופה מצב הורדה
+ROCKBOX RUNNING
+= ROCKBOX פועל
+BACK
+= חזרה
+RETRY
+= שוב
+Rockbox package
+= חבילת Rockbox
+SELECT IMAGE
+= בחר תמונה
+or drop it here
+= או שחרר כאן
+IMAGE
+= תמונה
+REJECTED
+= נדחתה
+BUILD
+= בנייה
+FLASH
+= פלאש
+CARD
+= כרטיס
+{0} files  ·  {1}
+= {0} קבצים  ·  {1}
+every member verified
+= כל רכיב אומת
+BACKUP
+= גיבוי
+stock flash saved first
+= הפלאש המקורי נשמר קודם
+CHANGE
+= שנה
+INSERT SD CARD
+= הכנס כרטיס SD
+RETURN TO STOCK
+= חזרה למקורי
+built for {0}, not {1}
+= נבנה עבור {0}, לא {1}
+LAYOUT
+= פריסה
+LOCKED
+= נעול
+VERSION
+= גרסה
+DOWNLOAD
+= הורדה
+LATEST
+= אחרון
+PRE
+= טרום
+DOWNLOAD FAILED
+= ההורדה נכשלה
+USE A FILE
+= השתמש בקובץ
+LATEST RELEASE
+= השחרור האחרון
+ASKING GITHUB
+= שואל את GITHUB
+the latest {0} release
+= השחרור האחרון של {0}
+no {0} release on GitHub yet: use a package file
+= אין עדיין שחרור של {0} ב-GitHub: השתמש בקובץ חבילה
+ALL RELEASES
+= כל השחרורים
+PROBE
+= בדיקה
+VERIFY
+= אימות
+WRITE
+= כתיבה
+CHECKSUM
+= סכום
+CHECK
+= בדיקה
+REBOOT
+= אתחול
+SD SYNC
+= סנכרון SD
+EJECT
+= הוצאה
+DONE
+= בוצע
+FLASH MAP
+= מפת פלאש
+SAME
+= זהה
+READ
+= קריאה
+ERASE
+= מחיקה
+WRITTEN
+= נכתב
+BAD
+= פגום
+FILES
+= קבצים
+BUS TAP
+= האזנה לפס
+THEN PRESS RESET
+= ואז לחץ RESET
+NO USB DISK
+= אין דיסק USB
+SET USB MODE TO MASS STORAGE
+= הגדר USB Mode ל-Mass Storage
+SD CARD
+= כרטיס SD
+NO CARD
+= אין כרטיס
+READ BACK
+= קריאה חוזרת
+MOUNT
+= עיגון
+CHECKED
+= נבדק
+DATA
+= נתונים
+RATE
+= קצב
+ETA
+= נותר
+ACCESS GRANTED
+= הגישה אושרה
+STOCK RESTORED
+= המקורי שוחזר
+the player boots stock firmware again
+= הנגן עולה שוב עם הקושחה המקורית
+rockbox is live on the player
+= rockbox פועל על הנגן
+SESSION
+= הפעלה
+{0} sectors rewritten, checksummed
+= {0} סקטורים נכתבו מחדש ונבדקו
+{0} files  ·  {1}  ·  read back OK
+= {0} קבצים  ·  {1}  ·  קריאה חוזרת תקינה
+not updated
+= לא עודכן
+TIME
+= זמן
+UNPLUG TO FINISH
+= נתק לסיום
+EJECTED
+= הוצא
+UNPLUG AND ROCK
+= נתק ותנגן
+AGAIN
+= שוב
+CREDITS
+= תודות
+the flash was partly rewritten: a backup is safe on disk
+= הפלאש נכתב מחדש חלקית: גיבוי שמור בבטחה בדיסק
+nothing was written
+= לא נכתב דבר
+the flash was rewritten: a backup is safe on disk
+= הפלאש נכתב מחדש: גיבוי שמור בבטחה בדיסק
+the firmware is in flash and checked; the card was not fully updated
+= הקושחה נמצאת בפלאש ונבדקה; הכרטיס לא עודכן במלואו
+SYNC THE CARD
+= סנכרן כרטיס
+FAULT
+= תקלה
+COPY REPORT
+= העתק דוח
+REPORT COPIED
+= הדוח הועתק
+rockslop could not open its window. It needs OpenGL 2.1 or newer, which a virtual machine, Remote Desktop or a missing graphics driver may not offer; rockslop-cli does the same job in a terminal.
+= rockslop לא הצליח לפתוח את החלון שלו. הוא צריך OpenGL 2.1 ומעלה, שמכונה וירטואלית, שולחן עבודה מרוחק או מנהל התקן גרפי חסר עשויים לא לספק; rockslop-cli עושה את אותה עבודה במסוף.
+rockslop crashed. The log: {0}
+= rockslop קרס. היומן: {0}
+NOW PLAYING
+= מתנגן כעת
+THIS FLASHER
+= הצורב הזה
+ROCKBOX CONTRIBUTORS
+= תורמי ROCKBOX
+{0} contributors
+= {0} תורמים
+People that have contributed to the project, one way or another. Friends!
+= אנשים שתרמו לפרויקט, בדרך זו או אחרת. חברים!
+links open in your browser
+= קישורים נפתחים בדפדפן
+Made by
+= נוצר על ידי
+Device protocols and payloads
+= פרוטוקולי מכשיר ומטענים
+Music
+= מוזיקה
+Voice lines
+= משפטי קול
+Sound effects
+= אפקטים קוליים
+Fonts
+= גופנים
+Rust crates
+= ספריות Rust
+Reference photos
+= תמונות ייחוס
+LANGUAGE
+= שפה
+AUTOMATIC
+= אוטומטי
+stock firmware on the bus: asking it for download mode
+= קושחה מקורית בפס: מבקש ממנה מצב הורדה
+{0} acknowledged 0xCB: rebooting into ADFU
+= {0} אישר 0xCB: מאתחל ל-ADFU
+attaching to {0}
+= מתחבר אל {0}
+sector CRC32 scan on the player
+= סריקת CRC32 של סקטורים בנגן
+dumping {0} KiB
+= שואב {0} KiB
+{0} sectors captured ({1} read, {2} already known); CRC32 verified
+= נלכדו {0} סקטורים ({1} נקראו, {2} כבר ידועים); CRC32 אומת
+dumping {0} KiB of raw NOR cells
+= שואב {0} KiB מתאי NOR גולמיים
+second pass: comparing
+= מעבר שני: משווה
+{0} sectors captured; two reads agree
+= נלכדו {0} סקטורים; שתי הקריאות תואמות
+identical backup already on file: {0}
+= גיבוי זהה כבר קיים: {0}
+backup -> {0}
+= גיבוי -> {0}
+{0} of {1} sectors differ
+= {0} מתוך {1} סקטורים שונים
+0x{0} erase / program / verify ok
+= 0x{0} מחיקה / כתיבה / אימות תקין
+CRC32 of every writable sector, computed on the player
+= CRC32 של כל סקטור כתיב, מחושב בנגן
+reading the writable window back
+= קורא חזרה את חלון הכתיבה
+flash checksum OK  sha256 {0}..{1}
+= סכום הפלאש תקין  sha256 {0}..{1}
+rebooting into Rockbox
+= מאתחל ל-Rockbox
+rebooting into stock firmware
+= מאתחל לקושחה המקורית
+firmware is up
+= הקושחה עלתה
+{0} image(s), {1} KiB, sha256 verified
+= תמונות: {0}, {1} KiB, sha256 אומת
+{0} sectors rewritten
+= {0} סקטורים נכתבו מחדש
+Rockbox did not show up as a USB disk; the card was not updated
+= Rockbox לא הופיע כדיסק USB; הכרטיס לא עודכן
+total {0} s
+= סך הכול {0} שנ'
+{0} loaded, checksum OK
+= {0} נטען, הסכום תקין
+backup is from another unit; its per-unit sectors are left alone
+= הגיבוי ממכשיר אחר; הסקטורים הייחודיים למכשיר לא נוגעים
+waiting for Rockbox's USB disk
+= ממתין לדיסק ה-USB של Rockbox
+no USB disk from Rockbox yet: if it is set to charge only, unplug the player, hold any key and plug it back in (or set Settings > General Settings > System > USB > USB Mode to Mass Storage)
+= עדיין אין דיסק USB מ-Rockbox: אם הוא מוגדר לטעינה בלבד, נתק את הנגן, החזק מקש כלשהו וחבר אותו שוב (או הגדר את הגדרות > הגדרות כלליות > מערכת > USB > USB Mode ל-Mass Storage)
+no microSD card in the player: insert one, then press RESET
+= אין כרטיס microSD בנגן: הכנס כרטיס ולחץ RESET
+card online: {0}
+= הכרטיס מחובר: {0}
+removed {0} stale plugin/codec files
+= הוסרו {0} קבצי plugin/codec ישנים
+removed {0}: the firmware is in flash, not on the card
+= הוסר {0}: הקושחה נמצאת בפלאש, לא בכרטיס
+{0} files written
+= נכתבו {0} קבצים
+{0} files already on the card match the package: left as they are
+= {0} קבצים בכרטיס כבר תואמים לחבילה: נשארים כמו שהם
+reading the written files back from the card
+= קורא חזרה מהכרטיס את הקבצים שנכתבו
+{0} files read back: sha256 OK
+= נקראו חזרה {0} קבצים: sha256 תקין
+card ejected
+= הכרטיס הוצא
+could not eject the card ({0}); eject it before unplugging
+= הוצאת הכרטיס נכשלה ({0}); הוצא אותו לפני הניתוק
+stock firmware detected: ACTIONSUSBD
+= זוהתה קושחה מקורית: ACTIONSUSBD
+injecting vendor command 0xCB -> ADFU
+= מזריק פקודת יצרן 0xCB -> ADFU
+opening {0} download mode
+= פותח מצב הורדה של {0}
+reattaching to download mode
+= מתחבר מחדש למצב הורדה
+dumping {0} KiB of stock flash
+= שואב {0} KiB מהפלאש המקורי
+re-reading CRC32 of every sector
+= קורא שוב CRC32 של כל סקטור
+backup verified: {0}/{1} sectors match
+= הגיבוי אומת: {0}/{1} סקטורים תואמים
+{0} sectors differ; writing
+= {0} סקטורים שונים; כותב
+sector 0x{0} erase/program/verify ok
+= סקטור 0x{0} מחיקה/כתיבה/אימות תקין
+full flash CRC scan
+= סריקת CRC מלאה של הפלאש
+flash checksum OK
+= סכום הפלאש תקין
+waiting for Rockbox USB mass storage
+= ממתין לאחסון USB של Rockbox
+no media: insert a microSD card
+= אין מדיה: הכנס כרטיס microSD
+syncing and ejecting card
+= מסנכרן ומוציא את הכרטיס
+another tool holds the player ({0})
+= כלי אחר תופס את הנגן ({0})
+the player did not come back in download mode
+= הנגן לא חזר במצב הורדה
+the YP3 enters download mode by hand: hold Down while connecting USB
+= YP3 נכנס למצב הורדה ידנית: החזק Down בזמן חיבור USB
+battery too low to flash safely ({0})
+= הסוללה חלשה מדי לצריבה בטוחה ({0})
+the player came back in download mode: the new firmware did not start
+= הנגן חזר במצב הורדה: הקושחה החדשה לא עלתה
+this package is for {0}, not {1}
+= החבילה הזו עבור {0}, לא {1}
+this player's flash at 0x{0} is not what the package was built for; nothing was written
+= הפלאש של הנגן ב-0x{0} אינו מה שהחבילה נבנתה עבורו; לא נכתב דבר
+the package has no firmware image
+= אין בחבילה תמונת קושחה
+the card needs {0} MiB free; it has {1} MiB
+= הכרטיס צריך {0} MiB פנויים; יש בו {1} MiB
+{0} did not read back correctly from the card
+= {0} לא נקרא חזרה כראוי מהכרטיס
+could not mount the player's card: {0}
+= עיגון כרטיס הנגן נכשל: {0}
+Rockbox never showed its USB disk. If its USB Mode is Charge Only, set it to Mass Storage (Settings > General Settings > System > USB), or unplug the player, hold any key and plug it back in
+= Rockbox מעולם לא הציג את דיסק ה-USB שלו. אם ה-USB Mode מוגדר לטעינה בלבד, הגדר אותו ל-Mass Storage (הגדרות > הגדרות כלליות > מערכת > USB), או נתק את הנגן, החזק מקש כלשהו וחבר אותו שוב
+the card is in use by another program
+= הכרטיס בשימוש תוכנה אחרת
+cancelled
+= בוטל
+checksum mismatch at 0x{0}
+= אי התאמת סכום ב-0x{0}
+sector 0x{0} reads inconsistently
+= סקטור 0x{0} נקרא באופן לא עקבי
+flash at 0x{0} reads inconsistently
+= הפלאש ב-0x{0} נקרא באופן לא עקבי
+backup did not read back from disk
+= הגיבוי לא נקרא חזרה מהדיסק
+{0} is damaged (checksum mismatch)
+= {0} פגום (אי התאמת סכום)
+{0} is {1} bytes; a full flash image is {2}
+= {0} הוא {1} בתים; תמונת פלאש מלאה היא {2}
+not a tar.xz release: {0}
+= אינו שחרור tar.xz: {0}
+this package (format {0}) needs a newer rockslop than {1}: update rockslop
+= החבילה הזו (פורמט {0}) דורשת rockslop חדש יותר מ-{1}: עדכן את rockslop
+this package (format {0}) is too old for rockslop {1}: get a newer release
+= החבילה הזו (פורמט {0}) ישנה מדי עבור rockslop {1}: הורד שחרור חדש יותר
+MANIFEST has no format
+= ל-MANIFEST אין פורמט
+MANIFEST names no target
+= MANIFEST לא מציין יעד
+unsafe path in archive: {0}
+= נתיב לא בטוח בארכיון: {0}
+{0}: links and special files are not allowed
+= {0}: קישורים וקבצים מיוחדים אסורים
+{0}: checksum mismatch, the download is corrupt
+= {0}: אי התאמת סכום, ההורדה פגומה
+unexpected member {0}
+= רכיב בלתי צפוי {0}
+archive is missing {0} file(s) listed in SHA256SUMS
+= בארכיון חסרים {0} קבצים מהרשימה ב-SHA256SUMS
+release contains no flash image
+= השחרור אינו כולל תמונת פלאש
+{0}: checksum mismatch
+= {0}: אי התאמת סכום
+archive member too large
+= רכיב הארכיון גדול מדי
+internal error: {0}
+= שגיאה פנימית: {0}
+{0}: permission denied. {1}
+= {0}: ההרשאה נדחתה. {1}
+Install the udev rule (see README) or run as root.
+= התקן את כלל udev (ראה README) או הרץ כ-root.
+macOS needs root to take the device from its mass storage driver: run from Terminal with sudo.
+= macOS זקוק להרשאות root כדי לקחת את המכשיר ממנהל ההתקן לאחסון המוני: הרץ מתוך Terminal עם sudo.
+The device needs the WinUSB driver (Zadig).
+= המכשיר צריך את מנהל ההתקן WinUSB (Zadig).
+{0}: the device is busy (another tool is using it?)
+= {0}: המכשיר תפוס (כלי אחר משתמש בו?)
+{0}: the device went away
+= {0}: המכשיר נעלם
+{0}: timed out
+= {0}: תם הזמן הקצוב
+Windows shows no disk for the player in download mode
+= Windows לא מציג דיסק עבור הנגן במצב הורדה
+Windows refused to open the player's disk (error {0})
+= Windows סירב לפתוח את הדיסק של הנגן (שגיאה {0})
+a command through Windows' disk driver failed (Windows error {0})
+= פקודה דרך מנהל ההתקן של הדיסק ב-Windows נכשלה (שגיאת Windows {0})
+can't reach GitHub: {0}
+= אין גישה ל-GitHub: {0}
+GitHub answered {0}
+= GitHub ענה {0}
+GitHub's list of releases makes no sense: {0}
+= רשימת השחרורים של GitHub לא הגיונית: {0}
+GitHub gave the package an odd name: {0}
+= GitHub נתן לחבילה שם מוזר: {0}
+can't save the download: {0}
+= לא ניתן לשמור את ההורדה: {0}
+the download stopped: {0}
+= ההורדה נעצרה: {0}
+the download is the wrong size: {0} bytes, not {1}
+= גודל ההורדה שגוי: {0} בתים, לא {1}
+the download doesn't match GitHub's checksum: sha256 {0}
+= ההורדה לא תואמת לסכום הביקורת של GitHub: sha256 {0}
+# Clippy, and the new download-mode steps
+DRAG TO SPIN
+= גרור לסיבוב
+UNPLUG
+= נתק
+pull the USB cable out
+= שלוף את כבל ה-USB
+POWER ON
+= הדלק
+hold POWER, on the bottom edge
+= החזק POWER, בקצה התחתון
+stock firmware
+= קושחה מקורית
+SWITCH OFF
+= כבה
+hold POWER until the screen goes dark
+= החזק POWER עד שהמסך מחשיך
+HOLD POWER
+= החזק POWER
+plug in while holding, ~4 s
+= חבר תוך כדי החזקה, כ-4 שנ'
+on the player: System > Debug > {0}
+= בנגן: מערכת > איתור שגיאות > {0}
+follow the steps above
+= בצע את השלבים שלמעלה
+THE {0} PACKAGE
+= חבילת {0}
+NEEDS A MICROSD CARD
+= דרוש כרטיס microSD
+It looks like you're trying to hack an MP3 player. Would you like help?
+= נראה שאתה מנסה לפרוץ לנגן MP3. האם תרצה עזרה?
+GOT IT
+= הבנתי
+There's no model number on these players. Compare the wireframes instead: the buttons and ports differ. Drag a player to spin it.
+= אין מספר דגם על הנגנים האלה. השווה במקום זאת את מודלי הקווים: הכפתורים והחיבורים שונים. גרור נגן כדי לסובב אותו.
+Power the player off first, then hold DOWN before the cable goes in, and keep holding.
+= כבה קודם את הנגן, ואז החזק DOWN לפני שהכבל נכנס, והמשך להחזיק.
+Hold POWER while you plug the cable in, and keep holding for about 4 seconds.
+= החזק POWER בזמן שאתה מחבר את הכבל, והמשך להחזיק כ-4 שניות.
+Switch the player on first: hold POWER on its bottom edge.
+= הדלק קודם את הנגן: החזק POWER בקצה התחתון שלו.
+Still nothing? Try another cable: some only charge.
+= עדיין כלום? נסה כבל אחר: חלק מהכבלים רק מטעינים.
+Your computer won't let rockslop use the player.
+= המחשב שלך לא מרשה ל-rockslop להשתמש בנגן.
+Unplug the cable first: the player only listens in download mode. The steps say how.
+= נתק קודם את הכבל: הנגן מקשיב רק במצב הורדה. השלבים מסבירים איך.
+You need the Rockbox package built for the {0}: a .tar.xz file. Click SELECT IMAGE, or drop it on the panel.
+= אתה צריך את חבילת Rockbox שנבנתה עבור {0}: קובץ .tar.xz. לחץ על "בחר תמונה", או שחרר אותה על הלוח.
+Push a microSD card all the way into the player's slot, then press RESET.
+= דחוף כרטיס microSD עד הסוף לחריץ של הנגן, ואז לחץ RESET.
+Rockbox hasn't shown its USB disk yet. If the player only charges, unplug it, hold any key and plug it back in.
+= Rockbox עדיין לא הציג את דיסק ה-USB שלו. אם הנגן רק נטען, נתק אותו, החזק מקש כלשהו וחבר אותו שוב.
+RETRY usually sorts it out. Still stuck? COPY REPORT puts the details on the clipboard for a bug report.
+= לחיצה על "שוב" בדרך כלל פותרת את זה. עדיין תקוע? "העתק דוח" מעתיק את הפרטים ללוח לדיווח על באג.
+It looks like you watched all the credits. Nobody does that. Respect.
+= נראה שצפית בכל הקרדיטים. אף אחד לא עושה את זה. כל הכבוד.
+DEAL WITH IT
+= DEAL WITH IT
+
+# return to stock without a backup on this computer
+no stock backup on this computer
+= אין גיבוי של הקושחה המקורית במחשב הזה
+When rockslop flashes a player, it puts a copy of the stock firmware on the player's microSD card: .rockbox/{0}
+= כש-rockslop צורב נגן, הוא מניח עותק של הקושחה המקורית בכרטיס ה-microSD של הנגן: ‎.rockbox/{0}
+Start the player in Rockbox and plug it in, and rockslop looks there itself. Or find the file and select it.
+= הפעל את הנגן ב-Rockbox וחבר אותו, ו-rockslop יחפש שם בעצמו. או מצא את הקובץ ובחר בו.
+looking on the player's card
+= מחפש בכרטיס של הנגן
+no stock firmware on the player's card
+= אין קושחה מקורית בכרטיס של הנגן
+checking the image
+= בודק את התמונה
+stock firmware: {0}
+= קושחה מקורית: {0}
+UNKNOWN FIRMWARE
+= קושחה לא מוכרת
+It isn't a stock firmware rockslop knows: a newer version, or not stock at all.
+= זו לא קושחה מקורית ש-rockslop מכיר: גרסה חדשה יותר, או בכלל לא מקורית.
+It has Rockbox in it, so it isn't stock firmware.
+= יש בה Rockbox, ולכן היא לא קושחה מקורית.
+Flash it only if you're sure it came from a {0}.
+= צרוב אותה רק אם אתה בטוח שהיא מגיעה מ-{0}.
+FLASH ANYWAY
+= צרוב בכל זאת
+The .rockbox folder is hidden: turn on hidden files in your file browser to see it.
+= התיקייה ‎.rockbox מוסתרת: הפעל הצגת קבצים מוסתרים במנהל הקבצים שלך כדי לראות אותה.
+stock firmware copied to the card: {0}
+= קושחה מקורית הועתקה לכרטיס: {0}
+stock firmware already on the card: {0}
+= קושחה מקורית כבר בכרטיס: {0}
+could not copy the stock firmware to the card: {0}
+= לא ניתן היה להעתיק את הקושחה המקורית לכרטיס: {0}
+no room on the card for the stock firmware ({0} KiB free)
+= אין מקום בכרטיס לקושחה המקורית ({0} KiB פנויים)
+the stock firmware did not read back correctly from the card
+= הקושחה המקורית לא נקראה כראוי בחזרה מהכרטיס
+stock firmware found on the card: {0}
+= קושחה מקורית נמצאה בכרטיס: {0}
+known stock firmware: {0}
+= קושחה מקורית מוכרת: {0}
+rockslop does not recognise this firmware
+= rockslop לא מזהה את הקושחה הזו
+{0} is not a {1} flash backup (no partition table)
+= {0} אינו גיבוי פלאש של {1} (אין טבלת מחיצות)
+{0} has no firmware in it (that part is blank)
+= אין קושחה ב-{0} (החלק הזה ריק)
+{0} has Rockbox in it: it is not stock firmware
+= יש Rockbox ב-{0}: זו לא קושחה מקורית
+BEFORE THE FIRST FLASH
+= לפני הצריבה הראשונה
+POINT OF NO RETURN
+= נקודת אל-חזור
+rockslop is about to write Rockbox to your {0}. Read each of these and tick it, then hold to sign.
+= rockslop עומד לצרוב את Rockbox על נגן ה-{0} שלך. קרא כל אחד מהסעיפים וסמן אותו, ואז החזק כדי לחתום.
+rockslop and this player's Rockbox port are 100% vibe-coded: no human has ever looked at the code. It has been tested on real players, but that's all.
+= rockslop והפורט של Rockbox לנגן הזה נכתבו 100% ב-vibe coding: אף אדם מעולם לא הסתכל על הקוד. הם נבדקו על נגנים אמיתיים, אבל זה הכול.
+THIS CAN BRICK YOUR PLAYER
+= זה עלול להרוס את הנגן שלך
+Rockbox on this player is unofficial and experimental. A flash that goes wrong (a loose cable, a crash, a bug of ours) can leave the player dead, and there may be no way to bring it back. rockslop keeps a backup of the stock firmware, but a backup can't save every player. The risk is yours alone.
+= Rockbox על הנגן הזה אינו רשמי והוא ניסיוני. צריבה שמשתבשת (כבל רופף, קריסה, באג שלנו) עלולה להשאיר את הנגן מת, וייתכן שלא תהיה שום דרך להחזיר אותו. rockslop שומר גיבוי של הקושחה המקורית, אבל גיבוי לא יכול להציל כל נגן. הסיכון הוא שלך בלבד.
+YOUR WARRANTY IS VOID
+= האחריות שלך מבוטלת
+Flashing firmware the maker didn't write voids the warranty. Whatever happens to this player from now on is yours to deal with: no repair, no replacement, no refund. Going back to stock doesn't change that.
+= צריבת קושחה שהיצרן לא כתב מבטלת את האחריות. כל מה שיקרה לנגן הזה מעכשיו והלאה הוא הבעיה שלך: בלי תיקון, בלי החלפה, בלי החזר כספי. חזרה לקושחה המקורית לא משנה את זה.
+DON'T TAKE IT BACK
+= אל תחזיר אותו
+Never return a flashed player, claim on it, or complain to the seller or the maker about it. Rockbox runs on these players because nobody has locked them down. If flashed players start coming back, the next batch will be locked, and that's the end of Rockbox on them for everyone. If yours breaks, bring it to rockslop, never to the shop.
+= לעולם אל תחזיר נגן צרוב, אל תתבע עליו אחריות ואל תתלונן עליו בפני המוכר או היצרן. Rockbox רץ על הנגנים האלה כי אף אחד לא נעל אותם. אם נגנים צרובים יתחילו לחזור, סדרת הייצור הבאה תהיה נעולה, וזה הסוף של Rockbox עליהם בשביל כולם. אם שלך מתקלקל, פנה ל-rockslop, אף פעם לא לחנות.
+I UNDERSTAND
+= הבנתי
+I've read all three. If it bricks, that's on me. The warranty is gone. It never goes back to the seller. No backsies.
+= קראתי את שלושתם. אם הוא נהרס, זה עליי. האחריות אבדה. הוא לעולם לא חוזר למוכר. אין התחרטויות.
+HOLD TO SIGN
+= החזק כדי לחתום
+KEEP HOLDING
+= המשך להחזיק
+SIGNED
+= נחתם
+NOT NOW
+= לא עכשיו
+tick all three boxes first
+= סמן קודם את שלוש התיבות
+Signing is final. rockslop won't ask again on this computer.
+= החתימה סופית. rockslop לא ישאל שוב במחשב הזה.
+NO BACKSIES
+= אין התחרטויות
+waiver signed: rockslop won't ask again on this computer
+= כתב הוויתור נחתם: rockslop לא ישאל שוב במחשב הזה
+waiver signed (demo: not saved)
+= כתב הוויתור נחתם (דמו: לא נשמר)
+could not save the waiver: {0}
+= לא ניתן היה לשמור את כתב הוויתור: {0}
+EPILEPSY WARNING
+= אזהרת אפילפסיה
+It's a flasher. It flashes.
+= זה פלאשר. הוא מהבהב.
+If the player won't start: hold the D-pad's Down button (or the power button), plug in USB, and keep holding about 3 seconds. The screen stays dark; rockslop will find it. Holding the power button about 7 seconds restarts the player.
+= אם הנגן לא עולה: החזק את כפתור למטה בלוח הכיוונים (או את כפתור ההפעלה), חבר USB והמשך להחזיק כ-3 שניות. המסך נשאר כהה; rockslop ימצא אותו. החזקת כפתור ההפעלה כ-7 שניות מפעילה את הנגן מחדש.
+this TS17 package is in an older format ({0}) that rockslop no longer flashes: get a newer release
+= חבילת TS17 זו בפורמט ישן יותר ({0}) ש-rockslop כבר לא צורב: השג גרסה חדשה יותר
+new install: the rescue stub goes in first
+= התקנה חדשה: קוד ההצלה נכתב ראשון
+rescue stub in place: left alone
+= קוד ההצלה במקומו: לא נגענו בו
+a rescue stub that isn't rockslop's is in place: left alone
+= קיים קוד הצלה שאינו של rockslop: לא נגענו בו

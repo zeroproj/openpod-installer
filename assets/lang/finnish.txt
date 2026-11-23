@@ -1,0 +1,690 @@
+# Suomi: rockslop UI
+TARGET
+= KOHDE
+LINK
+= LINKKI
+PAYLOAD
+= PAYLOAD
+EXECUTE
+= SUORITA
+BUS IDLE
+= VÄYLÄ VAPAA
+STOCK
+= TEHDAS
+awaiting target
+= odotetaan kohdetta
+scanning usb
+= etsitään usb
+awaiting payload
+= odotetaan payloadia
+executing
+= suoritetaan
+session complete
+= istunto valmis
+session aborted
+= istunto keskeytetty
+rolling credits
+= rullaa lopputekstit
+SND
+= ÄÄNI
+MUTED
+= MYKKÄ
+NO SND
+= EI ÄÄNTÄ
+audio muted
+= ääni mykistetty
+audio on
+= ääni päällä
+neural uplink
+= neuraalilinkki
+usb stack
+= usb-pino
+flash maps
+= flash-kartat
+payloads
+= payloadit
+glyph cache
+= glyfivälimuisti
+SELECT TARGET
+= VALITSE KOHDE
+DOWNLOAD MODE
+= LATAUSTILA
+STOCK FIRMWARE
+= TEHDASFIRMWARE
+ENGAGE
+= AKTIVOI
+CLICK TO ENGAGE
+= KLIKKAA: AKTIVOI
+RESET
+= RESET
+HEADPHONE
+= KUULOKKEET
+VOL
+= VOL
+POWER
+= VIRTA
+POWER OFF
+= VIRTA POIS
+unplugged: hold the centre key
+= irrotettu: pidä keskipainiketta painettuna
+HOLD DOWN
+= PIDÄ ALAS
+bottom of the wheel
+= pyörän alareuna
+CONNECT USB
+= LIITÄ USB
+keep holding
+= pidä edelleen
+RELEASE
+= PÄÄSTÄ
+once linked
+= yhdistämisen jälkeen
+OR
+= TAI
+hold DOWN and tap RESET
+= pidä ALAS ja napauta RESET
+STAND BY
+= ODOTA
+it reboots into download mode
+= käynnistyy uudelleen lataustilaan
+ROCKBOX?
+= ROCKBOX?
+switch it off, then hold POWER ~4 s while connecting
+= sammuta, sitten pidä VIRTA ~4 s liittäessä
+LINK FAILED
+= LINKKIVIRHE
+SCANNING
+= SKANNATAAN
+no player on the bus yet
+= väylällä ei vielä soitinta
+ACCESS DENIED
+= PÄÄSY EVÄTTY
+no permission: install the udev rule (see README)
+= ei oikeuksia: asenna udev-sääntö (katso README)
+macOS: run rockslop with sudo to take the device
+= macOS: suorita rockslop sudolla laitteen haltuunottoon
+install the WinUSB driver for it (Zadig)
+= asenna sille WinUSB-ajuri (Zadig)
+LINK ESTABLISHED
+= YHTEYS LUOTU
+identity verified
+= henkilöllisyys vahvistettu
+PROBING
+= TUTKITAAN
+boot ROM online
+= boot ROM verkossa
+forcing download mode
+= pakotetaan lataustila
+ROCKBOX RUNNING
+= ROCKBOX KÄYNNISSÄ
+BACK
+= PALAA
+RETRY
+= KOKEILE
+Rockbox package
+= Rockbox-paketti
+SELECT IMAGE
+= VALITSE KUVA
+or drop it here
+= tai pudota se tähän
+IMAGE
+= KUVA
+REJECTED
+= HYLÄTTY
+BUILD
+= BUILD
+FLASH
+= FLASH
+CARD
+= KORTTI
+{0} files  ·  {1}
+= tiedostot: {0}  ·  {1}
+every member verified
+= kaikki osat vahvistettu
+BACKUP
+= KOPIO
+stock flash saved first
+= tehdasflash tallennettu ensin
+CHANGE
+= VAIHDA
+INSERT SD CARD
+= LISÄÄ SD-KORTTI
+RETURN TO STOCK
+= PALAUTA TEHDAS
+built for {0}, not {1}
+= tehty kohteelle {0}, ei kohteelle {1}
+LAYOUT
+= ASETTELU
+LOCKED
+= LUKITTU
+VERSION
+= VERSIO
+DOWNLOAD
+= LATAUS
+LATEST
+= UUSIN
+PRE
+= TESTI
+DOWNLOAD FAILED
+= LATAUSVIRHE
+USE A FILE
+= KÄYTÄ TIEDOSTOA
+LATEST RELEASE
+= UUSIN JULKAISU
+ASKING GITHUB
+= KYSYTÄÄN GITHUBILTA
+the latest {0} release
+= uusin {0}-julkaisu
+no {0} release on GitHub yet: use a package file
+= GitHubissa ei vielä ole {0}-julkaisua: käytä pakettitiedostoa
+ALL RELEASES
+= KAIKKI JULKAISUT
+PROBE
+= TUTKI
+VERIFY
+= VARMISTA
+WRITE
+= KIRJ.
+CHECKSUM
+= SUMMA
+CHECK
+= TESTI
+REBOOT
+= REBOOT
+SD SYNC
+= SD-SYNK
+EJECT
+= IRROTA
+DONE
+= VALMIS
+FLASH MAP
+= FLASH-KARTTA
+SAME
+= SAMA
+READ
+= LUKU
+ERASE
+= POISTO
+WRITTEN
+= KIRJOIT.
+BAD
+= VIKA
+FILES
+= TIED.
+BUS TAP
+= VÄYLÄ
+THEN PRESS RESET
+= PAINA SITTEN RESET
+NO USB DISK
+= EI USB-LEVYÄ
+SET USB MODE TO MASS STORAGE
+= ASETA USB MODE ARVOON MASS STORAGE
+SD CARD
+= SD-KORTTI
+NO CARD
+= EI KORTTIA
+READ BACK
+= LUE TAKAISIN
+MOUNT
+= MOUNT
+CHECKED
+= TARKAST.
+DATA
+= DATA
+RATE
+= NOPEUS
+ETA
+= ETA
+ACCESS GRANTED
+= PÄÄSY SALLITTU
+STOCK RESTORED
+= TEHDAS PALAUTETTU
+the player boots stock firmware again
+= soitin käynnistää taas tehdasfirmwaren
+rockbox is live on the player
+= rockbox on käynnissä soittimella
+SESSION
+= ISTUNTO
+{0} sectors rewritten, checksummed
+= uudelleenkirjoitettuja sektoreita: {0}, tarkistussumma OK
+{0} files  ·  {1}  ·  read back OK
+= tiedostot: {0}  ·  {1}  ·  luettu takaisin OK
+not updated
+= ei päivitetty
+TIME
+= AIKA
+UNPLUG TO FINISH
+= IRROTA: VALMIS
+EJECTED
+= IRROTETTU
+UNPLUG AND ROCK
+= IRROTA JA ROCKAA
+AGAIN
+= TAAS
+CREDITS
+= KIITOKSET
+the flash was partly rewritten: a backup is safe on disk
+= flashia kirjoitettiin osittain uudelleen: varmuuskopio on turvassa levyllä
+nothing was written
+= mitään ei kirjoitettu
+the flash was rewritten: a backup is safe on disk
+= flash kirjoitettiin uudelleen: varmuuskopio on turvassa levyllä
+the firmware is in flash and checked; the card was not fully updated
+= firmware on flashissa ja tarkistettu; korttia ei päivitetty loppuun
+SYNC THE CARD
+= SYNKRONOI KORTTI
+FAULT
+= HÄIRIÖ
+COPY REPORT
+= KOPIOI RAPORTTI
+REPORT COPIED
+= RAPORTTI KOPIOITU
+rockslop could not open its window. It needs OpenGL 2.1 or newer, which a virtual machine, Remote Desktop or a missing graphics driver may not offer; rockslop-cli does the same job in a terminal.
+= rockslop ei voinut avata ikkunaansa. Se tarvitsee OpenGL 2.1:n tai uudemman, jota virtuaalikone, etätyöpöytä tai puuttuva näytönohjaimen ajuri ei ehkä tarjoa; rockslop-cli tekee saman työn päätteessä.
+rockslop crashed. The log: {0}
+= rockslop kaatui. Loki: {0}
+NOW PLAYING
+= TOISTETAAN
+THIS FLASHER
+= TÄMÄ FLASHER
+ROCKBOX CONTRIBUTORS
+= ROCKBOXIN KEHITTÄJÄT
+{0} contributors
+= tekijöitä: {0}
+People that have contributed to the project, one way or another. Friends!
+= Ihmiset, jotka ovat osallistuneet projektiin tavalla tai toisella. Ystäviä!
+links open in your browser
+= linkit avautuvat selaimessa
+Made by
+= Tekijä
+Device protocols and payloads
+= Laiteprotokollat ja payloadit
+Music
+= Musiikki
+Voice lines
+= Ääniviestit
+Sound effects
+= Äänitehosteet
+Fonts
+= Fontit
+Rust crates
+= Rust-paketit
+Reference photos
+= Viitekuvat
+LANGUAGE
+= KIELI
+AUTOMATIC
+= AUTOMAATTI
+stock firmware on the bus: asking it for download mode
+= tehdasfirmware väylällä: pyydetään lataustilaa
+{0} acknowledged 0xCB: rebooting into ADFU
+= {0} kuittasi 0xCB: käynnistetään uudelleen ADFU:hun
+attaching to {0}
+= yhdistetään: {0}
+sector CRC32 scan on the player
+= sektorien CRC32-skannaus soittimella
+dumping {0} KiB
+= vedostetaan {0} KiB
+{0} sectors captured ({1} read, {2} already known); CRC32 verified
+= sektoreita kaapattu: {0} (luettu {1}, jo tunnettu {2}); CRC32 vahvistettu
+dumping {0} KiB of raw NOR cells
+= vedostetaan {0} KiB raakoja NOR-soluja
+second pass: comparing
+= toinen läpikäynti: vertaillaan
+{0} sectors captured; two reads agree
+= sektoreita kaapattu: {0}; kaksi lukua täsmää
+identical backup already on file: {0}
+= identtinen varmuuskopio on jo tallessa: {0}
+backup -> {0}
+= varmuuskopio -> {0}
+{0} of {1} sectors differ
+= sektoreita eroaa: {0} / {1}
+0x{0} erase / program / verify ok
+= 0x{0} poisto / ohjelmointi / vahvistus ok
+CRC32 of every writable sector, computed on the player
+= jokaisen kirjoitettavan sektorin CRC32, laskettu soittimella
+reading the writable window back
+= luetaan kirjoitettava ikkuna takaisin
+flash checksum OK  sha256 {0}..{1}
+= flashin tarkistussumma OK  sha256 {0}..{1}
+rebooting into Rockbox
+= käynnistetään uudelleen Rockboxiin
+rebooting into stock firmware
+= käynnistetään uudelleen tehdasfirmwareen
+firmware is up
+= firmware on käynnissä
+{0} image(s), {1} KiB, sha256 verified
+= kuvia: {0}, {1} KiB, sha256 vahvistettu
+{0} sectors rewritten
+= sektoreita kirjoitettu uudelleen: {0}
+Rockbox did not show up as a USB disk; the card was not updated
+= Rockbox ei näkynyt USB-levynä; korttia ei päivitetty
+total {0} s
+= yhteensä {0} s
+{0} loaded, checksum OK
+= ladattu: {0}, tarkistussumma OK
+backup is from another unit; its per-unit sectors are left alone
+= varmuuskopio on toisesta laitteesta; sen laitekohtaiset sektorit jätetään rauhaan
+waiting for Rockbox's USB disk
+= odotetaan Rockboxin USB-levyä
+no USB disk from Rockbox yet: if it is set to charge only, unplug the player, hold any key and plug it back in (or set Settings > General Settings > System > USB > USB Mode to Mass Storage)
+= Rockboxin USB-levyä ei vielä näy: jos se on asetettu vain lataamaan, irrota soitin, pidä mitä tahansa näppäintä painettuna ja liitä takaisin (tai aseta Asetukset > Yleiset > Järjestelmä > USB > USB Mode arvoon Mass Storage)
+no microSD card in the player: insert one, then press RESET
+= soittimessa ei ole microSD-korttia: aseta kortti ja paina RESET
+card online: {0}
+= kortti verkossa: {0}
+removed {0} stale plugin/codec files
+= poistettu vanhentuneita lisäosa-/kodekkitiedostoja: {0}
+removed {0}: the firmware is in flash, not on the card
+= poistettu {0}: firmware on flashissa, ei kortilla
+{0} files written
+= tiedostoja kirjoitettu: {0}
+{0} files already on the card match the package: left as they are
+= kortilla jo paketin mukaisia tiedostoja: {0}, jätetään ennalleen
+reading the written files back from the card
+= luetaan kirjoitetut tiedostot takaisin kortilta
+{0} files read back: sha256 OK
+= tiedostoja luettu takaisin: {0}: sha256 OK
+card ejected
+= kortti irrotettu
+could not eject the card ({0}); eject it before unplugging
+= korttia ei voitu irrottaa ({0}); irrota se ennen USB-liitännän irrotusta
+stock firmware detected: ACTIONSUSBD
+= tehdasfirmware havaittu: ACTIONSUSBD
+injecting vendor command 0xCB -> ADFU
+= syötetään valmistajan komento 0xCB -> ADFU
+opening {0} download mode
+= avataan {0}-lataustila
+reattaching to download mode
+= yhdistetään uudelleen lataustilaan
+dumping {0} KiB of stock flash
+= vedostetaan {0} KiB tehdasflashia
+re-reading CRC32 of every sector
+= luetaan jokaisen sektorin CRC32 uudelleen
+backup verified: {0}/{1} sectors match
+= varmuuskopio vahvistettu: täsmääviä sektoreita {0}/{1}
+{0} sectors differ; writing
+= sektoreita eroaa: {0}; kirjoitetaan
+sector 0x{0} erase/program/verify ok
+= sektori 0x{0} poisto/ohjelmointi/vahvistus ok
+full flash CRC scan
+= koko flashin CRC-skannaus
+flash checksum OK
+= flashin tarkistussumma OK
+waiting for Rockbox USB mass storage
+= odotetaan Rockboxin USB-massamuistia
+no media: insert a microSD card
+= ei mediaa: aseta microSD-kortti
+syncing and ejecting card
+= synkronoidaan ja irrotetaan kortti
+another tool holds the player ({0})
+= soitinta käyttää toinen työkalu ({0})
+the player did not come back in download mode
+= soitin ei palannut lataustilaan
+the YP3 enters download mode by hand: hold Down while connecting USB
+= YP3 siirtyy lataustilaan käsin: pidä Alas painettuna USB:tä liittäessä
+battery too low to flash safely ({0})
+= akku on liian tyhjä turvalliseen kirjoitukseen ({0})
+the player came back in download mode: the new firmware did not start
+= soitin palasi lataustilaan: uusi firmware ei käynnistynyt
+this package is for {0}, not {1}
+= tämä paketti on kohteelle {0}, ei kohteelle {1}
+this player's flash at 0x{0} is not what the package was built for; nothing was written
+= soittimen flash osoitteessa 0x{0} ei ole sellainen, jolle paketti tehtiin; mitään ei kirjoitettu
+the package has no firmware image
+= paketissa ei ole firmware-kuvaa
+the card needs {0} MiB free; it has {1} MiB
+= kortilla pitää olla {0} MiB tilaa; vapaana on {1} MiB
+{0} did not read back correctly from the card
+= {0} ei luettu takaisin oikein kortilta
+could not mount the player's card: {0}
+= soittimen korttia ei voitu liittää: {0}
+Rockbox never showed its USB disk. If its USB Mode is Charge Only, set it to Mass Storage (Settings > General Settings > System > USB), or unplug the player, hold any key and plug it back in
+= Rockbox ei koskaan näyttänyt USB-levyään. Jos sen USB Mode on asetettu vain lataamaan, aseta se arvoon Mass Storage (Asetukset > Yleiset > Järjestelmä > USB) tai irrota soitin, pidä mitä tahansa näppäintä painettuna ja liitä takaisin
+the card is in use by another program
+= toinen ohjelma käyttää korttia
+cancelled
+= peruutettu
+checksum mismatch at 0x{0}
+= tarkistussumman ristiriita kohdassa 0x{0}
+sector 0x{0} reads inconsistently
+= sektori 0x{0} luetaan epäjohdonmukaisesti
+flash at 0x{0} reads inconsistently
+= flash kohdassa 0x{0} luetaan epäjohdonmukaisesti
+backup did not read back from disk
+= varmuuskopiota ei saatu luettua takaisin levyltä
+{0} is damaged (checksum mismatch)
+= {0} on vioittunut (tarkistussumman ristiriita)
+{0} is {1} bytes; a full flash image is {2}
+= {0} on {1} tavua; täysi flash-kuva on {2}
+not a tar.xz release: {0}
+= ei ole tar.xz-julkaisu: {0}
+this package (format {0}) needs a newer rockslop than {1}: update rockslop
+= tämä paketti (muoto {0}) vaatii uudemman rockslopin kuin {1}: päivitä rockslop
+this package (format {0}) is too old for rockslop {1}: get a newer release
+= tämä paketti (muoto {0}) on liian vanha rockslopille {1}: hae uudempi julkaisu
+MANIFEST has no format
+= MANIFESTissa ei ole muotoa
+MANIFEST names no target
+= MANIFEST ei nimeä kohdetta
+unsafe path in archive: {0}
+= vaarallinen polku arkistossa: {0}
+{0}: links and special files are not allowed
+= {0}: linkit ja erikoistiedostot eivät ole sallittuja
+{0}: checksum mismatch, the download is corrupt
+= {0}: tarkistussumman ristiriita, lataus on vioittunut
+unexpected member {0}
+= odottamaton jäsen {0}
+archive is missing {0} file(s) listed in SHA256SUMS
+= arkistosta puuttuu SHA256SUMS-tiedostossa lueteltuja tiedostoja: {0}
+release contains no flash image
+= julkaisussa ei ole flash-kuvaa
+{0}: checksum mismatch
+= {0}: tarkistussumman ristiriita
+archive member too large
+= arkiston jäsen on liian suuri
+internal error: {0}
+= sisäinen virhe: {0}
+{0}: permission denied. {1}
+= {0}: pääsy evätty. {1}
+Install the udev rule (see README) or run as root.
+= Asenna udev-sääntö (katso README) tai suorita root-käyttäjänä.
+macOS needs root to take the device from its mass storage driver: run from Terminal with sudo.
+= macOS tarvitsee root-oikeudet ottaakseen laitteen massamuistiajurilta: suorita Päätteessä sudolla.
+The device needs the WinUSB driver (Zadig).
+= Laite tarvitsee WinUSB-ajurin (Zadig).
+{0}: the device is busy (another tool is using it?)
+= {0}: laite on varattu (käyttääkö toinen työkalu sitä?)
+{0}: the device went away
+= {0}: laite katosi
+{0}: timed out
+= {0}: aikakatkaisu
+Windows shows no disk for the player in download mode
+= Windows ei näytä soittimelle levyä lataustilassa
+Windows refused to open the player's disk (error {0})
+= Windows kieltäytyi avaamasta soittimen levyä (virhe {0})
+a command through Windows' disk driver failed (Windows error {0})
+= komento Windowsin levyajurin kautta epäonnistui (Windows-virhe {0})
+can't reach GitHub: {0}
+= GitHubiin ei saada yhteyttä: {0}
+GitHub answered {0}
+= GitHub vastasi {0}
+GitHub's list of releases makes no sense: {0}
+= GitHubin julkaisulistassa ei ole järkeä: {0}
+GitHub gave the package an odd name: {0}
+= GitHub antoi paketille oudon nimen: {0}
+can't save the download: {0}
+= latausta ei voi tallentaa: {0}
+the download stopped: {0}
+= lataus keskeytyi: {0}
+the download is the wrong size: {0} bytes, not {1}
+= lataus on väärän kokoinen: {0} tavua, ei {1}
+the download doesn't match GitHub's checksum: sha256 {0}
+= lataus ei vastaa GitHubin tarkistussummaa: sha256 {0}
+# Clippy, and the new download-mode steps
+DRAG TO SPIN
+= VEDÄ JA PYÖRITÄ
+UNPLUG
+= IRROTA
+pull the USB cable out
+= vedä USB-kaapeli irti
+POWER ON
+= VIRTA PÄÄLLE
+hold POWER, on the bottom edge
+= pidä VIRTA painettuna, alareunassa
+stock firmware
+= tehdasfirmware käynnissä
+SWITCH OFF
+= SAMMUTA
+hold POWER until the screen goes dark
+= pidä VIRTA painettuna, kunnes näyttö pimenee
+HOLD POWER
+= PIDÄ VIRTA
+plug in while holding, ~4 s
+= liitä pitäen painettuna, ~4 s
+on the player: System > Debug > {0}
+= soittimessa: Järjestelmä > Virheenkorjaus > {0}
+follow the steps above
+= seuraa yllä olevia vaiheita
+THE {0} PACKAGE
+= {0}-PAKETTI
+NEEDS A MICROSD CARD
+= TARVITSEE MICROSD-KORTIN
+It looks like you're trying to hack an MP3 player. Would you like help?
+= Näyttää siltä, että yrität hakkeroida MP3-soitinta. Haluatko apua?
+GOT IT
+= SELVÄ
+There's no model number on these players. Compare the wireframes instead: the buttons and ports differ. Drag a player to spin it.
+= Näissä soittimissa ei ole mallinumeroa. Vertaa sen sijaan rautalankamalleja: painikkeet ja liitännät eroavat. Pyöritä soitinta vetämällä sitä.
+Power the player off first, then hold DOWN before the cable goes in, and keep holding.
+= Sammuta soitin ensin, pidä sitten ALAS painettuna ennen kuin kaapeli menee kiinni, äläkä päästä irti.
+Hold POWER while you plug the cable in, and keep holding for about 4 seconds.
+= Pidä VIRTA painettuna samalla kun liität kaapelin, ja jatka pitämistä noin 4 sekuntia.
+Switch the player on first: hold POWER on its bottom edge.
+= Käynnistä soitin ensin: pidä sen alareunassa olevaa VIRTA-painiketta painettuna.
+Still nothing? Try another cable: some only charge.
+= Ei vieläkään mitään? Kokeile toista kaapelia: jotkin vain lataavat.
+Your computer won't let rockslop use the player.
+= Tietokoneesi ei anna rockslopin käyttää soitinta.
+Unplug the cable first: the player only listens in download mode. The steps say how.
+= Irrota kaapeli ensin: soitin kuuntelee vain lataustilassa. Vaiheet kertovat, miten.
+You need the Rockbox package built for the {0}: a .tar.xz file. Click SELECT IMAGE, or drop it on the panel.
+= Tarvitset {0}-soittimelle tehdyn Rockbox-paketin: .tar.xz-tiedoston. Klikkaa VALITSE KUVA tai pudota se paneeliin.
+Push a microSD card all the way into the player's slot, then press RESET.
+= Työnnä microSD-kortti kokonaan soittimen korttipaikkaan ja paina sitten RESET.
+Rockbox hasn't shown its USB disk yet. If the player only charges, unplug it, hold any key and plug it back in.
+= Rockbox ei ole vielä näyttänyt USB-levyään. Jos soitin vain latautuu, irrota se, pidä mitä tahansa näppäintä painettuna ja liitä se takaisin.
+RETRY usually sorts it out. Still stuck? COPY REPORT puts the details on the clipboard for a bug report.
+= KOKEILE yleensä auttaa. Vieläkin jumissa? KOPIOI RAPORTTI vie tiedot leikepöydälle vikailmoitusta varten.
+It looks like you watched all the credits. Nobody does that. Respect.
+= Näyttää siltä, että katsoit kaikki lopputekstit. Kukaan ei tee niin. Respektiä.
+DEAL WITH IT
+= DEAL WITH IT
+
+# return to stock without a backup on this computer
+no stock backup on this computer
+= tällä tietokoneella ei ole tehdasfirmwaren varmuuskopiota
+When rockslop flashes a player, it puts a copy of the stock firmware on the player's microSD card: .rockbox/{0}
+= Kun rockslop flashaa soittimen, se jättää kopion tehdasfirmwaresta soittimen microSD-kortille: .rockbox/{0}
+Start the player in Rockbox and plug it in, and rockslop looks there itself. Or find the file and select it.
+= Käynnistä soitin Rockboxissa ja kytke se, niin rockslop etsii sieltä itse. Tai etsi tiedosto ja valitse se.
+looking on the player's card
+= etsitään soittimen kortilta
+no stock firmware on the player's card
+= soittimen kortilla ei ole tehdasfirmwarea
+checking the image
+= tarkistetaan levykuvaa
+stock firmware: {0}
+= tehdasfirmware: {0}
+UNKNOWN FIRMWARE
+= TUNTEMATON FIRMWARE
+It isn't a stock firmware rockslop knows: a newer version, or not stock at all.
+= Tämä ei ole tehdasfirmware, jonka rockslop tuntee: uudempi versio tai ei lainkaan tehdasfirmware.
+It has Rockbox in it, so it isn't stock firmware.
+= Siinä on Rockbox, joten se ei ole tehdasfirmware.
+Flash it only if you're sure it came from a {0}.
+= Flashaa se vain, jos olet varma, että se on peräisin laitteesta {0}.
+FLASH ANYWAY
+= FLASHAA SILTI
+The .rockbox folder is hidden: turn on hidden files in your file browser to see it.
+= .rockbox-kansio on piilotettu: ota piilotetut tiedostot näkyviin tiedostonhallinnassa, niin näet sen.
+stock firmware copied to the card: {0}
+= tehdasfirmware kopioitu kortille: {0}
+stock firmware already on the card: {0}
+= tehdasfirmware on jo kortilla: {0}
+could not copy the stock firmware to the card: {0}
+= tehdasfirmwarea ei voitu kopioida kortille: {0}
+no room on the card for the stock firmware ({0} KiB free)
+= kortilla ei ole tilaa tehdasfirmwarelle ({0} KiB vapaana)
+the stock firmware did not read back correctly from the card
+= tehdasfirmware ei luettu kortilta oikein takaisin
+stock firmware found on the card: {0}
+= tehdasfirmware löytyi kortilta: {0}
+known stock firmware: {0}
+= tunnettu tehdasfirmware: {0}
+rockslop does not recognise this firmware
+= rockslop ei tunnista tätä firmwarea
+{0} is not a {1} flash backup (no partition table)
+= {0} ei ole {1}-flash-varmuuskopio (ei osiotaulua)
+{0} has no firmware in it (that part is blank)
+= {0} ei sisällä firmwarea (se osa on tyhjä)
+{0} has Rockbox in it: it is not stock firmware
+= {0} sisältää Rockboxin: se ei ole tehdasfirmware
+BEFORE THE FIRST FLASH
+= ENNEN ENSIMMÄISTÄ FLASHAUSTA
+POINT OF NO RETURN
+= PALUUTA EI OLE
+rockslop is about to write Rockbox to your {0}. Read each of these and tick it, then hold to sign.
+= rockslop on juuri kirjoittamassa Rockboxin {0}-soittimeesi. Lue jokainen kohta ja rastita se, ja allekirjoita sitten pitämällä painiketta pohjassa.
+rockslop and this player's Rockbox port are 100% vibe-coded: no human has ever looked at the code. It has been tested on real players, but that's all.
+= rockslop ja tämän soittimen Rockbox-portti ovat 100-prosenttisesti vibekoodattuja: yksikään ihminen ei ole koskaan katsonut koodia. Niitä on testattu oikeilla soittimilla, mutta siinä kaikki.
+THIS CAN BRICK YOUR PLAYER
+= TÄMÄ VOI TUHOTA SOITTIMESI
+Rockbox on this player is unofficial and experimental. A flash that goes wrong (a loose cable, a crash, a bug of ours) can leave the player dead, and there may be no way to bring it back. rockslop keeps a backup of the stock firmware, but a backup can't save every player. The risk is yours alone.
+= Rockbox tällä soittimella on epävirallinen ja kokeellinen. Pieleen mennyt flashaus (löysä kaapeli, kaatuminen, bugi koodissamme) voi jättää soittimen kuolleeksi, eikä sitä ehkä saa enää millään henkiin. rockslop pitää tallessa tehdasfirmwaren varmuuskopion, mutta varmuuskopio ei pelasta jokaista soitinta. Riski on yksin sinun.
+YOUR WARRANTY IS VOID
+= TAKUUSI RAUKEAA
+Flashing firmware the maker didn't write voids the warranty. Whatever happens to this player from now on is yours to deal with: no repair, no replacement, no refund. Going back to stock doesn't change that.
+= Takuu raukeaa, kun flashaat firmwaren, jota valmistaja ei ole kirjoittanut. Mitä tälle soittimelle tästä eteenpäin tapahtuukin, se on sinun ongelmasi: ei korjausta, ei vaihtoa, ei rahoja takaisin. Paluu tehdasfirmwareen ei muuta tätä.
+DON'T TAKE IT BACK
+= ÄLÄ PALAUTA SITÄ
+Never return a flashed player, claim on it, or complain to the seller or the maker about it. Rockbox runs on these players because nobody has locked them down. If flashed players start coming back, the next batch will be locked, and that's the end of Rockbox on them for everyone. If yours breaks, bring it to rockslop, never to the shop.
+= Älä koskaan palauta flashattua soitinta, älä hae sille takuuta äläkä valita siitä myyjälle tai valmistajalle. Rockbox toimii näillä soittimilla, koska kukaan ei ole lukinnut niitä. Jos flashattuja soittimia alkaa tulla takaisin, seuraava erä lukitaan, ja silloin Rockbox on niissä mennyttä kaikkien osalta. Jos omasi hajoaa, käänny rockslopin puoleen, älä koskaan kaupan.
+I UNDERSTAND
+= YMMÄRRÄN
+I've read all three. If it bricks, that's on me. The warranty is gone. It never goes back to the seller. No backsies.
+= Olen lukenut kaikki kolme. Jos soitin tuhoutuu, vastuu on minun. Takuu on mennyt. Se ei koskaan palaa myyjälle. Ei perumista.
+HOLD TO SIGN
+= ALLEKIRJOITA PITÄMÄLLÄ
+KEEP HOLDING
+= PIDÄ EDELLEEN
+SIGNED
+= ALLEKIRJOITETTU
+NOT NOW
+= EI NYT
+tick all three boxes first
+= rastita ensin kaikki kolme ruutua
+Signing is final. rockslop won't ask again on this computer.
+= Allekirjoitus on lopullinen. rockslop ei kysy uudelleen tällä tietokoneella.
+NO BACKSIES
+= EI PERUMISTA
+waiver signed: rockslop won't ask again on this computer
+= sitoumus allekirjoitettu: rockslop ei kysy uudelleen tällä tietokoneella
+waiver signed (demo: not saved)
+= sitoumus allekirjoitettu (demo: ei tallennettu)
+could not save the waiver: {0}
+= sitoumusta ei voitu tallentaa: {0}
+EPILEPSY WARNING
+= EPILEPSIAVAROITUS
+It's a flasher. It flashes.
+= Se on flashaaja. Se välkkyy.
+If the player won't start: hold the D-pad's Down button (or the power button), plug in USB, and keep holding about 3 seconds. The screen stays dark; rockslop will find it. Holding the power button about 7 seconds restarts the player.
+= Jos soitin ei käynnisty: pidä ristiohjaimen Alas-painiketta (tai virtapainiketta) pohjassa, kytke USB ja jatka painamista noin 3 sekuntia. Näyttö pysyy pimeänä; rockslop löytää sen. Virtapainikkeen pitäminen pohjassa noin 7 sekuntia käynnistää soittimen uudelleen.
+this TS17 package is in an older format ({0}) that rockslop no longer flashes: get a newer release
+= tämä TS17-paketti on vanhemmassa muodossa ({0}), jota rockslop ei enää flashaa: hae uudempi julkaisu
+new install: the rescue stub goes in first
+= uusi asennus: pelastuskoodi kirjoitetaan ensin
+rescue stub in place: left alone
+= pelastuskoodi paikallaan: ei kosketa
+a rescue stub that isn't rockslop's is in place: left alone
+= paikalla on pelastuskoodi, joka ei ole rockslopin: ei kosketa

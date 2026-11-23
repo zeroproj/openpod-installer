@@ -1,0 +1,690 @@
+# Türkçe: rockslop UI
+TARGET
+= HEDEF
+LINK
+= BAĞLANTI
+PAYLOAD
+= YÜK
+EXECUTE
+= ÇALIŞTIR
+BUS IDLE
+= YOL BOŞ
+STOCK
+= ORİJ.
+awaiting target
+= hedef bekleniyor
+scanning usb
+= usb taranıyor
+awaiting payload
+= yük bekleniyor
+executing
+= çalıştırılıyor
+session complete
+= oturum tamamlandı
+session aborted
+= oturum iptal edildi
+rolling credits
+= jenerik akıyor
+SND
+= SES
+MUTED
+= SESSİZ
+NO SND
+= SES YOK
+audio muted
+= ses kapalı
+audio on
+= ses açık
+neural uplink
+= sinir bağlantısı
+usb stack
+= usb yığını
+flash maps
+= flash haritaları
+payloads
+= yükler
+glyph cache
+= glif önbelleği
+SELECT TARGET
+= HEDEF SEÇ
+DOWNLOAD MODE
+= İNDİRME MODU
+STOCK FIRMWARE
+= ORİJİNAL FIRMWARE
+ENGAGE
+= BAŞLAT
+CLICK TO ENGAGE
+= BAŞLATMAK İÇİN TIKLA
+RESET
+= RESET
+HEADPHONE
+= KULAKLIK
+VOL
+= SES+-
+POWER
+= GÜÇ
+POWER OFF
+= KAPAT
+unplugged: hold the centre key
+= bağlı değil: orta tuşa basılı tut
+HOLD DOWN
+= DOWN'A BAS
+bottom of the wheel
+= tekerleğin altı
+CONNECT USB
+= USB TAK
+keep holding
+= basılı tutmaya devam
+RELEASE
+= BIRAK
+once linked
+= bağlanınca
+OR
+= YA DA
+hold DOWN and tap RESET
+= DOWN'a basılı tut ve RESET'e dokun
+STAND BY
+= BEKLE
+it reboots into download mode
+= indirme moduna yeniden başlar
+ROCKBOX?
+= ROCKBOX?
+switch it off, then hold POWER ~4 s while connecting
+= kapat, sonra bağlarken POWER'a ~4 s basılı tut
+LINK FAILED
+= BAĞLANTI BAŞARISIZ
+SCANNING
+= TARANIYOR
+no player on the bus yet
+= yolda henüz çalar yok
+ACCESS DENIED
+= ERİŞİM REDDEDİLDİ
+no permission: install the udev rule (see README)
+= izin yok: udev kuralını kur (bkz. README)
+macOS: run rockslop with sudo to take the device
+= macOS: aygıtı almak için rockslop'u sudo ile çalıştır
+install the WinUSB driver for it (Zadig)
+= bunun için WinUSB sürücüsünü kur (Zadig)
+LINK ESTABLISHED
+= BAĞLANTI KURULDU
+identity verified
+= kimlik doğrulandı
+PROBING
+= SINANIYOR
+boot ROM online
+= önyükleme ROM'u çevrimiçi
+forcing download mode
+= indirme modu zorlanıyor
+ROCKBOX RUNNING
+= ROCKBOX ÇALIŞIYOR
+BACK
+= GERİ
+RETRY
+= TEKRAR
+Rockbox package
+= Rockbox paketi
+SELECT IMAGE
+= İMAJ SEÇ
+or drop it here
+= ya da buraya bırak
+IMAGE
+= İMAJ
+REJECTED
+= REDDEDİLDİ
+BUILD
+= SÜRÜM
+FLASH
+= FLASH
+CARD
+= KART
+{0} files  ·  {1}
+= dosya: {0}  ·  {1}
+every member verified
+= tüm üyeler doğrulandı
+BACKUP
+= YEDEK
+stock flash saved first
+= orijinal flash önce kaydedildi
+CHANGE
+= DEĞİŞTİR
+INSERT SD CARD
+= SD KART TAK
+RETURN TO STOCK
+= ORİJİNALE DÖN
+built for {0}, not {1}
+= {0} için derlenmiş, {1} için değil
+LAYOUT
+= DÜZEN
+LOCKED
+= KİLİTLİ
+VERSION
+= VERSİYON
+DOWNLOAD
+= İNDİRME
+LATEST
+= EN YENİ
+PRE
+= TEST
+DOWNLOAD FAILED
+= İNDİRME BAŞARISIZ
+USE A FILE
+= DOSYA KULLAN
+LATEST RELEASE
+= SON SÜRÜM
+ASKING GITHUB
+= GITHUB'A SORULUYOR
+the latest {0} release
+= en son {0} sürümü
+no {0} release on GitHub yet: use a package file
+= GitHub'da henüz {0} sürümü yok: bir paket dosyası kullan
+ALL RELEASES
+= TÜM SÜRÜMLER
+PROBE
+= SINA
+VERIFY
+= DOĞRULA
+WRITE
+= YAZ
+CHECKSUM
+= SAĞLAMA
+CHECK
+= KONTROL
+REBOOT
+= YENİDEN BAŞLAT
+SD SYNC
+= SD EŞİTLE
+EJECT
+= ÇIKAR
+DONE
+= BİTTİ
+FLASH MAP
+= FLASH HARİTA
+SAME
+= AYNI
+READ
+= OKUNDU
+ERASE
+= SİLİNDİ
+WRITTEN
+= YAZILDI
+BAD
+= BOZUK
+FILES
+= DOSYALAR
+BUS TAP
+= YOL İZLE
+THEN PRESS RESET
+= SONRA RESET'E BAS
+NO USB DISK
+= USB DİSK YOK
+SET USB MODE TO MASS STORAGE
+= USB MODUNU YIĞIN BELLEK YAP
+SD CARD
+= SD KART
+NO CARD
+= KART YOK
+READ BACK
+= GERİ OKU
+MOUNT
+= BAĞLA
+CHECKED
+= KONTROLLÜ
+DATA
+= VERİ
+RATE
+= HIZ
+ETA
+= KALAN
+ACCESS GRANTED
+= ERİŞİM VERİLDİ
+STOCK RESTORED
+= ORİJİNAL GERİ
+the player boots stock firmware again
+= çalar yine orijinal firmware ile açılıyor
+rockbox is live on the player
+= rockbox çalarda canlı
+SESSION
+= OTURUM
+{0} sectors rewritten, checksummed
+= yeniden yazılan sektör: {0}, sağlaması yapıldı
+{0} files  ·  {1}  ·  read back OK
+= dosya: {0}  ·  {1}  ·  geri okuma OK
+not updated
+= güncellenmedi
+TIME
+= SÜRE
+UNPLUG TO FINISH
+= BİTİRMEK İÇİN ÇEK
+EJECTED
+= ÇIKARILDI
+UNPLUG AND ROCK
+= ÇEK VE ROCK
+AGAIN
+= TEKRAR
+CREDITS
+= KREDİ
+the flash was partly rewritten: a backup is safe on disk
+= flash kısmen yeniden yazıldı: yedek diskte güvende
+nothing was written
+= hiçbir şey yazılmadı
+the flash was rewritten: a backup is safe on disk
+= flash yeniden yazıldı: yedek diskte güvende
+the firmware is in flash and checked; the card was not fully updated
+= firmware flash bellekte ve denetlendi; kart tamamen güncellenmedi
+SYNC THE CARD
+= KARTI EŞİTLE
+FAULT
+= HATA
+COPY REPORT
+= RAPORU KOPYALA
+REPORT COPIED
+= RAPOR KOPYALANDI
+rockslop could not open its window. It needs OpenGL 2.1 or newer, which a virtual machine, Remote Desktop or a missing graphics driver may not offer; rockslop-cli does the same job in a terminal.
+= rockslop penceresini açamadı. OpenGL 2.1 veya daha yenisi gerekiyor; bunu sanal makine, Uzak Masaüstü ya da eksik bir grafik sürücüsü sunmayabilir. rockslop-cli aynı işi bir terminalde yapar.
+rockslop crashed. The log: {0}
+= rockslop çöktü. Günlük: {0}
+NOW PLAYING
+= ŞİMDİ ÇALIYOR
+THIS FLASHER
+= BU FLASHER
+ROCKBOX CONTRIBUTORS
+= ROCKBOX KATKIDA BULUNANLAR
+{0} contributors
+= katkıda bulunan sayısı: {0}
+People that have contributed to the project, one way or another. Friends!
+= Projeye şu ya da bu şekilde katkıda bulunan insanlar. Dostlar!
+links open in your browser
+= bağlantılar tarayıcında açılır
+Made by
+= Yapanlar
+Device protocols and payloads
+= Aygıt protokolleri ve yükler
+Music
+= Müzik
+Voice lines
+= Ses kayıtları
+Sound effects
+= Ses efektleri
+Fonts
+= Yazı tipleri
+Rust crates
+= Rust paketleri
+Reference photos
+= Referans fotoğraflar
+LANGUAGE
+= DİL
+AUTOMATIC
+= OTOMATİK
+stock firmware on the bus: asking it for download mode
+= orijinal firmware yolda: indirme modu isteniyor
+{0} acknowledged 0xCB: rebooting into ADFU
+= {0}, 0xCB'yi onayladı: ADFU'ya yeniden başlıyor
+attaching to {0}
+= {0} cihazına bağlanılıyor
+sector CRC32 scan on the player
+= çalarda sektör CRC32 taraması
+dumping {0} KiB
+= {0} KiB döküm alınıyor
+{0} sectors captured ({1} read, {2} already known); CRC32 verified
+= yakalanan sektör: {0} ({1} okundu, {2} zaten biliniyor); CRC32 doğrulandı
+dumping {0} KiB of raw NOR cells
+= {0} KiB ham NOR hücresi döküm alınıyor
+second pass: comparing
+= ikinci geçiş: karşılaştırılıyor
+{0} sectors captured; two reads agree
+= yakalanan sektör: {0}; iki okuma uyuşuyor
+identical backup already on file: {0}
+= aynı yedek zaten kayıtlı: {0}
+backup -> {0}
+= yedek -> {0}
+{0} of {1} sectors differ
+= farklı sektör: {0} / {1}
+0x{0} erase / program / verify ok
+= 0x{0} silme / programlama / doğrulama ok
+CRC32 of every writable sector, computed on the player
+= yazılabilir her sektörün CRC32'si, çalarda hesaplandı
+reading the writable window back
+= yazılabilir pencere geri okunuyor
+flash checksum OK  sha256 {0}..{1}
+= flash sağlaması OK  sha256 {0}..{1}
+rebooting into Rockbox
+= Rockbox'a yeniden başlanıyor
+rebooting into stock firmware
+= orijinal firmware'e yeniden başlanıyor
+firmware is up
+= firmware ayakta
+{0} image(s), {1} KiB, sha256 verified
+= imaj: {0}, {1} KiB, sha256 doğrulandı
+{0} sectors rewritten
+= yeniden yazılan sektör: {0}
+Rockbox did not show up as a USB disk; the card was not updated
+= Rockbox USB disk olarak görünmedi; kart güncellenmedi
+total {0} s
+= toplam {0} s
+{0} loaded, checksum OK
+= {0} yüklendi, sağlama OK
+backup is from another unit; its per-unit sectors are left alone
+= yedek başka bir cihazdan; cihaza özel sektörlere dokunulmuyor
+waiting for Rockbox's USB disk
+= Rockbox'ın USB diski bekleniyor
+no USB disk from Rockbox yet: if it is set to charge only, unplug the player, hold any key and plug it back in (or set Settings > General Settings > System > USB > USB Mode to Mass Storage)
+= Rockbox'tan henüz USB disk yok: yalnızca şarj olarak ayarlıysa çaları çıkar, herhangi bir tuşa basılı tutup yeniden tak (ya da Ayarlar > Genel Ayarlar > Sistem > USB > USB Modu ayarını Yığın Bellek yap)
+no microSD card in the player: insert one, then press RESET
+= çalarda microSD kart yok: tak ve RESET'e bas
+card online: {0}
+= kart çevrimiçi: {0}
+removed {0} stale plugin/codec files
+= eskimiş eklenti/codec dosyası kaldırıldı: {0}
+removed {0}: the firmware is in flash, not on the card
+= {0} kaldırıldı: firmware kartta değil, flash bellekte
+{0} files written
+= yazılan dosya: {0}
+{0} files already on the card match the package: left as they are
+= kartta zaten paketle aynı olan dosya: {0}, olduğu gibi bırakıldı
+reading the written files back from the card
+= yazılan dosyalar karttan geri okunuyor
+{0} files read back: sha256 OK
+= geri okunan dosya: {0}: sha256 OK
+card ejected
+= kart çıkarıldı
+could not eject the card ({0}); eject it before unplugging
+= kart çıkarılamadı ({0}); fişi çekmeden önce çıkar
+stock firmware detected: ACTIONSUSBD
+= orijinal firmware algılandı: ACTIONSUSBD
+injecting vendor command 0xCB -> ADFU
+= üretici komutu 0xCB enjekte ediliyor -> ADFU
+opening {0} download mode
+= {0} indirme modu açılıyor
+reattaching to download mode
+= indirme moduna yeniden bağlanılıyor
+dumping {0} KiB of stock flash
+= {0} KiB orijinal flash döküm alınıyor
+re-reading CRC32 of every sector
+= her sektörün CRC32'si yeniden okunuyor
+backup verified: {0}/{1} sectors match
+= yedek doğrulandı: {0}/{1} sektör uyuşuyor
+{0} sectors differ; writing
+= farklı sektör: {0}; yazılıyor
+sector 0x{0} erase/program/verify ok
+= sektör 0x{0} silme/programlama/doğrulama ok
+full flash CRC scan
+= tam flash CRC taraması
+flash checksum OK
+= flash sağlaması OK
+waiting for Rockbox USB mass storage
+= Rockbox USB yığın depolaması bekleniyor
+no media: insert a microSD card
+= ortam yok: bir microSD kart tak
+syncing and ejecting card
+= kart eşitlenip çıkarılıyor
+another tool holds the player ({0})
+= çalar başka bir araç tarafından tutuluyor ({0})
+the player did not come back in download mode
+= çalar indirme modunda geri gelmedi
+the YP3 enters download mode by hand: hold Down while connecting USB
+= YP3 indirme moduna elle girer: USB bağlarken Down'a bas
+battery too low to flash safely ({0})
+= pil güvenli flash için çok zayıf ({0})
+the player came back in download mode: the new firmware did not start
+= çalar indirme modunda geri geldi: yeni firmware başlamadı
+this package is for {0}, not {1}
+= bu paket {0} için, {1} için değil
+this player's flash at 0x{0} is not what the package was built for; nothing was written
+= çaların 0x{0} adresindeki flash'ı paketin derlendiği ile uyuşmuyor; hiçbir şey yazılmadı
+the package has no firmware image
+= pakette firmware imajı yok
+the card needs {0} MiB free; it has {1} MiB
+= karta {0} MiB boş yer lazım; var olan {1} MiB
+{0} did not read back correctly from the card
+= {0} karttan doğru okunamadı
+could not mount the player's card: {0}
+= çaların kartı bağlanamadı: {0}
+Rockbox never showed its USB disk. If its USB Mode is Charge Only, set it to Mass Storage (Settings > General Settings > System > USB), or unplug the player, hold any key and plug it back in
+= Rockbox USB diskini hiç göstermedi. USB Modu yalnızca şarj olarak ayarlıysa Yığın Bellek yap (Ayarlar > Genel Ayarlar > Sistem > USB) ya da çaları çıkar, herhangi bir tuşa basılı tutup yeniden tak
+the card is in use by another program
+= kart başka bir program tarafından kullanılıyor
+cancelled
+= iptal edildi
+checksum mismatch at 0x{0}
+= 0x{0} adresinde sağlama uyuşmazlığı
+sector 0x{0} reads inconsistently
+= sektör 0x{0} tutarsız okunuyor
+flash at 0x{0} reads inconsistently
+= 0x{0} adresindeki flash tutarsız okunuyor
+backup did not read back from disk
+= yedek diskten geri okunamadı
+{0} is damaged (checksum mismatch)
+= {0} hasarlı (sağlama uyuşmazlığı)
+{0} is {1} bytes; a full flash image is {2}
+= {0} {1} bayt; tam flash imajı {2}
+not a tar.xz release: {0}
+= tar.xz sürümü değil: {0}
+this package (format {0}) needs a newer rockslop than {1}: update rockslop
+= bu paket (biçim {0}) {1} sürümünden daha yeni bir rockslop gerektirir: rockslop'u güncelle
+this package (format {0}) is too old for rockslop {1}: get a newer release
+= bu paket (biçim {0}) rockslop {1} için çok eski: daha yeni bir sürüm edin
+MANIFEST has no format
+= MANIFEST'te biçim yok
+MANIFEST names no target
+= MANIFEST hedef belirtmiyor
+unsafe path in archive: {0}
+= arşivde güvensiz yol: {0}
+{0}: links and special files are not allowed
+= {0}: bağlantılara ve özel dosyalara izin verilmez
+{0}: checksum mismatch, the download is corrupt
+= {0}: sağlama uyuşmazlığı, indirme bozuk
+unexpected member {0}
+= beklenmeyen üye {0}
+archive is missing {0} file(s) listed in SHA256SUMS
+= arşivde SHA256SUMS'ta listelenen dosyalar eksik: {0}
+release contains no flash image
+= sürümde flash imajı yok
+{0}: checksum mismatch
+= {0}: sağlama uyuşmazlığı
+archive member too large
+= arşiv üyesi çok büyük
+internal error: {0}
+= dahili hata: {0}
+{0}: permission denied. {1}
+= {0}: izin reddedildi. {1}
+Install the udev rule (see README) or run as root.
+= udev kuralını kur (bkz. README) ya da root olarak çalıştır.
+macOS needs root to take the device from its mass storage driver: run from Terminal with sudo.
+= macOS'un aygıtı yığın depolama sürücüsünden alması için root gerekir: Terminal'den sudo ile çalıştır.
+The device needs the WinUSB driver (Zadig).
+= Aygıt için WinUSB sürücüsü gerekir (Zadig).
+{0}: the device is busy (another tool is using it?)
+= {0}: aygıt meşgul (başka bir araç mı kullanıyor?)
+{0}: the device went away
+= {0}: aygıt kayboldu
+{0}: timed out
+= {0}: zaman aşımı
+Windows shows no disk for the player in download mode
+= Windows, indirme modundaki oynatıcı için disk göstermiyor
+Windows refused to open the player's disk (error {0})
+= Windows oynatıcının diskini açmayı reddetti (hata {0})
+a command through Windows' disk driver failed (Windows error {0})
+= Windows disk sürücüsü üzerinden gönderilen bir komut başarısız oldu (Windows hatası {0})
+can't reach GitHub: {0}
+= GitHub'a ulaşılamıyor: {0}
+GitHub answered {0}
+= GitHub {0} yanıtını verdi
+GitHub's list of releases makes no sense: {0}
+= GitHub'ın sürüm listesi anlamsız: {0}
+GitHub gave the package an odd name: {0}
+= GitHub pakete tuhaf bir ad verdi: {0}
+can't save the download: {0}
+= indirilen dosya kaydedilemiyor: {0}
+the download stopped: {0}
+= indirme durdu: {0}
+the download is the wrong size: {0} bytes, not {1}
+= indirilen dosyanın boyutu yanlış: {0} bayt, {1} değil
+the download doesn't match GitHub's checksum: sha256 {0}
+= indirilen dosya GitHub'ın sağlamasıyla uyuşmuyor: sha256 {0}
+# Clippy, and the new download-mode steps
+DRAG TO SPIN
+= SÜRÜKLE VE DÖNDÜR
+UNPLUG
+= ÇIKAR
+pull the USB cable out
+= USB kablosunu çıkar
+POWER ON
+= AÇ
+hold POWER, on the bottom edge
+= alt kenardaki GÜÇ tuşuna basılı tut
+stock firmware
+= orijinal firmware
+SWITCH OFF
+= KAPAT
+hold POWER until the screen goes dark
+= ekran kararana kadar GÜÇ tuşuna basılı tut
+HOLD POWER
+= GÜÇ'E BAS
+plug in while holding, ~4 s
+= basılı tutarken tak, ~4 s
+on the player: System > Debug > {0}
+= çalarda: Sistem > Hata Arındırma > {0}
+follow the steps above
+= yukarıdaki adımları izle
+THE {0} PACKAGE
+= {0} PAKETİ
+NEEDS A MICROSD CARD
+= MICROSD KART GEREKİR
+It looks like you're trying to hack an MP3 player. Would you like help?
+= Bir MP3 çaları hacklemeye çalışıyor gibi görünüyorsun. Yardım ister misin?
+GOT IT
+= ANLADIM
+There's no model number on these players. Compare the wireframes instead: the buttons and ports differ. Drag a player to spin it.
+= Bu çalarlarda model numarası yok. Onun yerine tel kafes modelleri karşılaştır: tuşlar ve portlar farklı. Döndürmek için bir çaları sürükle.
+Power the player off first, then hold DOWN before the cable goes in, and keep holding.
+= Önce çaları kapat, sonra kabloyu takmadan önce DOWN'a basılı tut ve bırakma.
+Hold POWER while you plug the cable in, and keep holding for about 4 seconds.
+= Kabloyu takarken GÜÇ tuşuna basılı tut ve yaklaşık 4 saniye bırakma.
+Switch the player on first: hold POWER on its bottom edge.
+= Önce çaları aç: alt kenarındaki GÜÇ tuşuna basılı tut.
+Still nothing? Try another cable: some only charge.
+= Hâlâ bir şey yok mu? Başka bir kablo dene: bazıları yalnızca şarj eder.
+Your computer won't let rockslop use the player.
+= Bilgisayarın, rockslop'un çaları kullanmasına izin vermiyor.
+Unplug the cable first: the player only listens in download mode. The steps say how.
+= Önce kabloyu çıkar: çalar yalnızca indirme modunda dinler. Adımlar nasıl yapılacağını anlatıyor.
+You need the Rockbox package built for the {0}: a .tar.xz file. Click SELECT IMAGE, or drop it on the panel.
+= {0} için derlenmiş Rockbox paketine ihtiyacın var: bir .tar.xz dosyası. İMAJ SEÇ'e tıkla ya da dosyayı panele bırak.
+Push a microSD card all the way into the player's slot, then press RESET.
+= Bir microSD kartı çaların yuvasına sonuna kadar it, sonra RESET'e bas.
+Rockbox hasn't shown its USB disk yet. If the player only charges, unplug it, hold any key and plug it back in.
+= Rockbox henüz USB diskini göstermedi. Çalar yalnızca şarj oluyorsa çıkar, herhangi bir tuşa basılı tut ve yeniden tak.
+RETRY usually sorts it out. Still stuck? COPY REPORT puts the details on the clipboard for a bug report.
+= TEKRAR genelde işe yarar. Hâlâ takıldın mı? RAPORU KOPYALA, hata bildirimi için ayrıntıları panoya koyar.
+It looks like you watched all the credits. Nobody does that. Respect.
+= Tüm jeneriği izlemiş gibi görünüyorsun. Bunu kimse yapmaz. Helal olsun.
+DEAL WITH IT
+= DEAL WITH IT
+
+# return to stock without a backup on this computer
+no stock backup on this computer
+= bu bilgisayarda orijinal firmware yedeği yok
+When rockslop flashes a player, it puts a copy of the stock firmware on the player's microSD card: .rockbox/{0}
+= rockslop bir çaları flashladığında, çaların microSD kartına orijinal firmware'in bir kopyasını koyar: .rockbox/{0}
+Start the player in Rockbox and plug it in, and rockslop looks there itself. Or find the file and select it.
+= Çaları Rockbox'ta başlat ve tak, rockslop oraya kendisi bakar. Ya da dosyayı bulup seç.
+looking on the player's card
+= çaların kartına bakılıyor
+no stock firmware on the player's card
+= çaların kartında orijinal firmware yok
+checking the image
+= imaj denetleniyor
+stock firmware: {0}
+= orijinal firmware: {0}
+UNKNOWN FIRMWARE
+= BİLİNMEYEN FIRMWARE
+It isn't a stock firmware rockslop knows: a newer version, or not stock at all.
+= Bu, rockslop'un tanıdığı bir orijinal firmware değil: daha yeni bir sürüm ya da hiç orijinal değil.
+It has Rockbox in it, so it isn't stock firmware.
+= İçinde Rockbox var, yani orijinal firmware değil.
+Flash it only if you're sure it came from a {0}.
+= Yalnızca bir {0} cihazından geldiğinden eminsen flashla.
+FLASH ANYWAY
+= YİNE DE FLASHLA
+The .rockbox folder is hidden: turn on hidden files in your file browser to see it.
+= .rockbox klasörü gizli: görmek için dosya yöneticinde gizli dosyaları göstermeyi aç.
+stock firmware copied to the card: {0}
+= orijinal firmware karta kopyalandı: {0}
+stock firmware already on the card: {0}
+= orijinal firmware zaten kartta: {0}
+could not copy the stock firmware to the card: {0}
+= orijinal firmware karta kopyalanamadı: {0}
+no room on the card for the stock firmware ({0} KiB free)
+= kartta orijinal firmware için yer yok ({0} KiB boş)
+the stock firmware did not read back correctly from the card
+= orijinal firmware karttan doğru okunamadı
+stock firmware found on the card: {0}
+= orijinal firmware kartta bulundu: {0}
+known stock firmware: {0}
+= bilinen orijinal firmware: {0}
+rockslop does not recognise this firmware
+= rockslop bu firmware'i tanımıyor
+{0} is not a {1} flash backup (no partition table)
+= {0}, {1} flash yedeği değil (bölüm tablosu yok)
+{0} has no firmware in it (that part is blank)
+= {0} içinde firmware yok (o kısım boş)
+{0} has Rockbox in it: it is not stock firmware
+= {0} içinde Rockbox var: orijinal firmware değil
+BEFORE THE FIRST FLASH
+= İLK FLASH'TAN ÖNCE
+POINT OF NO RETURN
+= DÖNÜŞÜ OLMAYAN NOKTA
+rockslop is about to write Rockbox to your {0}. Read each of these and tick it, then hold to sign.
+= rockslop, {0} çalarına Rockbox yazmak üzere. Bunların her birini oku ve işaretle, sonra imzalamak için basılı tut.
+rockslop and this player's Rockbox port are 100% vibe-coded: no human has ever looked at the code. It has been tested on real players, but that's all.
+= rockslop ve bu çaların Rockbox portu %100 vibe-coding ile yazıldı: koda hiçbir insan bakmadı. Gerçek çalarlarda test edildi, ama hepsi bu.
+THIS CAN BRICK YOUR PLAYER
+= BU, ÇALARINI ÖLDÜREBİLİR
+Rockbox on this player is unofficial and experimental. A flash that goes wrong (a loose cable, a crash, a bug of ours) can leave the player dead, and there may be no way to bring it back. rockslop keeps a backup of the stock firmware, but a backup can't save every player. The risk is yours alone.
+= Bu çalardaki Rockbox resmi değil ve deneysel. Ters giden bir flash (gevşek bir kablo, bir çökme, bizim bir hatamız) çaları ölü bırakabilir ve onu geri getirmenin hiçbir yolu olmayabilir. rockslop orijinal firmware'in bir yedeğini tutar, ama bir yedek her çaları kurtaramaz. Risk tamamen sana ait.
+YOUR WARRANTY IS VOID
+= GARANTİN GEÇERSİZ KALIR
+Flashing firmware the maker didn't write voids the warranty. Whatever happens to this player from now on is yours to deal with: no repair, no replacement, no refund. Going back to stock doesn't change that.
+= Üreticinin yazmadığı bir firmware'i flashlamak garantiyi geçersiz kılar. Bundan sonra bu çalara ne olursa senin sorunun: tamir yok, değişim yok, para iadesi yok. Orijinale dönmek bunu değiştirmez.
+DON'T TAKE IT BACK
+= GERİ GÖTÜRME
+Never return a flashed player, claim on it, or complain to the seller or the maker about it. Rockbox runs on these players because nobody has locked them down. If flashed players start coming back, the next batch will be locked, and that's the end of Rockbox on them for everyone. If yours breaks, bring it to rockslop, never to the shop.
+= Flashlanmış bir çaları asla iade etme, onun için garanti talep etme, onu satıcıya ya da üreticiye şikâyet etme. Rockbox bu çalarlarda çalışıyor çünkü kimse onları kilitlemedi. Flashlanmış çalarlar geri gelmeye başlarsa sonraki parti kilitli gelir ve bu, herkes için bu çalarlarda Rockbox'ın sonu olur. Seninki bozulursa rockslop'a getir, asla mağazaya değil.
+I UNDERSTAND
+= ANLADIM
+I've read all three. If it bricks, that's on me. The warranty is gone. It never goes back to the seller. No backsies.
+= Üçünü de okudum. Çalar ölürse suç bende. Garanti gitti. Asla satıcıya geri gitmeyecek. Caymak yok.
+HOLD TO SIGN
+= İMZA İÇİN BASILI TUT
+KEEP HOLDING
+= BASILI TUTMAYA DEVAM
+SIGNED
+= İMZALANDI
+NOT NOW
+= ŞİMDİ DEĞİL
+tick all three boxes first
+= önce üç kutuyu da işaretle
+Signing is final. rockslop won't ask again on this computer.
+= İmza kesindir. rockslop bu bilgisayarda bir daha sormayacak.
+NO BACKSIES
+= CAYMAK YOK
+waiver signed: rockslop won't ask again on this computer
+= feragatname imzalandı: rockslop bu bilgisayarda bir daha sormayacak
+waiver signed (demo: not saved)
+= feragatname imzalandı (demo: kaydedilmedi)
+could not save the waiver: {0}
+= feragatname kaydedilemedi: {0}
+EPILEPSY WARNING
+= EPİLEPSİ UYARISI
+It's a flasher. It flashes.
+= Adı üstünde: flaş çakıyor.
+If the player won't start: hold the D-pad's Down button (or the power button), plug in USB, and keep holding about 3 seconds. The screen stays dark; rockslop will find it. Holding the power button about 7 seconds restarts the player.
+= Çalar açılmıyorsa: yön tuşunun Aşağı düğmesini (ya da güç düğmesini) basılı tut, USB'yi tak ve yaklaşık 3 saniye basılı tutmaya devam et. Ekran karanlık kalır; rockslop onu bulur. Güç düğmesini yaklaşık 7 saniye basılı tutmak çaları yeniden başlatır.
+this TS17 package is in an older format ({0}) that rockslop no longer flashes: get a newer release
+= bu TS17 paketi rockslop'un artık yazmadığı eski bir biçimde ({0}): daha yeni bir sürüm edin
+new install: the rescue stub goes in first
+= yeni kurulum: önce kurtarma kodu yazılır
+rescue stub in place: left alone
+= kurtarma kodu yerinde: dokunulmadı
+a rescue stub that isn't rockslop's is in place: left alone
+= rockslop'a ait olmayan bir kurtarma kodu yerinde: dokunulmadı

@@ -1,0 +1,690 @@
+# Tiếng Việt: rockslop UI
+TARGET
+= MỤC TIÊU
+LINK
+= KẾT NỐI
+PAYLOAD
+= TẢI TRỌNG
+EXECUTE
+= THỰC THI
+BUS IDLE
+= BUS TRỐNG
+STOCK
+= GỐC
+awaiting target
+= đang chờ mục tiêu
+scanning usb
+= đang quét usb
+awaiting payload
+= đang chờ payload
+executing
+= đang thực thi
+session complete
+= phiên hoàn tất
+session aborted
+= phiên bị hủy
+rolling credits
+= đang chạy credits
+SND
+= ÂM
+MUTED
+= TẮT TIẾNG
+NO SND
+= KHÔNG ÂM
+audio muted
+= đã tắt âm thanh
+audio on
+= đã bật âm thanh
+neural uplink
+= liên kết thần kinh
+usb stack
+= ngăn xếp usb
+flash maps
+= bản đồ flash
+payloads
+= payload
+glyph cache
+= bộ nhớ đệm glyph
+SELECT TARGET
+= CHỌN MỤC TIÊU
+DOWNLOAD MODE
+= CHẾ ĐỘ TẢI
+STOCK FIRMWARE
+= FIRMWARE GỐC
+ENGAGE
+= KÍCH HOẠT
+CLICK TO ENGAGE
+= NHẤN ĐỂ KÍCH HOẠT
+RESET
+= RESET
+HEADPHONE
+= TAI NGHE
+VOL
+= ÂM LƯỢNG
+POWER
+= NGUỒN
+POWER OFF
+= TẮT NGUỒN
+unplugged: hold the centre key
+= chưa cắm: giữ phím giữa
+HOLD DOWN
+= GIỮ DOWN
+bottom of the wheel
+= cạnh dưới vòng xoay
+CONNECT USB
+= CẮM USB
+keep holding
+= cứ giữ nguyên
+RELEASE
+= NHẢ RA
+once linked
+= khi đã kết nối
+OR
+= HOẶC
+hold DOWN and tap RESET
+= giữ DOWN và chạm RESET
+STAND BY
+= CHỜ
+it reboots into download mode
+= nó khởi động lại vào chế độ tải
+ROCKBOX?
+= ROCKBOX?
+switch it off, then hold POWER ~4 s while connecting
+= tắt nguồn, rồi giữ POWER ~4 s khi cắm
+LINK FAILED
+= KẾT NỐI THẤT BẠI
+SCANNING
+= ĐANG QUÉT
+no player on the bus yet
+= chưa có máy nào trên bus
+ACCESS DENIED
+= TRUY CẬP BỊ TỪ CHỐI
+no permission: install the udev rule (see README)
+= không có quyền: cài quy tắc udev (xem README)
+macOS: run rockslop with sudo to take the device
+= macOS: chạy rockslop bằng sudo để chiếm thiết bị
+install the WinUSB driver for it (Zadig)
+= cài trình điều khiển WinUSB cho nó (Zadig)
+LINK ESTABLISHED
+= ĐÃ KẾT NỐI
+identity verified
+= đã xác minh danh tính
+PROBING
+= ĐANG DÒ
+boot ROM online
+= ROM khởi động đã trực tuyến
+forcing download mode
+= đang ép vào chế độ tải
+ROCKBOX RUNNING
+= ROCKBOX ĐANG CHẠY
+BACK
+= QUAY LẠI
+RETRY
+= THỬ LẠI
+Rockbox package
+= Gói Rockbox
+SELECT IMAGE
+= CHỌN GÓI
+or drop it here
+= hoặc thả vào đây
+IMAGE
+= GÓI
+REJECTED
+= BỊ TỪ CHỐI
+BUILD
+= BẢN DỰNG
+FLASH
+= FLASH
+CARD
+= THẺ
+{0} files  ·  {1}
+= {0} tệp  ·  {1}
+every member verified
+= đã xác minh mọi thành phần
+BACKUP
+= SAO LƯU
+stock flash saved first
+= flash gốc đã được lưu trước
+CHANGE
+= ĐỔI
+INSERT SD CARD
+= CẮM THẺ SD
+RETURN TO STOCK
+= VỀ LẠI GỐC
+built for {0}, not {1}
+= dựng cho {0}, không phải {1}
+LAYOUT
+= BỐ CỤC
+LOCKED
+= ĐÃ KHÓA
+VERSION
+= PHIÊN BẢN
+DOWNLOAD
+= TẢI VỀ
+LATEST
+= MỚI NHẤT
+PRE
+= THỬ
+DOWNLOAD FAILED
+= TẢI VỀ THẤT BẠI
+USE A FILE
+= DÙNG TỆP
+LATEST RELEASE
+= BẢN MỚI NHẤT
+ASKING GITHUB
+= ĐANG HỎI GITHUB
+the latest {0} release
+= bản phát hành {0} mới nhất
+no {0} release on GitHub yet: use a package file
+= GitHub chưa có bản phát hành cho {0}: hãy dùng tệp gói
+ALL RELEASES
+= TẤT CẢ BẢN PHÁT HÀNH
+PROBE
+= DÒ
+VERIFY
+= XÁC MINH
+WRITE
+= GHI
+CHECKSUM
+= CHECKSUM
+CHECK
+= KIỂM TRA
+REBOOT
+= KHỞI ĐỘNG LẠI
+SD SYNC
+= ĐỒNG BỘ SD
+EJECT
+= THÁO
+DONE
+= XONG
+FLASH MAP
+= BẢN ĐỒ FLASH
+SAME
+= GIỐNG
+READ
+= ĐÃ ĐỌC
+ERASE
+= ĐÃ XÓA
+WRITTEN
+= ĐÃ GHI
+BAD
+= HỎNG
+FILES
+= TỆP
+BUS TAP
+= BUS TAP
+THEN PRESS RESET
+= RỒI NHẤN RESET
+NO USB DISK
+= KHÔNG CÓ Ổ USB
+SET USB MODE TO MASS STORAGE
+= ĐẶT CHẾ ĐỘ USB THÀNH Ổ LƯU TRỮ
+SD CARD
+= THẺ SD
+NO CARD
+= KHÔNG THẺ
+READ BACK
+= ĐỌC LẠI
+MOUNT
+= GẮN KẾT
+CHECKED
+= ĐÃ KIỂM
+DATA
+= DỮ LIỆU
+RATE
+= TỐC ĐỘ
+ETA
+= CÒN
+ACCESS GRANTED
+= TRUY CẬP ĐƯỢC CẤP
+STOCK RESTORED
+= ĐÃ KHÔI PHỤC GỐC
+the player boots stock firmware again
+= máy lại khởi động bằng firmware gốc
+rockbox is live on the player
+= rockbox đã sống trên máy
+SESSION
+= PHIÊN
+{0} sectors rewritten, checksummed
+= đã ghi lại số sector: {0}, có checksum
+{0} files  ·  {1}  ·  read back OK
+= {0} tệp  ·  {1}  ·  đọc lại OK
+not updated
+= chưa cập nhật
+TIME
+= GIỜ
+UNPLUG TO FINISH
+= RÚT RA ĐỂ XONG
+EJECTED
+= ĐÃ THÁO
+UNPLUG AND ROCK
+= RÚT RA VÀ ROCK
+AGAIN
+= LẠI
+CREDITS
+= CREDITS
+the flash was partly rewritten: a backup is safe on disk
+= flash đã ghi lại một phần: bản sao lưu an toàn trên đĩa
+nothing was written
+= chưa ghi gì cả
+the flash was rewritten: a backup is safe on disk
+= flash đã được ghi lại: bản sao lưu an toàn trên đĩa
+the firmware is in flash and checked; the card was not fully updated
+= firmware đã nằm trong flash và được kiểm tra; thẻ chưa được cập nhật hết
+SYNC THE CARD
+= ĐỒNG BỘ THẺ
+FAULT
+= LỖI
+COPY REPORT
+= CHÉP BÁO CÁO
+REPORT COPIED
+= ĐÃ CHÉP BÁO CÁO
+rockslop could not open its window. It needs OpenGL 2.1 or newer, which a virtual machine, Remote Desktop or a missing graphics driver may not offer; rockslop-cli does the same job in a terminal.
+= rockslop không mở được cửa sổ. Nó cần OpenGL 2.1 trở lên, thứ mà máy ảo, Remote Desktop hoặc máy thiếu trình điều khiển đồ họa có thể không có; rockslop-cli làm cùng việc đó trong terminal.
+rockslop crashed. The log: {0}
+= rockslop bị lỗi và đóng. Nhật ký: {0}
+NOW PLAYING
+= ĐANG PHÁT
+THIS FLASHER
+= FLASHER NÀY
+ROCKBOX CONTRIBUTORS
+= NGƯỜI ĐÓNG GÓP ROCKBOX
+{0} contributors
+= số người đóng góp: {0}
+People that have contributed to the project, one way or another. Friends!
+= Những người đã đóng góp cho dự án, bằng cách này hay cách khác. Bạn bè!
+links open in your browser
+= liên kết mở trong trình duyệt
+Made by
+= Thực hiện bởi
+Device protocols and payloads
+= Giao thức thiết bị và payload
+Music
+= Nhạc
+Voice lines
+= Giọng nói
+Sound effects
+= Hiệu ứng âm thanh
+Fonts
+= Phông chữ
+Rust crates
+= Rust crate
+Reference photos
+= Ảnh tham chiếu
+LANGUAGE
+= NGÔN NGỮ
+AUTOMATIC
+= TỰ ĐỘNG
+stock firmware on the bus: asking it for download mode
+= firmware gốc trên bus: đang xin chế độ tải
+{0} acknowledged 0xCB: rebooting into ADFU
+= {0} đã xác nhận 0xCB: khởi động lại vào ADFU
+attaching to {0}
+= đang gắn vào {0}
+sector CRC32 scan on the player
+= quét CRC32 sector trên máy
+dumping {0} KiB
+= đang dump {0} KiB
+{0} sectors captured ({1} read, {2} already known); CRC32 verified
+= số sector đã thu: {0} (đọc {1}, đã biết {2}); CRC32 đã xác minh
+dumping {0} KiB of raw NOR cells
+= đang dump {0} KiB ô NOR thô
+second pass: comparing
+= lượt hai: đang so sánh
+{0} sectors captured; two reads agree
+= số sector đã thu: {0}; hai lần đọc khớp nhau
+identical backup already on file: {0}
+= đã có bản sao lưu giống hệt: {0}
+backup -> {0}
+= sao lưu -> {0}
+{0} of {1} sectors differ
+= sector khác nhau: {0} trên {1}
+0x{0} erase / program / verify ok
+= 0x{0} xóa / lập trình / xác minh ok
+CRC32 of every writable sector, computed on the player
+= CRC32 của mọi sector ghi được, tính ngay trên máy
+reading the writable window back
+= đang đọc lại vùng ghi được
+flash checksum OK  sha256 {0}..{1}
+= checksum flash OK  sha256 {0}..{1}
+rebooting into Rockbox
+= đang khởi động lại vào Rockbox
+rebooting into stock firmware
+= đang khởi động lại vào firmware gốc
+firmware is up
+= firmware đã chạy
+{0} image(s), {1} KiB, sha256 verified
+= số ảnh: {0}, {1} KiB, sha256 đã xác minh
+{0} sectors rewritten
+= đã ghi lại số sector: {0}
+Rockbox did not show up as a USB disk; the card was not updated
+= Rockbox không hiện ra như ổ USB; thẻ chưa được cập nhật
+total {0} s
+= tổng {0} s
+{0} loaded, checksum OK
+= đã nạp {0}, checksum OK
+backup is from another unit; its per-unit sectors are left alone
+= bản sao lưu từ máy khác; các sector riêng của máy được để yên
+waiting for Rockbox's USB disk
+= đang chờ ổ USB của Rockbox
+no USB disk from Rockbox yet: if it is set to charge only, unplug the player, hold any key and plug it back in (or set Settings > General Settings > System > USB > USB Mode to Mass Storage)
+= chưa có ổ USB từ Rockbox: nếu đang đặt chỉ sạc, rút máy ra, giữ một phím bất kỳ rồi cắm lại (hoặc đặt Cài đặt > Cài đặt Chung > Hệ thống > USB > Chế độ USB thành Ổ lưu trữ)
+no microSD card in the player: insert one, then press RESET
+= máy chưa có thẻ microSD: cắm vào rồi nhấn RESET
+card online: {0}
+= thẻ trực tuyến: {0}
+removed {0} stale plugin/codec files
+= đã gỡ tệp plugin/codec cũ: {0}
+removed {0}: the firmware is in flash, not on the card
+= đã gỡ {0}: firmware nằm trong flash, không phải trên thẻ
+{0} files written
+= số tệp đã ghi: {0}
+{0} files already on the card match the package: left as they are
+= số tệp trên thẻ đã khớp với gói: {0}, giữ nguyên
+reading the written files back from the card
+= đang đọc lại các tệp đã ghi từ thẻ
+{0} files read back: sha256 OK
+= số tệp đã đọc lại: {0}: sha256 OK
+card ejected
+= đã tháo thẻ
+could not eject the card ({0}); eject it before unplugging
+= không tháo được thẻ ({0}); hãy tháo trước khi rút cáp
+stock firmware detected: ACTIONSUSBD
+= phát hiện firmware gốc: ACTIONSUSBD
+injecting vendor command 0xCB -> ADFU
+= đang chèn lệnh hãng 0xCB -> ADFU
+opening {0} download mode
+= đang mở chế độ tải {0}
+reattaching to download mode
+= đang gắn lại vào chế độ tải
+dumping {0} KiB of stock flash
+= đang dump {0} KiB flash gốc
+re-reading CRC32 of every sector
+= đang đọc lại CRC32 của mọi sector
+backup verified: {0}/{1} sectors match
+= sao lưu đã xác minh: khớp {0}/{1} sector
+{0} sectors differ; writing
+= sector khác nhau: {0}; đang ghi
+sector 0x{0} erase/program/verify ok
+= sector 0x{0} xóa/lập trình/xác minh ok
+full flash CRC scan
+= quét CRC toàn bộ flash
+flash checksum OK
+= checksum flash OK
+waiting for Rockbox USB mass storage
+= đang chờ bộ nhớ USB của Rockbox
+no media: insert a microSD card
+= không có thẻ: hãy cắm thẻ microSD
+syncing and ejecting card
+= đang đồng bộ và tháo thẻ
+another tool holds the player ({0})
+= công cụ khác đang giữ máy ({0})
+the player did not come back in download mode
+= máy không quay lại chế độ tải
+the YP3 enters download mode by hand: hold Down while connecting USB
+= YP3 vào chế độ tải bằng tay: giữ Down khi cắm USB
+battery too low to flash safely ({0})
+= pin quá yếu để flash an toàn ({0})
+the player came back in download mode: the new firmware did not start
+= máy quay lại chế độ tải: firmware mới không khởi động
+this package is for {0}, not {1}
+= gói này dành cho {0}, không phải {1}
+this player's flash at 0x{0} is not what the package was built for; nothing was written
+= flash của máy tại 0x{0} không khớp với gói đã dựng; chưa ghi gì cả
+the package has no firmware image
+= gói không có ảnh firmware
+the card needs {0} MiB free; it has {1} MiB
+= thẻ cần trống {0} MiB; hiện có {1} MiB
+{0} did not read back correctly from the card
+= {0} đọc lại từ thẻ không đúng
+could not mount the player's card: {0}
+= không gắn kết được thẻ của máy: {0}
+Rockbox never showed its USB disk. If its USB Mode is Charge Only, set it to Mass Storage (Settings > General Settings > System > USB), or unplug the player, hold any key and plug it back in
+= Rockbox chưa từng hiện ổ USB. Nếu Chế độ USB đang đặt chỉ sạc, hãy đặt thành Ổ lưu trữ (Cài đặt > Cài đặt Chung > Hệ thống > USB), hoặc rút máy ra, giữ một phím bất kỳ rồi cắm lại
+the card is in use by another program
+= thẻ đang được chương trình khác dùng
+cancelled
+= đã hủy
+checksum mismatch at 0x{0}
+= checksum không khớp tại 0x{0}
+sector 0x{0} reads inconsistently
+= sector 0x{0} đọc không nhất quán
+flash at 0x{0} reads inconsistently
+= flash tại 0x{0} đọc không nhất quán
+backup did not read back from disk
+= sao lưu không đọc lại được từ đĩa
+{0} is damaged (checksum mismatch)
+= {0} bị hỏng (checksum không khớp)
+{0} is {1} bytes; a full flash image is {2}
+= {0} dài {1} byte; ảnh flash đầy đủ là {2}
+not a tar.xz release: {0}
+= không phải bản phát hành tar.xz: {0}
+this package (format {0}) needs a newer rockslop than {1}: update rockslop
+= gói này (định dạng {0}) cần rockslop mới hơn {1}: hãy cập nhật rockslop
+this package (format {0}) is too old for rockslop {1}: get a newer release
+= gói này (định dạng {0}) quá cũ với rockslop {1}: hãy lấy bản phát hành mới hơn
+MANIFEST has no format
+= MANIFEST không có định dạng
+MANIFEST names no target
+= MANIFEST không nêu mục tiêu
+unsafe path in archive: {0}
+= đường dẫn không an toàn trong tệp nén: {0}
+{0}: links and special files are not allowed
+= {0}: không cho phép liên kết và tệp đặc biệt
+{0}: checksum mismatch, the download is corrupt
+= {0}: checksum không khớp, bản tải bị hỏng
+unexpected member {0}
+= thành phần không mong đợi {0}
+archive is missing {0} file(s) listed in SHA256SUMS
+= tệp nén thiếu các tệp liệt kê trong SHA256SUMS: {0}
+release contains no flash image
+= bản phát hành không có ảnh flash
+{0}: checksum mismatch
+= {0}: checksum không khớp
+archive member too large
+= thành phần tệp nén quá lớn
+internal error: {0}
+= lỗi nội bộ: {0}
+{0}: permission denied. {1}
+= {0}: quyền bị từ chối. {1}
+Install the udev rule (see README) or run as root.
+= Cài quy tắc udev (xem README) hoặc chạy bằng root.
+macOS needs root to take the device from its mass storage driver: run from Terminal with sudo.
+= macOS cần root để lấy thiết bị khỏi trình điều khiển lưu trữ dung lượng lớn: chạy từ Terminal bằng sudo.
+The device needs the WinUSB driver (Zadig).
+= Thiết bị cần trình điều khiển WinUSB (Zadig).
+{0}: the device is busy (another tool is using it?)
+= {0}: thiết bị đang bận (công cụ khác đang dùng nó?)
+{0}: the device went away
+= {0}: thiết bị đã biến mất
+{0}: timed out
+= {0}: hết thời gian chờ
+Windows shows no disk for the player in download mode
+= Windows không hiện ổ đĩa nào cho máy nghe nhạc ở chế độ tải
+Windows refused to open the player's disk (error {0})
+= Windows từ chối mở ổ đĩa của máy nghe nhạc (lỗi {0})
+a command through Windows' disk driver failed (Windows error {0})
+= một lệnh qua trình điều khiển đĩa của Windows đã thất bại (lỗi Windows {0})
+can't reach GitHub: {0}
+= không kết nối được GitHub: {0}
+GitHub answered {0}
+= GitHub trả lời {0}
+GitHub's list of releases makes no sense: {0}
+= danh sách bản phát hành của GitHub vô nghĩa: {0}
+GitHub gave the package an odd name: {0}
+= GitHub đặt cho gói một cái tên lạ: {0}
+can't save the download: {0}
+= không lưu được bản tải: {0}
+the download stopped: {0}
+= quá trình tải bị dừng: {0}
+the download is the wrong size: {0} bytes, not {1}
+= bản tải sai kích thước: {0} byte, không phải {1}
+the download doesn't match GitHub's checksum: sha256 {0}
+= bản tải không khớp với checksum của GitHub: sha256 {0}
+# Clippy, and the new download-mode steps
+DRAG TO SPIN
+= KÉO ĐỂ XOAY
+UNPLUG
+= RÚT CÁP
+pull the USB cable out
+= rút cáp USB ra
+POWER ON
+= BẬT NGUỒN
+hold POWER, on the bottom edge
+= giữ NGUỒN, ở cạnh dưới
+stock firmware
+= firmware gốc
+SWITCH OFF
+= TẮT MÁY
+hold POWER until the screen goes dark
+= giữ NGUỒN đến khi màn hình tắt
+HOLD POWER
+= GIỮ NGUỒN
+plug in while holding, ~4 s
+= cắm vào trong khi giữ, ~4 s
+on the player: System > Debug > {0}
+= trên máy: Hệ thống > Chế độ Gỡ lỗi > {0}
+follow the steps above
+= làm theo các bước ở trên
+THE {0} PACKAGE
+= GÓI CHO {0}
+NEEDS A MICROSD CARD
+= CẦN THẺ MICROSD
+It looks like you're trying to hack an MP3 player. Would you like help?
+= Có vẻ như bạn đang cố hack một máy nghe nhạc MP3. Bạn có muốn trợ giúp không?
+GOT IT
+= ĐÃ HIỂU
+There's no model number on these players. Compare the wireframes instead: the buttons and ports differ. Drag a player to spin it.
+= Mấy máy này không có số model. Thay vào đó, hãy so sánh các mô hình khung dây: nút bấm và cổng khác nhau. Kéo một máy để xoay nó.
+Power the player off first, then hold DOWN before the cable goes in, and keep holding.
+= Tắt máy trước, rồi giữ DOWN trước khi cắm cáp, và cứ giữ nguyên.
+Hold POWER while you plug the cable in, and keep holding for about 4 seconds.
+= Giữ NGUỒN trong lúc cắm cáp, và tiếp tục giữ khoảng 4 giây.
+Switch the player on first: hold POWER on its bottom edge.
+= Bật máy trước đã: giữ NGUỒN ở cạnh dưới của máy.
+Still nothing? Try another cable: some only charge.
+= Vẫn không được? Thử cáp khác: có loại chỉ sạc được thôi.
+Your computer won't let rockslop use the player.
+= Máy tính của bạn không cho rockslop dùng máy nghe nhạc.
+Unplug the cable first: the player only listens in download mode. The steps say how.
+= Rút cáp ra trước đã: máy chỉ nghe lệnh ở chế độ tải. Các bước bên trên chỉ cách làm.
+You need the Rockbox package built for the {0}: a .tar.xz file. Click SELECT IMAGE, or drop it on the panel.
+= Bạn cần gói Rockbox dựng cho {0}: một tệp .tar.xz. Nhấn CHỌN GÓI, hoặc thả tệp vào bảng này.
+Push a microSD card all the way into the player's slot, then press RESET.
+= Đẩy thẻ microSD vào hết khe của máy, rồi nhấn RESET.
+Rockbox hasn't shown its USB disk yet. If the player only charges, unplug it, hold any key and plug it back in.
+= Rockbox chưa hiện ổ USB. Nếu máy chỉ sạc, hãy rút ra, giữ một phím bất kỳ rồi cắm lại.
+RETRY usually sorts it out. Still stuck? COPY REPORT puts the details on the clipboard for a bug report.
+= THỬ LẠI thường giải quyết được. Vẫn kẹt? CHÉP BÁO CÁO sẽ chép chi tiết vào bộ nhớ tạm để báo lỗi.
+It looks like you watched all the credits. Nobody does that. Respect.
+= Có vẻ như bạn đã xem hết phần credits. Chẳng ai làm thế cả. Nể thật.
+DEAL WITH IT
+= DEAL WITH IT
+
+# return to stock without a backup on this computer
+no stock backup on this computer
+= máy tính này không có bản sao lưu firmware gốc
+When rockslop flashes a player, it puts a copy of the stock firmware on the player's microSD card: .rockbox/{0}
+= Khi rockslop flash một máy, nó để một bản sao firmware gốc trên thẻ microSD của máy: .rockbox/{0}
+Start the player in Rockbox and plug it in, and rockslop looks there itself. Or find the file and select it.
+= Khởi động máy vào Rockbox rồi cắm vào, rockslop sẽ tự tìm ở đó. Hoặc tự tìm tệp rồi chọn nó.
+looking on the player's card
+= đang tìm trên thẻ của máy
+no stock firmware on the player's card
+= không có firmware gốc trên thẻ của máy
+checking the image
+= đang kiểm tra ảnh
+stock firmware: {0}
+= firmware gốc: {0}
+UNKNOWN FIRMWARE
+= FIRMWARE LẠ
+It isn't a stock firmware rockslop knows: a newer version, or not stock at all.
+= Đây không phải firmware gốc mà rockslop biết: có thể là bản mới hơn, hoặc không phải bản gốc.
+It has Rockbox in it, so it isn't stock firmware.
+= Bên trong có Rockbox, nên đây không phải firmware gốc.
+Flash it only if you're sure it came from a {0}.
+= Chỉ flash nếu bạn chắc nó đến từ một {0}.
+FLASH ANYWAY
+= VẪN FLASH
+The .rockbox folder is hidden: turn on hidden files in your file browser to see it.
+= Thư mục .rockbox bị ẩn: hãy bật hiện tệp ẩn trong trình quản lý tệp để thấy nó.
+stock firmware copied to the card: {0}
+= đã chép firmware gốc vào thẻ: {0}
+stock firmware already on the card: {0}
+= firmware gốc đã có trên thẻ: {0}
+could not copy the stock firmware to the card: {0}
+= không chép được firmware gốc vào thẻ: {0}
+no room on the card for the stock firmware ({0} KiB free)
+= thẻ không đủ chỗ cho firmware gốc (còn trống {0} KiB)
+the stock firmware did not read back correctly from the card
+= firmware gốc đọc lại từ thẻ không đúng
+stock firmware found on the card: {0}
+= đã tìm thấy firmware gốc trên thẻ: {0}
+known stock firmware: {0}
+= firmware gốc đã biết: {0}
+rockslop does not recognise this firmware
+= rockslop không nhận ra firmware này
+{0} is not a {1} flash backup (no partition table)
+= {0} không phải bản sao lưu flash của {1} (không có bảng phân vùng)
+{0} has no firmware in it (that part is blank)
+= {0} không có firmware (phần đó trống)
+{0} has Rockbox in it: it is not stock firmware
+= {0} có Rockbox bên trong: không phải firmware gốc
+BEFORE THE FIRST FLASH
+= TRƯỚC LẦN FLASH ĐẦU TIÊN
+POINT OF NO RETURN
+= KHÔNG CÒN ĐƯỜNG LUI
+rockslop is about to write Rockbox to your {0}. Read each of these and tick it, then hold to sign.
+= rockslop sắp ghi Rockbox vào {0} của bạn. Hãy đọc từng mục và đánh dấu, rồi nhấn giữ để ký.
+rockslop and this player's Rockbox port are 100% vibe-coded: no human has ever looked at the code. It has been tested on real players, but that's all.
+= rockslop và bản port Rockbox cho máy này được viết 100% bằng vibe coding: chưa từng có ai nhìn vào mã nguồn. Chúng đã được thử trên máy thật, nhưng chỉ có vậy.
+THIS CAN BRICK YOUR PLAYER
+= MÁY CỦA BẠN CÓ THỂ CHẾT HẲN
+Rockbox on this player is unofficial and experimental. A flash that goes wrong (a loose cable, a crash, a bug of ours) can leave the player dead, and there may be no way to bring it back. rockslop keeps a backup of the stock firmware, but a backup can't save every player. The risk is yours alone.
+= Rockbox trên máy này là không chính thức và còn thử nghiệm. Một lần flash gặp trục trặc (cáp lỏng, chương trình bị sập, lỗi của chúng tôi) có thể khiến máy chết hẳn, và có thể không còn cách nào cứu lại. rockslop có giữ bản sao lưu firmware gốc, nhưng bản sao lưu không cứu được mọi máy. Rủi ro hoàn toàn do bạn chịu.
+YOUR WARRANTY IS VOID
+= BẠN MẤT BẢO HÀNH
+Flashing firmware the maker didn't write voids the warranty. Whatever happens to this player from now on is yours to deal with: no repair, no replacement, no refund. Going back to stock doesn't change that.
+= Flash firmware không do nhà sản xuất viết sẽ làm mất bảo hành. Từ giờ trở đi, mọi chuyện xảy ra với máy này là việc của bạn: không sửa, không đổi, không hoàn tiền. Quay về firmware gốc cũng không thay đổi được điều đó.
+DON'T TAKE IT BACK
+= ĐỪNG MANG TRẢ LẠI
+Never return a flashed player, claim on it, or complain to the seller or the maker about it. Rockbox runs on these players because nobody has locked them down. If flashed players start coming back, the next batch will be locked, and that's the end of Rockbox on them for everyone. If yours breaks, bring it to rockslop, never to the shop.
+= Đừng bao giờ trả lại máy đã flash, đòi bảo hành, hay khiếu nại với người bán hoặc nhà sản xuất về nó. Rockbox chạy được trên các máy này vì chưa ai khóa chúng lại. Nếu máy đã flash bắt đầu bị trả về, lô tiếp theo sẽ bị khóa, và đó là dấu chấm hết cho Rockbox trên các máy này với tất cả mọi người. Nếu máy của bạn hỏng, hãy mang đến rockslop, đừng bao giờ mang ra cửa hàng.
+I UNDERSTAND
+= TÔI HIỂU
+I've read all three. If it bricks, that's on me. The warranty is gone. It never goes back to the seller. No backsies.
+= Tôi đã đọc cả ba. Nếu máy chết hẳn, tôi tự chịu. Bảo hành đã mất. Máy sẽ không bao giờ quay về tay người bán. Cấm đổi ý.
+HOLD TO SIGN
+= NHẤN GIỮ ĐỂ KÝ
+KEEP HOLDING
+= CỨ GIỮ NGUYÊN
+SIGNED
+= ĐÃ KÝ
+NOT NOW
+= ĐỂ SAU
+tick all three boxes first
+= hãy đánh dấu cả ba ô trước
+Signing is final. rockslop won't ask again on this computer.
+= Đã ký là không rút lại được. rockslop sẽ không hỏi lại trên máy tính này.
+NO BACKSIES
+= CẤM ĐỔI Ý
+waiver signed: rockslop won't ask again on this computer
+= đã ký bản cam kết: rockslop sẽ không hỏi lại trên máy tính này
+waiver signed (demo: not saved)
+= đã ký bản cam kết (demo: không lưu)
+could not save the waiver: {0}
+= không lưu được bản cam kết: {0}
+EPILEPSY WARNING
+= CẢNH BÁO ĐỘNG KINH
+It's a flasher. It flashes.
+= Nó là flasher. Nó nhấp nháy.
+If the player won't start: hold the D-pad's Down button (or the power button), plug in USB, and keep holding about 3 seconds. The screen stays dark; rockslop will find it. Holding the power button about 7 seconds restarts the player.
+= Nếu máy không khởi động: giữ nút Xuống của phím điều hướng (hoặc nút nguồn), cắm USB và tiếp tục giữ khoảng 3 giây. Màn hình vẫn tối; rockslop sẽ tìm thấy máy. Giữ nút nguồn khoảng 7 giây sẽ khởi động lại máy.
+this TS17 package is in an older format ({0}) that rockslop no longer flashes: get a newer release
+= gói TS17 này ở định dạng cũ ({0}) mà rockslop không còn flash nữa: hãy lấy bản phát hành mới hơn
+new install: the rescue stub goes in first
+= cài đặt mới: ghi mã cứu hộ trước
+rescue stub in place: left alone
+= mã cứu hộ đã có sẵn: không động vào
+a rescue stub that isn't rockslop's is in place: left alone
+= có mã cứu hộ không phải của rockslop: không động vào

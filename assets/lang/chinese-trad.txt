@@ -1,0 +1,690 @@
+# 繁體中文: rockslop UI
+TARGET
+= 目標
+LINK
+= 連線
+PAYLOAD
+= 酬載
+EXECUTE
+= 執行
+BUS IDLE
+= 匯流排閒置
+STOCK
+= 原廠
+awaiting target
+= 等待目標
+scanning usb
+= 掃描 usb
+awaiting payload
+= 等待酬載
+executing
+= 執行中
+session complete
+= 工作階段完成
+session aborted
+= 工作階段中止
+rolling credits
+= 片尾字幕捲動
+SND
+= 音效
+MUTED
+= 靜音
+NO SND
+= 無音效
+audio muted
+= 音訊已靜音
+audio on
+= 音訊已開啟
+neural uplink
+= 神經上行鏈路
+usb stack
+= usb 堆疊
+flash maps
+= 快閃記憶體對應
+payloads
+= 酬載
+glyph cache
+= 字形快取
+SELECT TARGET
+= 選擇目標
+DOWNLOAD MODE
+= 下載模式
+STOCK FIRMWARE
+= 原廠韌體
+ENGAGE
+= 啟動
+CLICK TO ENGAGE
+= 點擊啟動
+RESET
+= RESET
+HEADPHONE
+= 耳機
+VOL
+= 音量
+POWER
+= 電源
+POWER OFF
+= 關機
+unplugged: hold the centre key
+= 未接 USB：按住中心鍵
+HOLD DOWN
+= 按住 下鍵
+bottom of the wheel
+= 滾輪底部
+CONNECT USB
+= 連接 USB
+keep holding
+= 持續按住
+RELEASE
+= 放開
+once linked
+= 連線後
+OR
+= 或
+hold DOWN and tap RESET
+= 按住 下鍵 並輕按 RESET
+STAND BY
+= 稍候
+it reboots into download mode
+= 將重新啟動進入下載模式
+ROCKBOX?
+= ROCKBOX 已裝？
+switch it off, then hold POWER ~4 s while connecting
+= 先關機，然後在連接時按住 電源鍵 約 4 秒
+LINK FAILED
+= 連線失敗
+SCANNING
+= 掃描中
+no player on the bus yet
+= 匯流排上尚無播放器
+ACCESS DENIED
+= 存取被拒絕
+no permission: install the udev rule (see README)
+= 無權限：請安裝 udev 規則（見 README）
+macOS: run rockslop with sudo to take the device
+= macOS：請以 sudo 執行 rockslop 以接管裝置
+install the WinUSB driver for it (Zadig)
+= 請為其安裝 WinUSB 驅動程式（Zadig）
+LINK ESTABLISHED
+= 連線已建立
+identity verified
+= 身分已驗證
+PROBING
+= 探測中
+boot ROM online
+= ROM 已上線
+forcing download mode
+= 強制進入下載模式
+ROCKBOX RUNNING
+= ROCKBOX 執行中
+BACK
+= 返回
+RETRY
+= 重試
+Rockbox package
+= Rockbox 安裝包
+SELECT IMAGE
+= 選擇映像檔
+or drop it here
+= 或拖放到此處
+IMAGE
+= 映像檔
+REJECTED
+= 已拒絕
+BUILD
+= 機型
+FLASH
+= 快閃
+CARD
+= 記憶卡
+{0} files  ·  {1}
+= {0} 個檔案  ·  {1}
+every member verified
+= 所有成員已驗證
+BACKUP
+= 備份
+stock flash saved first
+= 已先儲存原廠快閃
+CHANGE
+= 變更
+INSERT SD CARD
+= 插入 SD 卡
+RETURN TO STOCK
+= 還原原廠
+built for {0}, not {1}
+= 為 {0} 建置，而非 {1}
+LAYOUT
+= 配置
+LOCKED
+= 已鎖定
+VERSION
+= 版本
+DOWNLOAD
+= 下載
+LATEST
+= 最新
+PRE
+= 測試
+DOWNLOAD FAILED
+= 下載失敗
+USE A FILE
+= 使用檔案
+LATEST RELEASE
+= 最新發行包
+ASKING GITHUB
+= 正在詢問 GITHUB
+the latest {0} release
+= {0} 的最新發行包
+no {0} release on GitHub yet: use a package file
+= GitHub 上還沒有 {0} 的發行包：請使用安裝包檔案
+ALL RELEASES
+= 全部發行包
+PROBE
+= 探測
+VERIFY
+= 驗證
+WRITE
+= 寫入
+CHECKSUM
+= 檢查碼
+CHECK
+= 檢查
+REBOOT
+= 重新啟動
+SD SYNC
+= SD 同步
+EJECT
+= 退出
+DONE
+= 完成
+FLASH MAP
+= 快閃對應
+SAME
+= 相同
+READ
+= 讀取
+ERASE
+= 抹除
+WRITTEN
+= 已寫入
+BAD
+= 損毀
+FILES
+= 檔案
+BUS TAP
+= 匯流排監聽
+THEN PRESS RESET
+= 然後按 RESET
+NO USB DISK
+= 無 USB 磁碟
+SET USB MODE TO MASS STORAGE
+= 將 USB Mode 設為 Mass Storage
+SD CARD
+= SD 卡
+NO CARD
+= 無卡
+READ BACK
+= 回讀
+MOUNT
+= 掛載
+CHECKED
+= 已檢查
+DATA
+= 資料
+RATE
+= 速率
+ETA
+= 剩餘
+ACCESS GRANTED
+= 存取已授權
+STOCK RESTORED
+= 原廠已還原
+the player boots stock firmware again
+= 播放器將再次啟動原廠韌體
+rockbox is live on the player
+= rockbox 已在播放器上運行
+SESSION
+= 工作階段
+{0} sectors rewritten, checksummed
+= 已重寫 {0} 個磁區，已檢查碼驗證
+{0} files  ·  {1}  ·  read back OK
+= {0} 個檔案  ·  {1}  ·  回讀正常
+not updated
+= 未更新
+TIME
+= 耗時
+UNPLUG TO FINISH
+= 拔除以完成
+EJECTED
+= 已退出
+UNPLUG AND ROCK
+= 拔除，開搖
+AGAIN
+= 再來
+CREDITS
+= 製作名單
+the flash was partly rewritten: a backup is safe on disk
+= 快閃記憶體已被部分重寫：磁碟上有安全備份
+nothing was written
+= 未寫入任何資料
+the flash was rewritten: a backup is safe on disk
+= 快閃記憶體已被重寫：磁碟上有安全備份
+the firmware is in flash and checked; the card was not fully updated
+= 韌體已在快閃記憶體中並通過校驗；記憶卡未完全更新
+SYNC THE CARD
+= 同步記憶卡
+FAULT
+= 故障
+COPY REPORT
+= 複製報告
+REPORT COPIED
+= 報告已複製
+rockslop could not open its window. It needs OpenGL 2.1 or newer, which a virtual machine, Remote Desktop or a missing graphics driver may not offer; rockslop-cli does the same job in a terminal.
+= rockslop 無法開啟視窗。它需要 OpenGL 2.1 或更新版本，虛擬機、遠端桌面或缺少顯示卡驅動程式時可能無法提供；rockslop-cli 可在終端機中完成同樣的工作。
+rockslop crashed. The log: {0}
+= rockslop 已當機。記錄檔：{0}
+NOW PLAYING
+= 正在播放
+THIS FLASHER
+= 本刷機工具
+ROCKBOX CONTRIBUTORS
+= ROCKBOX 貢獻者
+{0} contributors
+= {0} 位貢獻者
+People that have contributed to the project, one way or another. Friends!
+= 以各種方式為本專案做出貢獻的人。朋友們！
+links open in your browser
+= 連結將在瀏覽器中開啟
+Made by
+= 製作
+Device protocols and payloads
+= 裝置協定與酬載
+Music
+= 音樂
+Voice lines
+= 語音
+Sound effects
+= 音效
+Fonts
+= 字型
+Rust crates
+= Rust 套件
+Reference photos
+= 參考照片
+LANGUAGE
+= 語言
+AUTOMATIC
+= 自動
+stock firmware on the bus: asking it for download mode
+= 原廠韌體在匯流排上：請求進入下載模式
+{0} acknowledged 0xCB: rebooting into ADFU
+= {0} 已確認 0xCB：正在重新啟動進入 ADFU
+attaching to {0}
+= 正在連接 {0}
+sector CRC32 scan on the player
+= 播放器上進行磁區 CRC32 掃描
+dumping {0} KiB
+= 正在傾印 {0} KiB
+{0} sectors captured ({1} read, {2} already known); CRC32 verified
+= 已擷取 {0} 個磁區（讀取 {1}，已知 {2}）；CRC32 已驗證
+dumping {0} KiB of raw NOR cells
+= 正在傾印 {0} KiB 原始 NOR 儲存格
+second pass: comparing
+= 第二輪：比對中
+{0} sectors captured; two reads agree
+= 已擷取 {0} 個磁區；兩次讀取一致
+identical backup already on file: {0}
+= 相同的備份已存在：{0}
+backup -> {0}
+= 備份 -> {0}
+{0} of {1} sectors differ
+= {1} 個磁區中有 {0} 個不同
+0x{0} erase / program / verify ok
+= 0x{0} 抹除 / 編程 / 驗證完成
+CRC32 of every writable sector, computed on the player
+= 在播放器上計算每個可寫磁區的 CRC32
+reading the writable window back
+= 正在回讀可寫區域
+flash checksum OK  sha256 {0}..{1}
+= 快閃檢查碼正常  sha256 {0}..{1}
+rebooting into Rockbox
+= 正在重新啟動進入 Rockbox
+rebooting into stock firmware
+= 正在重新啟動進入原廠韌體
+firmware is up
+= 韌體已啟動
+{0} image(s), {1} KiB, sha256 verified
+= {0} 個映像檔，{1} KiB，sha256 已驗證
+{0} sectors rewritten
+= 已重寫 {0} 個磁區
+Rockbox did not show up as a USB disk; the card was not updated
+= Rockbox 未顯示為 USB 磁碟；記憶卡未更新
+total {0} s
+= 共 {0} 秒
+{0} loaded, checksum OK
+= 已載入 {0}，檢查碼正常
+backup is from another unit; its per-unit sectors are left alone
+= 備份來自另一台裝置；其機台專屬磁區保持不動
+waiting for Rockbox's USB disk
+= 等待 Rockbox 的 USB 磁碟
+no USB disk from Rockbox yet: if it is set to charge only, unplug the player, hold any key and plug it back in (or set Settings > General Settings > System > USB > USB Mode to Mass Storage)
+= 尚未出現 Rockbox 的 USB 磁碟：若設為僅充電，請拔除播放器，按住任意鍵再重新插上（或將 設置 > 一般設定 > 系統設定 > USB > USB Mode 設為 Mass Storage）
+no microSD card in the player: insert one, then press RESET
+= 播放器中沒有 microSD 卡：請插入一張，然後按 RESET
+card online: {0}
+= 記憶卡已上線：{0}
+removed {0} stale plugin/codec files
+= 已刪除 {0} 個過期的外掛程式/編解碼器檔案
+removed {0}: the firmware is in flash, not on the card
+= 已刪除 {0}：韌體位於快閃記憶體中，而非記憶卡上
+{0} files written
+= 已寫入 {0} 個檔案
+{0} files already on the card match the package: left as they are
+= 記憶卡上已有 {0} 個檔案與安裝包一致：保持不變
+reading the written files back from the card
+= 正在從記憶卡回讀已寫入的檔案
+{0} files read back: sha256 OK
+= 已回讀 {0} 個檔案：sha256 正常
+card ejected
+= 記憶卡已退出
+could not eject the card ({0}); eject it before unplugging
+= 無法退出記憶卡（{0}）；拔除前請先退出
+stock firmware detected: ACTIONSUSBD
+= 偵測到原廠韌體：ACTIONSUSBD
+injecting vendor command 0xCB -> ADFU
+= 正在注入廠商指令 0xCB -> ADFU
+opening {0} download mode
+= 正在開啟 {0} 下載模式
+reattaching to download mode
+= 正在重新連接下載模式
+dumping {0} KiB of stock flash
+= 正在傾印 {0} KiB 原廠快閃
+re-reading CRC32 of every sector
+= 重新讀取每個磁區的 CRC32
+backup verified: {0}/{1} sectors match
+= 備份已驗證：{0}/{1} 個磁區相符
+{0} sectors differ; writing
+= {0} 個磁區不同；寫入中
+sector 0x{0} erase/program/verify ok
+= 磁區 0x{0} 抹除/編程/驗證完成
+full flash CRC scan
+= 完整快閃 CRC 掃描
+flash checksum OK
+= 快閃檢查碼正常
+waiting for Rockbox USB mass storage
+= 等待 Rockbox USB 大量儲存裝置
+no media: insert a microSD card
+= 無媒體：請插入 microSD 卡
+syncing and ejecting card
+= 正在同步並退出記憶卡
+another tool holds the player ({0})
+= 另一個工具佔用了播放器（{0}）
+the player did not come back in download mode
+= 播放器未能以下載模式重新出現
+the YP3 enters download mode by hand: hold Down while connecting USB
+= YP3 需手動進入下載模式：連接 USB 時按住 下鍵
+battery too low to flash safely ({0})
+= 電量過低，無法安全刷寫（{0}）
+the player came back in download mode: the new firmware did not start
+= 播放器已回到下載模式：新韌體未能啟動
+this package is for {0}, not {1}
+= 此安裝包適用於 {0}，而非 {1}
+this player's flash at 0x{0} is not what the package was built for; nothing was written
+= 此播放器位於 0x{0} 的快閃與安裝包的目標不符；未寫入任何資料
+the package has no firmware image
+= 安裝包中沒有韌體映像檔
+the card needs {0} MiB free; it has {1} MiB
+= 記憶卡需要 {0} MiB 可用空間；現有 {1} MiB
+{0} did not read back correctly from the card
+= {0} 未能從記憶卡正確回讀
+could not mount the player's card: {0}
+= 無法掛載播放器的記憶卡：{0}
+Rockbox never showed its USB disk. If its USB Mode is Charge Only, set it to Mass Storage (Settings > General Settings > System > USB), or unplug the player, hold any key and plug it back in
+= Rockbox 始終未出現 USB 磁碟。如果 USB Mode 為 僅充電，請將其設為 Mass Storage（設置 > 一般設定 > 系統設定 > USB），或拔除播放器，按住任意鍵再重新插上
+the card is in use by another program
+= 記憶卡正被其他程式佔用
+cancelled
+= 已取消
+checksum mismatch at 0x{0}
+= 0x{0} 處檢查碼不符
+sector 0x{0} reads inconsistently
+= 磁區 0x{0} 讀取不一致
+flash at 0x{0} reads inconsistently
+= 0x{0} 處的快閃讀取不一致
+backup did not read back from disk
+= 備份未能從磁碟回讀
+{0} is damaged (checksum mismatch)
+= {0} 已損毀（檢查碼不符）
+{0} is {1} bytes; a full flash image is {2}
+= {0} 為 {1} 位元組；完整快閃映像檔為 {2}
+not a tar.xz release: {0}
+= 不是 tar.xz 發行包：{0}
+this package (format {0}) needs a newer rockslop than {1}: update rockslop
+= 此安裝包（格式 {0}）需要比 {1} 更新的 rockslop：請更新 rockslop
+this package (format {0}) is too old for rockslop {1}: get a newer release
+= 此安裝包（格式 {0}）對 rockslop {1} 來說太舊：請取得較新的發行包
+MANIFEST has no format
+= MANIFEST 沒有格式
+MANIFEST names no target
+= MANIFEST 未指定目標
+unsafe path in archive: {0}
+= 壓縮檔中有不安全的路徑：{0}
+{0}: links and special files are not allowed
+= {0}：不允許連結和特殊檔案
+{0}: checksum mismatch, the download is corrupt
+= {0}：檢查碼不符，下載已損毀
+unexpected member {0}
+= 非預期的成員 {0}
+archive is missing {0} file(s) listed in SHA256SUMS
+= 壓縮檔缺少 SHA256SUMS 中列出的 {0} 個檔案
+release contains no flash image
+= 發行包不含快閃映像檔
+{0}: checksum mismatch
+= {0}：檢查碼不符
+archive member too large
+= 壓縮檔成員過大
+internal error: {0}
+= 內部錯誤：{0}
+{0}: permission denied. {1}
+= {0}：權限被拒。{1}
+Install the udev rule (see README) or run as root.
+= 請安裝 udev 規則（見 README），或以 root 身分執行。
+macOS needs root to take the device from its mass storage driver: run from Terminal with sudo.
+= macOS 需要 root 權限才能從大量儲存裝置驅動程式接管裝置：請在「終端機」中以 sudo 執行。
+The device needs the WinUSB driver (Zadig).
+= 此裝置需要 WinUSB 驅動程式（Zadig）。
+{0}: the device is busy (another tool is using it?)
+= {0}：裝置忙碌中（是否有其他工具正在使用？）
+{0}: the device went away
+= {0}：裝置已中斷連線
+{0}: timed out
+= {0}：逾時
+Windows shows no disk for the player in download mode
+= Windows 未顯示處於下載模式的播放器的磁碟
+Windows refused to open the player's disk (error {0})
+= Windows 拒絕開啟播放器的磁碟（錯誤 {0}）
+a command through Windows' disk driver failed (Windows error {0})
+= 透過 Windows 磁碟驅動程式傳送的命令失敗（Windows 錯誤 {0}）
+can't reach GitHub: {0}
+= 無法連線至 GitHub：{0}
+GitHub answered {0}
+= GitHub 回應 {0}
+GitHub's list of releases makes no sense: {0}
+= GitHub 的發行包清單無法理解：{0}
+GitHub gave the package an odd name: {0}
+= GitHub 給安裝包取了個奇怪的名字：{0}
+can't save the download: {0}
+= 無法儲存下載：{0}
+the download stopped: {0}
+= 下載中斷：{0}
+the download is the wrong size: {0} bytes, not {1}
+= 下載大小不對：{0} 位元組，而非 {1}
+the download doesn't match GitHub's checksum: sha256 {0}
+= 下載與 GitHub 的檢查碼不符：sha256 {0}
+# Clippy, and the new download-mode steps
+DRAG TO SPIN
+= 拖曳旋轉
+UNPLUG
+= 拔除
+pull the USB cable out
+= 拔除 USB 傳輸線
+POWER ON
+= 開機
+hold POWER, on the bottom edge
+= 按住底邊的 電源鍵
+stock firmware
+= 原廠韌體
+SWITCH OFF
+= 關機
+hold POWER until the screen goes dark
+= 按住 電源鍵 直到螢幕熄滅
+HOLD POWER
+= 按住 電源鍵
+plug in while holding, ~4 s
+= 按住的同時插上，約 4 秒
+on the player: System > Debug > {0}
+= 在播放器上：系統設定 > 除錯 > {0}
+follow the steps above
+= 依照上方步驟操作
+THE {0} PACKAGE
+= {0} 安裝包
+NEEDS A MICROSD CARD
+= 需要 microSD 卡
+It looks like you're trying to hack an MP3 player. Would you like help?
+= 看起來您正在嘗試破解一台 MP3 播放器。需要幫忙嗎？
+GOT IT
+= 知道了
+There's no model number on these players. Compare the wireframes instead: the buttons and ports differ. Drag a player to spin it.
+= 這些播放器上沒有型號。請改為比較線框圖：按鍵和連接埠各不相同。拖曳播放器即可旋轉。
+Power the player off first, then hold DOWN before the cable goes in, and keep holding.
+= 請先將播放器關機，然後在插入傳輸線之前按住 下鍵，並持續按住。
+Hold POWER while you plug the cable in, and keep holding for about 4 seconds.
+= 插上傳輸線時按住 電源鍵，並持續按住約 4 秒。
+Switch the player on first: hold POWER on its bottom edge.
+= 請先將播放器開機：按住底邊的 電源鍵。
+Still nothing? Try another cable: some only charge.
+= 還是沒反應？換一條傳輸線試試：有些線只能充電。
+Your computer won't let rockslop use the player.
+= 您的電腦不允許 rockslop 使用這台播放器。
+Unplug the cable first: the player only listens in download mode. The steps say how.
+= 請先拔除傳輸線：播放器只在下載模式下回應。上方的步驟會告訴您怎麼做。
+You need the Rockbox package built for the {0}: a .tar.xz file. Click SELECT IMAGE, or drop it on the panel.
+= 您需要為 {0} 建置的 Rockbox 安裝包：一個 .tar.xz 檔案。按一下「選擇映像檔」，或將它拖放到面板上。
+Push a microSD card all the way into the player's slot, then press RESET.
+= 將 microSD 卡完全插入播放器的卡槽，然後按 RESET。
+Rockbox hasn't shown its USB disk yet. If the player only charges, unplug it, hold any key and plug it back in.
+= Rockbox 還沒有出現 USB 磁碟。如果播放器只在充電，請拔除它，按住任意鍵再重新插上。
+RETRY usually sorts it out. Still stuck? COPY REPORT puts the details on the clipboard for a bug report.
+= 按「重試」通常就能解決。還是不行？「複製報告」會把詳細資訊放到剪貼簿，方便回報錯誤。
+It looks like you watched all the credits. Nobody does that. Respect.
+= 看起來您把製作名單全看完了。沒人會這麼做。佩服。
+DEAL WITH IT
+= DEAL WITH IT
+
+# return to stock without a backup on this computer
+no stock backup on this computer
+= 此電腦上沒有原廠韌體備份
+When rockslop flashes a player, it puts a copy of the stock firmware on the player's microSD card: .rockbox/{0}
+= rockslop 刷寫播放器時，會在播放器的 microSD 卡上留一份原廠韌體副本：.rockbox/{0}
+Start the player in Rockbox and plug it in, and rockslop looks there itself. Or find the file and select it.
+= 讓播放器啟動進入 Rockbox 並連接電腦，rockslop 會自己去那裡找。或者找到該檔案並選取它。
+looking on the player's card
+= 正在播放器的卡上尋找
+no stock firmware on the player's card
+= 播放器的卡上沒有原廠韌體
+checking the image
+= 正在檢查映像檔
+stock firmware: {0}
+= 原廠韌體：{0}
+UNKNOWN FIRMWARE
+= 未知韌體
+It isn't a stock firmware rockslop knows: a newer version, or not stock at all.
+= 這不是 rockslop 認得的原廠韌體：可能是較新的版本，或者根本不是原廠的。
+It has Rockbox in it, so it isn't stock firmware.
+= 其中含有 Rockbox，所以不是原廠韌體。
+Flash it only if you're sure it came from a {0}.
+= 只有確定它來自 {0} 時才刷寫。
+FLASH ANYWAY
+= 仍然刷寫
+The .rockbox folder is hidden: turn on hidden files in your file browser to see it.
+= .rockbox 資料夾是隱藏的：請在檔案管理員中開啟顯示隱藏檔案才能看到。
+stock firmware copied to the card: {0}
+= 原廠韌體已複製到卡上：{0}
+stock firmware already on the card: {0}
+= 原廠韌體已在卡上：{0}
+could not copy the stock firmware to the card: {0}
+= 無法將原廠韌體複製到卡上：{0}
+no room on the card for the stock firmware ({0} KiB free)
+= 卡上沒有足夠空間存放原廠韌體（剩餘 {0} KiB）
+the stock firmware did not read back correctly from the card
+= 原廠韌體從卡上讀回時不正確
+stock firmware found on the card: {0}
+= 在卡上找到原廠韌體：{0}
+known stock firmware: {0}
+= 已知的原廠韌體：{0}
+rockslop does not recognise this firmware
+= rockslop 不認得此韌體
+{0} is not a {1} flash backup (no partition table)
+= {0} 不是 {1} 的快閃備份（沒有分割表）
+{0} has no firmware in it (that part is blank)
+= {0} 中沒有韌體（該部分是空白的）
+{0} has Rockbox in it: it is not stock firmware
+= {0} 中含有 Rockbox：不是原廠韌體
+BEFORE THE FIRST FLASH
+= 首次刷寫之前
+POINT OF NO RETURN
+= 沒有回頭路
+rockslop is about to write Rockbox to your {0}. Read each of these and tick it, then hold to sign.
+= rockslop 即將把 Rockbox 寫入您的 {0}。請逐條閱讀並勾選，然後長按簽署。
+rockslop and this player's Rockbox port are 100% vibe-coded: no human has ever looked at the code. It has been tested on real players, but that's all.
+= rockslop 和這台播放器的 Rockbox 移植版 100% 以 vibe coding（氛圍編程）寫成：從來沒有人看過這些程式碼。它在真實的播放器上測試過，僅此而已。
+THIS CAN BRICK YOUR PLAYER
+= 播放器可能變磚
+Rockbox on this player is unofficial and experimental. A flash that goes wrong (a loose cable, a crash, a bug of ours) can leave the player dead, and there may be no way to bring it back. rockslop keeps a backup of the stock firmware, but a backup can't save every player. The risk is yours alone.
+= 這台播放器上的 Rockbox 是非官方的、實驗性的。刷寫一旦出錯（傳輸線鬆脫、程式當機、我們自己的 bug），播放器可能徹底報廢，而且可能再也救不回來。rockslop 會保留一份原廠韌體備份，但備份救不了每一台播放器。風險全由您一人承擔。
+YOUR WARRANTY IS VOID
+= 保固失效
+Flashing firmware the maker didn't write voids the warranty. Whatever happens to this player from now on is yours to deal with: no repair, no replacement, no refund. Going back to stock doesn't change that.
+= 刷寫並非製造商所寫的韌體，保固就會失效。從現在起，這台播放器發生任何事都得由您自己處理：不維修、不換貨、不退款。還原原廠也改變不了這一點。
+DON'T TAKE IT BACK
+= 不要退貨
+Never return a flashed player, claim on it, or complain to the seller or the maker about it. Rockbox runs on these players because nobody has locked them down. If flashed players start coming back, the next batch will be locked, and that's the end of Rockbox on them for everyone. If yours breaks, bring it to rockslop, never to the shop.
+= 絕對不要退回刷寫過的播放器，不要拿它申請保固或求償，也不要為此向賣家或製造商投訴。Rockbox 之所以能在這些播放器上運行，是因為沒有人把它們鎖起來。如果刷寫過的播放器開始被退回，下一批就會被鎖死，所有人都再也不能在這些播放器上使用 Rockbox。如果您的壞了，請找 rockslop，絕對不要找店家。
+I UNDERSTAND
+= 我明白
+I've read all three. If it bricks, that's on me. The warranty is gone. It never goes back to the seller. No backsies.
+= 三條我都讀過了。變磚了責任在我。保固沒了。絕不退回給賣家。不准反悔。
+HOLD TO SIGN
+= 長按簽署
+KEEP HOLDING
+= 持續按住
+SIGNED
+= 已簽署
+NOT NOW
+= 以後再說
+tick all three boxes first
+= 請先勾選全部三項
+Signing is final. rockslop won't ask again on this computer.
+= 簽署後無法撤回。rockslop 不會在此電腦上再次詢問。
+NO BACKSIES
+= 不准反悔
+waiver signed: rockslop won't ask again on this computer
+= 切結書已簽署：rockslop 不會在此電腦上再次詢問
+waiver signed (demo: not saved)
+= 切結書已簽署（示範：未儲存）
+could not save the waiver: {0}
+= 無法儲存切結書：{0}
+EPILEPSY WARNING
+= 癲癇警告
+It's a flasher. It flashes.
+= 快閃工具，當然會閃。
+If the player won't start: hold the D-pad's Down button (or the power button), plug in USB, and keep holding about 3 seconds. The screen stays dark; rockslop will find it. Holding the power button about 7 seconds restarts the player.
+= 如果播放器無法啟動：按住方向鍵的「下」鍵（或電源鍵），插上 USB，繼續按住約 3 秒。螢幕保持黑屏；rockslop 會找到它。按住電源鍵約 7 秒可重新啟動播放器。
+this TS17 package is in an older format ({0}) that rockslop no longer flashes: get a newer release
+= 這個 TS17 安裝包是舊格式（{0}），rockslop 已不再刷寫：請取得更新的版本
+new install: the rescue stub goes in first
+= 全新安裝：先寫入救援程式
+rescue stub in place: left alone
+= 救援程式已存在：保持不動
+a rescue stub that isn't rockslop's is in place: left alone
+= 已有一個不是 rockslop 的救援程式：保持不動

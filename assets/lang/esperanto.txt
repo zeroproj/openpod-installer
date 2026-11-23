@@ -1,0 +1,690 @@
+# Esperanto: rockslop UI
+TARGET
+= CELO
+LINK
+= LIGO
+PAYLOAD
+= ŜARGO
+EXECUTE
+= EKZEKUTI
+BUS IDLE
+= BUSO VAKA
+STOCK
+= FABRIKA
+awaiting target
+= atendante celon
+scanning usb
+= skanado de usb
+awaiting payload
+= atendante ŝargon
+executing
+= ekzekutado
+session complete
+= sesio finita
+session aborted
+= sesio ĉesigita
+rolling credits
+= kreditaĵoj rulas
+SND
+= SONO
+MUTED
+= MUTA
+NO SND
+= NE SON
+audio muted
+= sono mutigita
+audio on
+= sono ŝaltita
+neural uplink
+= neŭrala ligo
+usb stack
+= usb-stako
+flash maps
+= flash-mapoj
+payloads
+= ŝargoj
+glyph cache
+= glifa kaŝmemoro
+SELECT TARGET
+= ELEKTI CELON
+DOWNLOAD MODE
+= ELŜUTA MODO
+STOCK FIRMWARE
+= FABRIKA PROGRAMARO
+ENGAGE
+= AKTIVIGI
+CLICK TO ENGAGE
+= KLAKU POR AKTIVIGI
+RESET
+= RESET
+HEADPHONE
+= KAPTELEFONOJ
+VOL
+= VOL
+POWER
+= POWER
+POWER OFF
+= MALŜALTI
+unplugged: hold the centre key
+= malkonektita: tenu la mezan klavon
+HOLD DOWN
+= TENU DOWN
+bottom of the wheel
+= malsupro de la rado
+CONNECT USB
+= KONEKTI USB
+keep holding
+= daŭre tenu
+RELEASE
+= LASU
+once linked
+= post ligo
+OR
+= AŬ
+hold DOWN and tap RESET
+= tenu DOWN kaj premu RESET
+STAND BY
+= ATENDU
+it reboots into download mode
+= ĝi relanĉiĝas en elŝuta modo
+ROCKBOX?
+= ROCKBOX?
+switch it off, then hold POWER ~4 s while connecting
+= malŝaltu ĝin, poste tenu POWER ~4 s dum konekto
+LINK FAILED
+= LIGO FAILIS
+SCANNING
+= SKANADO
+no player on the bus yet
+= ankoraŭ neniu ludilo sur la buso
+ACCESS DENIED
+= ACESO MALPERMESITA
+no permission: install the udev rule (see README)
+= neniu permeso: instalu la udev-regulon (vidu README)
+macOS: run rockslop with sudo to take the device
+= macOS: lanĉu rockslop per sudo por preni la aparaton
+install the WinUSB driver for it (Zadig)
+= instalu por ĝi la WinUSB-pilotilon (Zadig)
+LINK ESTABLISHED
+= LIGO ESTABLITA
+identity verified
+= identeco konfirmita
+PROBING
+= PROBADO
+boot ROM online
+= startaj ROM enreta
+forcing download mode
+= devigante elŝutan modon
+ROCKBOX RUNNING
+= ROCKBOX FUNKCIAS
+BACK
+= RETEN
+RETRY
+= REPROVI
+Rockbox package
+= Rockbox-pakaĵo
+SELECT IMAGE
+= ELEKTI BILDON
+or drop it here
+= aŭ demetu ĝin ĉi tie
+IMAGE
+= BILDO
+REJECTED
+= REFUZITA
+BUILD
+= MODELO
+FLASH
+= FLASH
+CARD
+= KARTO
+{0} files  ·  {1}
+= {0} dosieroj  ·  {1}
+every member verified
+= ĉiuj eroj kontrolitaj
+BACKUP
+= KOPIO
+stock flash saved first
+= fabrika flash antaŭe konservita
+CHANGE
+= ŜANĜOJ
+INSERT SD CARD
+= ENIGU SD-KARTON
+RETURN TO STOCK
+= REEN AL FABRIKA
+built for {0}, not {1}
+= farita por {0}, ne por {1}
+LAYOUT
+= DISPONO
+LOCKED
+= ŜLOSITA
+VERSION
+= VERSIO
+DOWNLOAD
+= ELŜUTO
+LATEST
+= LASTA
+PRE
+= PROVA
+DOWNLOAD FAILED
+= ELŜUTO FAILIS
+USE A FILE
+= UZI DOSIERON
+LATEST RELEASE
+= LASTA ELDONO
+ASKING GITHUB
+= DEMANDO AL GITHUB
+the latest {0} release
+= la lasta eldono por {0}
+no {0} release on GitHub yet: use a package file
+= ankoraŭ neniu eldono por {0} ĉe GitHub: uzu pakaĵan dosieron
+ALL RELEASES
+= ĈIUJ ELDONOJ
+PROBE
+= PROBO
+VERIFY
+= KONTROLO
+WRITE
+= SKRIBO
+CHECKSUM
+= KONTROLSUMO
+CHECK
+= TESTO
+REBOOT
+= RELANĈO
+SD SYNC
+= SD-SINK
+EJECT
+= ELĴETI
+DONE
+= FARITA
+FLASH MAP
+= FLASH-MAPO
+SAME
+= SAMA
+READ
+= LEGITA
+ERASE
+= FORVIŜITA
+WRITTEN
+= SKRIBITA
+BAD
+= MALBONA
+FILES
+= DOSIEROJ
+BUS TAP
+= BUSA SPIO
+THEN PRESS RESET
+= POR TIO PREMU RESET
+NO USB DISK
+= NENIU USB-DISKO
+SET USB MODE TO MASS STORAGE
+= AGORDU USB MODE AL MASS STORAGE
+SD CARD
+= SD-KARTO
+NO CARD
+= NENIA KARTO
+READ BACK
+= RELEGO
+MOUNT
+= SURMETI
+CHECKED
+= KONTROLITA
+DATA
+= DATENOJ
+RATE
+= RAPIDO
+ETA
+= ETA
+ACCESS GRANTED
+= ACESO PERMESITA
+STOCK RESTORED
+= FABRIKA RESTARIGITA
+the player boots stock firmware again
+= la ludilo denove lanĉas la fabrikan programaron
+rockbox is live on the player
+= rockbox vivas sur la ludilo
+SESSION
+= SESIO
+{0} sectors rewritten, checksummed
+= {0} sektoroj reskribitaj, kontrolsumitaj
+{0} files  ·  {1}  ·  read back OK
+= {0} dosieroj  ·  {1}  ·  relegitaj OK
+not updated
+= ne ĝisdatigita
+TIME
+= TEMPO
+UNPLUG TO FINISH
+= MALKONEKTU POR FINI
+EJECTED
+= ELĴETITA
+UNPLUG AND ROCK
+= MALKONEKTU KAJ ROKU
+AGAIN
+= DENOVE
+CREDITS
+= KREDITAĴOJ
+the flash was partly rewritten: a backup is safe on disk
+= la flash estis parte reskribita: sekurkopio restas sur la disko
+nothing was written
+= nenio estis skribita
+the flash was rewritten: a backup is safe on disk
+= la flash estis reskribita: sekurkopio restas sur la disko
+the firmware is in flash and checked; the card was not fully updated
+= la programaro estas en la fulmmemoro kaj kontrolita; la karto ne estis plene ĝisdatigita
+SYNC THE CARD
+= SINKRONIGI LA KARTON
+FAULT
+= ERARO
+COPY REPORT
+= KOPII RAPORTON
+REPORT COPIED
+= RAPORTO KOPIITA
+rockslop could not open its window. It needs OpenGL 2.1 or newer, which a virtual machine, Remote Desktop or a missing graphics driver may not offer; rockslop-cli does the same job in a terminal.
+= rockslop ne povis malfermi sian fenestron. Ĝi bezonas OpenGL 2.1 aŭ pli novan, kion virtuala maŝino, fora labortablo aŭ mankanta grafika pelilo eble ne havigas; rockslop-cli faras la saman laboron en terminalo.
+rockslop crashed. The log: {0}
+= rockslop kraŝis. La protokolo: {0}
+NOW PLAYING
+= NUN LUDATAS
+THIS FLASHER
+= ĈI TIU FLASHILO
+ROCKBOX CONTRIBUTORS
+= KONTRIBUINTOJ DE ROCKBOX
+{0} contributors
+= {0} kontribuintoj
+People that have contributed to the project, one way or another. Friends!
+= Homoj, kiuj kontribuis al la projekto, iamaniere. Amikoj!
+links open in your browser
+= ligiloj malfermiĝas en via retumilo
+Made by
+= Farita de
+Device protocols and payloads
+= Aparataj protokoloj kaj ŝargoj
+Music
+= Muziko
+Voice lines
+= Voĉaj frazoj
+Sound effects
+= Sonefektoj
+Fonts
+= Tiparoj
+Rust crates
+= Rust-skatoloj
+Reference photos
+= Referencaj fotoj
+LANGUAGE
+= LINGVO
+AUTOMATIC
+= AŬTOMATA
+stock firmware on the bus: asking it for download mode
+= fabrika programaro sur la buso: petas ĝin pri elŝuta modo
+{0} acknowledged 0xCB: rebooting into ADFU
+= {0} konfirmis 0xCB: relanĉo en ADFU
+attaching to {0}
+= konektiĝo al {0}
+sector CRC32 scan on the player
+= CRC32-skanado de sektoroj sur la ludilo
+dumping {0} KiB
+= elŝutado de {0} KiB
+{0} sectors captured ({1} read, {2} already known); CRC32 verified
+= {0} sektoroj kaptitaj ({1} legitaj, {2} jam konataj); CRC32 kontrolita
+dumping {0} KiB of raw NOR cells
+= elŝutado de {0} KiB da kruda NOR
+second pass: comparing
+= dua trairo: komparado
+{0} sectors captured; two reads agree
+= {0} sektoroj kaptitaj; ambaŭ legoj konsentas
+identical backup already on file: {0}
+= identa sekurkopio jam ekzistas: {0}
+backup -> {0}
+= kopio -> {0}
+{0} of {1} sectors differ
+= {0} el {1} sektoroj malsamas
+0x{0} erase / program / verify ok
+= 0x{0} forviŝo / programo / kontrolo ok
+CRC32 of every writable sector, computed on the player
+= CRC32 de ĉiu skribebla sektoro, kalkulita sur la ludilo
+reading the writable window back
+= relego de la skribebla fenestro
+flash checksum OK  sha256 {0}..{1}
+= flash-kontrolsumo OK  sha256 {0}..{1}
+rebooting into Rockbox
+= relanĉo en Rockbox
+rebooting into stock firmware
+= relanĉo en fabrikan programaron
+firmware is up
+= la programaro funkcias
+{0} image(s), {1} KiB, sha256 verified
+= {0} bildo(j), {1} KiB, sha256 kontrolita
+{0} sectors rewritten
+= {0} sektoroj reskribitaj
+Rockbox did not show up as a USB disk; the card was not updated
+= Rockbox ne aperis kiel USB-disko; la karto ne estis ĝisdatigita
+total {0} s
+= sume {0} s
+{0} loaded, checksum OK
+= {0} ŝargita, kontrolsumo OK
+backup is from another unit; its per-unit sectors are left alone
+= la kopio estas de alia ekzemplero; ĝiaj ekzempler-propraj sektoroj restas netuŝitaj
+waiting for Rockbox's USB disk
+= atendante la USB-diskon de Rockbox
+no USB disk from Rockbox yet: if it is set to charge only, unplug the player, hold any key and plug it back in (or set Settings > General Settings > System > USB > USB Mode to Mass Storage)
+= ankoraŭ neniu USB-disko de Rockbox: se ĝi estas agordita nur por ŝargi, malkonektu la ludilon, tenu iun ajn klavon kaj rekonektu ĝin (aŭ agordu Settings > Ĝeneralaj Agordaĵoj > Sistemo > USB > USB Mode al Mass Storage)
+no microSD card in the player: insert one, then press RESET
+= neniu microSD-karto en la ludilo: enmetu unu, poste premu RESET
+card online: {0}
+= karto enreta: {0}
+removed {0} stale plugin/codec files
+= forigitaj {0} malfreŝaj kromprogramoj/kodekoj
+removed {0}: the firmware is in flash, not on the card
+= forigita {0}: la programaro estas en la fulmmemoro, ne sur la karto
+{0} files written
+= {0} dosieroj skribitaj
+{0} files already on the card match the package: left as they are
+= {0} dosieroj jam sur la karto egalas al la pakaĵo: lasitaj kiel ili estas
+reading the written files back from the card
+= relego de la skribitaj dosieroj el la karto
+{0} files read back: sha256 OK
+= {0} dosieroj relegitaj: sha256 OK
+card ejected
+= karto elĵetita
+could not eject the card ({0}); eject it before unplugging
+= ne eblis elĵeti la karton ({0}); elĵetu ĝin antaŭ ol malkonekti
+stock firmware detected: ACTIONSUSBD
+= fabrika programaro detektita: ACTIONSUSBD
+injecting vendor command 0xCB -> ADFU
+= injektado de vendista komando 0xCB -> ADFU
+opening {0} download mode
+= malfermo de {0} elŝuta modo
+reattaching to download mode
+= rekonekto al elŝuta modo
+dumping {0} KiB of stock flash
+= elŝutado de {0} KiB de fabrika flash
+re-reading CRC32 of every sector
+= relego de CRC32 de ĉiu sektoro
+backup verified: {0}/{1} sectors match
+= kopio kontrolita: {0}/{1} sektoroj kongruas
+{0} sectors differ; writing
+= {0} sektoroj malsamas; skribado
+sector 0x{0} erase/program/verify ok
+= sektoro 0x{0} forviŝo/programo/kontrolo ok
+full flash CRC scan
+= plena CRC-skanado de flash
+flash checksum OK
+= flash-kontrolsumo OK
+waiting for Rockbox USB mass storage
+= atendante la USB-amasmemoron de Rockbox
+no media: insert a microSD card
+= neniu datumportilo: enmetu microSD-karton
+syncing and ejecting card
+= sinkronigo kaj elĵeto de la karto
+another tool holds the player ({0})
+= alia ilo okupas la ludilon ({0})
+the player did not come back in download mode
+= la ludilo ne revenis en elŝuta modo
+the YP3 enters download mode by hand: hold Down while connecting USB
+= la YP3 eniras elŝutan modon permane: tenu Down dum konekto de USB
+battery too low to flash safely ({0})
+= akumulilo tro malplena por sekura flash-skribo ({0})
+the player came back in download mode: the new firmware did not start
+= la ludilo revenis en elŝuta modo: la nova programaro ne ekfunkciis
+this package is for {0}, not {1}
+= ĉi tiu pakaĵo estas por {0}, ne por {1}
+this player's flash at 0x{0} is not what the package was built for; nothing was written
+= la flash de ĉi tiu ludilo ĉe 0x{0} ne estas tiu, por kiu la pakaĵo estis farita; nenio estis skribita
+the package has no firmware image
+= la pakaĵo ne havas programaran bildon
+the card needs {0} MiB free; it has {1} MiB
+= la karto bezonas {0} MiB da libera spaco; ĝi havas {1} MiB
+{0} did not read back correctly from the card
+= {0} ne relegiĝis ĝuste el la karto
+could not mount the player's card: {0}
+= ne eblis surmeti la karton de la ludilo: {0}
+Rockbox never showed its USB disk. If its USB Mode is Charge Only, set it to Mass Storage (Settings > General Settings > System > USB), or unplug the player, hold any key and plug it back in
+= Rockbox neniam montris sian USB-diskon. Se ĝia USB Mode estas agordita nur por ŝargi, agordu ĝin al Mass Storage (Settings > Ĝeneralaj Agordaĵoj > Sistemo > USB), aŭ malkonektu la ludilon, tenu iun ajn klavon kaj rekonektu ĝin
+the card is in use by another program
+= la karton uzas alia programo
+cancelled
+= nuligita
+checksum mismatch at 0x{0}
+= kontrolsuma malkongruo ĉe 0x{0}
+sector 0x{0} reads inconsistently
+= sektoro 0x{0} legiĝas malkonsekvence
+flash at 0x{0} reads inconsistently
+= flash ĉe 0x{0} legiĝas malkonsekvence
+backup did not read back from disk
+= la kopio ne relegiĝis de la disko
+{0} is damaged (checksum mismatch)
+= {0} estas difektita (kontrolsuma malkongruo)
+{0} is {1} bytes; a full flash image is {2}
+= {0} havas {1} bajtojn; plena flash-bildo havas {2}
+not a tar.xz release: {0}
+= ne estas tar.xz-eldono: {0}
+this package (format {0}) needs a newer rockslop than {1}: update rockslop
+= ĉi tiu pakaĵo (formato {0}) bezonas pli novan rockslop ol {1}: ĝisdatigu rockslop
+this package (format {0}) is too old for rockslop {1}: get a newer release
+= ĉi tiu pakaĵo (formato {0}) estas tro malnova por rockslop {1}: akiru pli novan eldonon
+MANIFEST has no format
+= MANIFEST havas neniun formaton
+MANIFEST names no target
+= MANIFEST nomas neniun celon
+unsafe path in archive: {0}
+= nesekura vojo en arkivo: {0}
+{0}: links and special files are not allowed
+= {0}: ligoj kaj specialaj dosieroj ne estas permesataj
+{0}: checksum mismatch, the download is corrupt
+= {0}: kontrolsuma malkongruo, la elŝuto estas difektita
+unexpected member {0}
+= neatendita ero {0}
+archive is missing {0} file(s) listed in SHA256SUMS
+= al la arkivo mankas {0} dosiero(j) listigita(j) en SHA256SUMS
+release contains no flash image
+= la eldono enhavas neniun flash-bildon
+{0}: checksum mismatch
+= {0}: kontrolsuma malkongruo
+archive member too large
+= arkiva ero tro granda
+internal error: {0}
+= interna eraro: {0}
+{0}: permission denied. {1}
+= {0}: permeso rifuzita. {1}
+Install the udev rule (see README) or run as root.
+= Instalu la udev-regulon (vidu README) aŭ lanĉu kiel root.
+macOS needs root to take the device from its mass storage driver: run from Terminal with sudo.
+= macOS bezonas root por preni la aparaton de ĝia amasmemora pelilo: lanĉu el Terminal per sudo.
+The device needs the WinUSB driver (Zadig).
+= La aparato bezonas la WinUSB-pilotilon (Zadig).
+{0}: the device is busy (another tool is using it?)
+= {0}: la aparato estas okupata (ĉu alia ilo uzas ĝin?)
+{0}: the device went away
+= {0}: la aparato malaperis
+{0}: timed out
+= {0}: eltempiĝis
+Windows shows no disk for the player in download mode
+= Windows montras neniun diskon por la ludilo en elŝuta modo
+Windows refused to open the player's disk (error {0})
+= Windows rifuzis malfermi la diskon de la ludilo (eraro {0})
+a command through Windows' disk driver failed (Windows error {0})
+= komando tra la diska pelilo de Windows malsukcesis (Windows-eraro {0})
+can't reach GitHub: {0}
+= ne eblas atingi GitHub: {0}
+GitHub answered {0}
+= GitHub respondis {0}
+GitHub's list of releases makes no sense: {0}
+= la eldonlisto de GitHub ne havas sencon: {0}
+GitHub gave the package an odd name: {0}
+= GitHub donis al la pakaĵo strangan nomon: {0}
+can't save the download: {0}
+= ne eblas konservi la elŝuton: {0}
+the download stopped: {0}
+= la elŝuto haltis: {0}
+the download is the wrong size: {0} bytes, not {1}
+= la elŝuto havas malĝustan grandon: {0} bajtoj, ne {1}
+the download doesn't match GitHub's checksum: sha256 {0}
+= la elŝuto ne kongruas kun la kontrolsumo de GitHub: sha256 {0}
+# Clippy, and the new download-mode steps
+DRAG TO SPIN
+= TRENU POR TURNI
+UNPLUG
+= MALKONEKTU
+pull the USB cable out
+= eltiru la USB-kablon
+POWER ON
+= ŜALTI
+hold POWER, on the bottom edge
+= tenu POWER, ĉe la malsupra rando
+stock firmware
+= fabrika programaro
+SWITCH OFF
+= MALŜALTI
+hold POWER until the screen goes dark
+= tenu POWER ĝis la ekrano malheliĝas
+HOLD POWER
+= TENU POWER
+plug in while holding, ~4 s
+= konektu dum vi tenas, ~4 s
+on the player: System > Debug > {0}
+= en la ludilo: Sistemo > Erarserĉilo > {0}
+follow the steps above
+= sekvu la paŝojn supre
+THE {0} PACKAGE
+= LA PAKAĴO POR {0}
+NEEDS A MICROSD CARD
+= BEZONAS MICROSD-KARTON
+It looks like you're trying to hack an MP3 player. Would you like help?
+= Ŝajnas, ke vi provas haki MP3-ludilon. Ĉu vi ŝatus helpon?
+GOT IT
+= KOMPRENITE
+There's no model number on these players. Compare the wireframes instead: the buttons and ports differ. Drag a player to spin it.
+= Ĉi tiuj ludiloj ne havas modelnumeron. Anstataŭe komparu la dratmodelojn: la butonoj kaj konektingoj malsamas. Trenu ludilon por turni ĝin.
+Power the player off first, then hold DOWN before the cable goes in, and keep holding.
+= Unue malŝaltu la ludilon, poste tenu DOWN antaŭ ol la kablo eniras, kaj daŭre tenu.
+Hold POWER while you plug the cable in, and keep holding for about 4 seconds.
+= Tenu POWER dum vi konektas la kablon, kaj daŭre tenu ĉirkaŭ 4 sekundojn.
+Switch the player on first: hold POWER on its bottom edge.
+= Unue ŝaltu la ludilon: tenu POWER ĉe ĝia malsupra rando.
+Still nothing? Try another cable: some only charge.
+= Ankoraŭ nenio? Provu alian kablon: kelkaj nur ŝargas.
+Your computer won't let rockslop use the player.
+= Via komputilo ne permesas al rockslop uzi la ludilon.
+Unplug the cable first: the player only listens in download mode. The steps say how.
+= Unue malkonektu la kablon: la ludilo aŭskultas nur en elŝuta modo. La paŝoj diras kiel.
+You need the Rockbox package built for the {0}: a .tar.xz file. Click SELECT IMAGE, or drop it on the panel.
+= Vi bezonas la Rockbox-pakaĵon faritan por {0}: .tar.xz-dosieron. Klaku ELEKTI BILDON, aŭ demetu ĝin sur la panelon.
+Push a microSD card all the way into the player's slot, then press RESET.
+= Enŝovu microSD-karton ĝisfunde en la fendon de la ludilo, poste premu RESET.
+Rockbox hasn't shown its USB disk yet. If the player only charges, unplug it, hold any key and plug it back in.
+= Rockbox ankoraŭ ne montris sian USB-diskon. Se la ludilo nur ŝargiĝas, malkonektu ĝin, tenu iun ajn klavon kaj rekonektu ĝin.
+RETRY usually sorts it out. Still stuck? COPY REPORT puts the details on the clipboard for a bug report.
+= REPROVI kutime solvas tion. Ĉu ankoraŭ blokita? KOPII RAPORTON metas la detalojn en la tondujon por erarraporto.
+It looks like you watched all the credits. Nobody does that. Respect.
+= Ŝajnas, ke vi spektis ĉiujn kreditaĵojn. Neniu faras tion. Respekton.
+DEAL WITH IT
+= DEAL WITH IT
+
+# return to stock without a backup on this computer
+no stock backup on this computer
+= neniu sekurkopio de la fabrika programaro en ĉi tiu komputilo
+When rockslop flashes a player, it puts a copy of the stock firmware on the player's microSD card: .rockbox/{0}
+= Kiam rockslop flash-skribas ludilon, ĝi metas kopion de la fabrika programaro sur la microSD-karton de la ludilo: .rockbox/{0}
+Start the player in Rockbox and plug it in, and rockslop looks there itself. Or find the file and select it.
+= Startigu la ludilon en Rockbox kaj konektu ĝin, kaj rockslop mem serĉos tie. Aŭ trovu la dosieron kaj elektu ĝin.
+looking on the player's card
+= serĉante sur la karto de la ludilo
+no stock firmware on the player's card
+= neniu fabrika programaro sur la karto de la ludilo
+checking the image
+= kontrolante la bildon
+stock firmware: {0}
+= fabrika programaro: {0}
+UNKNOWN FIRMWARE
+= NEKONATA PROGRAMARO
+It isn't a stock firmware rockslop knows: a newer version, or not stock at all.
+= Ĝi ne estas fabrika programaro, kiun rockslop konas: pli nova versio, aŭ tute ne fabrika.
+It has Rockbox in it, so it isn't stock firmware.
+= Ĝi enhavas Rockbox, do ĝi ne estas fabrika programaro.
+Flash it only if you're sure it came from a {0}.
+= Flash-skribu ĝin nur se vi certas, ke ĝi venis de {0}.
+FLASH ANYWAY
+= TAMEN FLASH-SKRIBI
+The .rockbox folder is hidden: turn on hidden files in your file browser to see it.
+= La dosierujo .rockbox estas kaŝita: ŝaltu kaŝitajn dosierojn en via dosieradministrilo por vidi ĝin.
+stock firmware copied to the card: {0}
+= fabrika programaro kopiita sur la karton: {0}
+stock firmware already on the card: {0}
+= fabrika programaro jam estas sur la karto: {0}
+could not copy the stock firmware to the card: {0}
+= ne eblis kopii la fabrikan programaron sur la karton: {0}
+no room on the card for the stock firmware ({0} KiB free)
+= ne sufiĉas spaco sur la karto por la fabrika programaro ({0} KiB libera)
+the stock firmware did not read back correctly from the card
+= la fabrika programaro ne legiĝis ĝuste de la karto
+stock firmware found on the card: {0}
+= fabrika programaro trovita sur la karto: {0}
+known stock firmware: {0}
+= konata fabrika programaro: {0}
+rockslop does not recognise this firmware
+= rockslop ne rekonas ĉi tiun programaron
+{0} is not a {1} flash backup (no partition table)
+= {0} ne estas flash-sekurkopio de {1} (neniu subdiska tabelo)
+{0} has no firmware in it (that part is blank)
+= {0} ne enhavas programaron (tiu parto estas malplena)
+{0} has Rockbox in it: it is not stock firmware
+= {0} enhavas Rockbox: ĝi ne estas fabrika programaro
+BEFORE THE FIRST FLASH
+= ANTAŬ LA UNUA FLASH-SKRIBO
+POINT OF NO RETURN
+= PUNKTO SEN REVENO
+rockslop is about to write Rockbox to your {0}. Read each of these and tick it, then hold to sign.
+= rockslop tuj skribos Rockbox en vian ludilon {0}. Legu ĉiun el ĉi tiuj kaj marku ĝin, poste tenu por subskribi.
+rockslop and this player's Rockbox port are 100% vibe-coded: no human has ever looked at the code. It has been tested on real players, but that's all.
+= rockslop kaj la Rockbox-adapto por ĉi tiu ludilo estas 100% «vibe-coded»: neniu homo iam ajn rigardis la kodon. Ili estis testitaj sur veraj ludiloj, sed nenio pli.
+THIS CAN BRICK YOUR PLAYER
+= TIO POVAS MORTIGI VIAN LUDILON
+Rockbox on this player is unofficial and experimental. A flash that goes wrong (a loose cable, a crash, a bug of ours) can leave the player dead, and there may be no way to bring it back. rockslop keeps a backup of the stock firmware, but a backup can't save every player. The risk is yours alone.
+= Rockbox sur ĉi tiu ludilo estas neoficiala kaj eksperimenta. Flash-skribo, kiu misiras (loza kablo, kraŝo, nia cimo), povas lasi la ludilon morta, kaj eble ne ekzistos maniero revivigi ĝin. rockslop konservas sekurkopion de la fabrika programaro, sed sekurkopio ne povas savi ĉiun ludilon. La risko estas nur via.
+YOUR WARRANTY IS VOID
+= VIA GARANTIO NULIĜAS
+Flashing firmware the maker didn't write voids the warranty. Whatever happens to this player from now on is yours to deal with: no repair, no replacement, no refund. Going back to stock doesn't change that.
+= Flash-skribi programaron, kiun la fabrikanto ne verkis, nuligas la garantion. Kio ajn okazos al ĉi tiu ludilo de nun, tio estas via afero: neniu riparo, neniu anstataŭigo, neniu repago. Reveno al la fabrika programaro ne ŝanĝas tion.
+DON'T TAKE IT BACK
+= NE REDONU ĜIN
+Never return a flashed player, claim on it, or complain to the seller or the maker about it. Rockbox runs on these players because nobody has locked them down. If flashed players start coming back, the next batch will be locked, and that's the end of Rockbox on them for everyone. If yours breaks, bring it to rockslop, never to the shop.
+= Neniam redonu flash-skribitan ludilon, neniam postulu garantion pri ĝi, kaj neniam plendu pri ĝi al la vendisto aŭ al la fabrikanto. Rockbox funkcias sur ĉi tiuj ludiloj, ĉar neniu ŝlosis ilin. Se flash-skribitaj ludiloj komencos reveni, la sekva aro estos ŝlosita, kaj tio estos la fino de Rockbox sur ili por ĉiuj. Se via rompiĝos, turnu vin al rockslop, neniam al la vendejo.
+I UNDERSTAND
+= MI KOMPRENAS
+I've read all three. If it bricks, that's on me. The warranty is gone. It never goes back to the seller. No backsies.
+= Mi legis ĉiujn tri. Se ĝi mortos, tio estas mia respondeco. La garantio estas for. Ĝi neniam reiros al la vendisto. Sen repreno.
+HOLD TO SIGN
+= TENU POR SUBSKRIBI
+KEEP HOLDING
+= DAŬRE TENU
+SIGNED
+= SUBSKRIBITA
+NOT NOW
+= NE NUN
+tick all three boxes first
+= unue marku ĉiujn tri skatolojn
+Signing is final. rockslop won't ask again on this computer.
+= La subskribo estas definitiva. rockslop ne plu demandos en ĉi tiu komputilo.
+NO BACKSIES
+= SEN REPRENO
+waiver signed: rockslop won't ask again on this computer
+= rezigna deklaro subskribita: rockslop ne plu demandos en ĉi tiu komputilo
+waiver signed (demo: not saved)
+= rezigna deklaro subskribita (demo: ne konservita)
+could not save the waiver: {0}
+= ne eblis konservi la rezignan deklaron: {0}
+EPILEPSY WARNING
+= AVERTO PRI EPILEPSIO
+It's a flasher. It flashes.
+= Ĝi estas flaŝilo. Ĝi flagras.
+If the player won't start: hold the D-pad's Down button (or the power button), plug in USB, and keep holding about 3 seconds. The screen stays dark; rockslop will find it. Holding the power button about 7 seconds restarts the player.
+= Se la ludilo ne ekfunkcias: tenu premita la Malsupren-butonon de la direktilo (aŭ la ŝaltilon), konektu USB kaj daŭre tenu ĉirkaŭ 3 sekundojn. La ekrano restas malhela; rockslop trovos ĝin. Teni la ŝaltilon ĉirkaŭ 7 sekundojn rekomencigas la ludilon.
+this TS17 package is in an older format ({0}) that rockslop no longer flashes: get a newer release
+= ĉi tiu TS17-pakaĵo estas en pli malnova formato ({0}), kiun rockslop ne plu skribas: akiru pli novan eldonon
+new install: the rescue stub goes in first
+= nova instalo: unue la savkodo
+rescue stub in place: left alone
+= savkodo jam en loko: netuŝita
+a rescue stub that isn't rockslop's is in place: left alone
+= estas savkodo, kiu ne estas de rockslop: netuŝita

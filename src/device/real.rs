@@ -1,0 +1,1032 @@
+//! The real backend: finds players on USB and runs flash / restore jobs.
+//!
+//! A flash is: identify the player in download mode, back up its whole
+//! flash (skipped when an identical backup is on file), check the package's
+//! expectations against it, write only the sectors that change (never the
+//! bootloader or the per-unit sectors), checksum, reboot into Rockbox, then
+//! copy the card files over Rockbox's own USB disk, read them back, eject.
+
+use super::backup::{self, Backup};
+use super::rdm::{Rdm, XIP_RUN};
+use super::sdcard::{self, Look};
+use super::ts17::{self, Ts17};
+use super::usb;
+use super::yp3::{self, crc32, Yp3};
+use super::*;
+use crate::err;
+use crate::pkg::{hex, sha256, Package};
+use std::cell::Cell;
+use std::collections::HashMap;
+use std::io::Write;
+use std::path::PathBuf;
+use std::rc::Rc;
+use std::time::Instant;
+
+const ROCKBOX_VID: u16 = 0x1209;
+
+fn ident(kind: Kind) -> (u16, u16, u16, u16) {
+    match kind {
+        Kind::Yp3 => (yp3::VID, yp3::PID_ROM, yp3::PID_STOCK, yp3::PID_ROCKBOX),
+        Kind::Ts17 => (ts17::VID, ts17::PID_ADFU, ts17::PID_STOCK, ts17::PID_ROCKBOX),
+    }
+}
+
+/// One session with a player in download mode.
+enum Dev {
+    Yp3(Yp3),
+    Ts17(Ts17),
+}
+
+/// Courtesy lock shared with the rockbox-yp3 dev tools, so a flash never
+/// interleaves with their traffic.
+struct DevLock(#[allow(dead_code)] Option<std::fs::File>);
+
+#[cfg(unix)]
+fn dev_lock(kind: Kind) -> Result<DevLock, String> {
+    use std::os::unix::io::AsRawFd;
+    let p = format!("/tmp/{}dev.lock", kind.id());
+    let Ok(f) = std::fs::OpenOptions::new().write(true).open(&p) else { return Ok(DevLock(None)) };
+    if unsafe { libc::flock(f.as_raw_fd(), libc::LOCK_EX | libc::LOCK_NB) } != 0 {
+        return Err(err!(E205, "another tool holds the player ({p})"));
+    }
+    Ok(DevLock(Some(f)))
+}
+
+#[cfg(not(unix))]
+fn dev_lock(_kind: Kind) -> Result<DevLock, String> {
+    Ok(DevLock(None))
+}
+
+pub struct Real {
+    guarded: HashMap<Kind, Instant>,
+    rdm: Rdm,
+    /// the stock image the last flash of each player put on the card
+    stock: HashMap<Kind, Backup>,
+}
+
+impl Real {
+    pub fn new() -> Real {
+        Real { guarded: HashMap::new(), rdm: Rdm::new(), stock: HashMap::new() }
+    }
+}
+
+fn seen_now() -> Vec<Seen> {
+    let mut out = Vec::new();
+    for (v, p, ok) in usb::list() {
+        for kind in [Kind::Yp3, Kind::Ts17] {
+            let (vid, rom, stock, rb) = ident(kind);
+            let mode = if v == vid && p == rom {
+                Mode::Rom
+            } else if v == vid && p == stock {
+                Mode::Stock
+            } else if v == ROCKBOX_VID && p == rb {
+                Mode::Rockbox
+            } else {
+                continue;
+            };
+            // only download mode is opened, and the TS17's stock firmware (to
+            // kick it there): a disk the system keeps to itself (Windows'
+            // and macOS's own storage driver) is no obstacle otherwise
+            let opened = mode == Mode::Rom || (kind == Kind::Ts17 && mode == Mode::Stock);
+            let s = Seen { kind, mode, access: ok || !opened };
+            if !out.contains(&s) {
+                out.push(s);
+            }
+        }
+    }
+    out
+}
+
+/// Wait for the player to show up in one of `modes` (stably).
+fn wait_mode(kind: Kind, modes: &[Mode], timeout: Duration, mut tick: impl FnMut(f32)) -> Option<Mode> {
+    let t0 = Instant::now();
+    let mut stable = (None, 0);
+    while t0.elapsed() < timeout {
+        let m = seen_now().into_iter().find(|s| s.kind == kind && modes.contains(&s.mode)).map(|s| s.mode);
+        stable = if m.is_some() && m == stable.0 { (m, stable.1 + 1) } else { (m, 1) };
+        if m.is_some() && stable.1 >= 3 {
+            return m;
+        }
+        tick(t0.elapsed().as_secs_f32());
+        std::thread::sleep(Duration::from_millis(150));
+    }
+    None
+}
+
+fn mv_text(mv: Option<u32>) -> String {
+    mv.map(|m| format!("{}.{:02} V", m / 1000, m % 1000 / 10)).unwrap_or_else(|| "--".into())
+}
+
+impl Backend for Real {
+    fn scan(&mut self, ev: &Sink) -> Vec<Seen> {
+        let now = seen_now();
+        // Nothing stops the charger while a player sits in download mode:
+        // look at it every minute.
+        for s in &now {
+            if s.mode != Mode::Rom || !s.access {
+                continue;
+            }
+            if self.guarded.get(&s.kind).map(|t| t.elapsed() < Duration::from_secs(60)) == Some(true) {
+                continue;
+            }
+            self.guarded.insert(s.kind, Instant::now());
+            let Ok(_lock) = dev_lock(s.kind) else { continue };
+            let r = match s.kind {
+                Kind::Yp3 => Yp3::open().and_then(|mut y| y.battery_guard().map(|(mv, c, st)| (Some(mv), c, st))),
+                Kind::Ts17 => Ts17::open().and_then(|mut t| {
+                    t.install()?;
+                    t.charger_guard()
+                }),
+            };
+            if let Ok((mv, charging, stopped)) = r {
+                let what = if stopped {
+                    "CHARGER STOPPED"
+                } else if charging {
+                    "CHARGING"
+                } else {
+                    "CHARGER OFF"
+                };
+                ev.probe("CELL", format!("{}  {what}", mv_text(mv)), Some(true));
+            }
+        }
+        now
+    }
+
+    fn run(&mut self, cmd: Cmd, ev: &Sink) -> Result<(), String> {
+        match cmd {
+            Cmd::Watch(_) => Ok(()),
+            Cmd::Kick(kind) => {
+                let _l = dev_lock(kind)?;
+                kick(kind, ev)
+            }
+            Cmd::Probe(kind) => {
+                let _l = dev_lock(kind)?;
+                ev.phase(Phase::Connect);
+                let mut d = self.connect(kind, ev)?;
+                self.guarded.insert(kind, Instant::now());
+                self.probe(&mut d, ev)?;
+                ev.send(Event::Ready);
+                Ok(())
+            }
+            Cmd::Flash { kind, package } => {
+                let _l = dev_lock(kind)?;
+                let r = self.flash(kind, &package, ev);
+                if r.is_err() {
+                    charger_safe(kind);
+                }
+                r
+            }
+            Cmd::Restore { kind, image } => {
+                let _l = dev_lock(kind)?;
+                let r = self.restore(kind, &image, ev);
+                if r.is_err() {
+                    charger_safe(kind);
+                }
+                r
+            }
+            Cmd::Sync { kind, package } => {
+                let _l = dev_lock(kind)?;
+                self.sync(kind, &package, ev)
+            }
+        }
+    }
+}
+
+/// After a failure with the player still in download mode, make sure it is
+/// not left charging unsupervised.
+fn charger_safe(kind: Kind) {
+    match kind {
+        Kind::Yp3 => {
+            if let Ok(mut y) = Yp3::open() {
+                let _ = y.charge_off();
+            }
+        }
+        Kind::Ts17 => {
+            if let Ok(mut t) = Ts17::open() {
+                let _ = t.install().and_then(|_| t.charger_guard());
+            }
+        }
+    }
+}
+
+fn kick(kind: Kind, ev: &Sink) -> Result<(), String> {
+    match kind {
+        Kind::Ts17 => {
+            ev.info("stock firmware on the bus: asking it for download mode");
+            let id = ts17::kick_stock()?;
+            ev.ok(format!("{id} acknowledged 0xCB: rebooting into ADFU"));
+            if wait_mode(kind, &[Mode::Rom], Duration::from_secs(30), |_| {}).is_none() {
+                return Err(err!(E251, "the player did not come back in download mode"));
+            }
+            ev.send(Event::Ready);
+            Ok(())
+        }
+        Kind::Yp3 => Err(err!(E252, "the YP3 enters download mode by hand: hold Down while connecting USB")),
+    }
+}
+
+impl Real {
+    fn connect(&mut self, kind: Kind, ev: &Sink) -> Result<Dev, String> {
+        let (vid, rom, _, _) = ident(kind);
+        ev.info(format!("attaching to {vid:04x}:{rom:04x}"));
+        Ok(match kind {
+            Kind::Yp3 => Dev::Yp3(Yp3::open()?),
+            Kind::Ts17 => Dev::Ts17(Ts17::open()?),
+        })
+    }
+
+    /// Identity checks; every one must pass before anything is written.
+    fn probe(&mut self, d: &mut Dev, ev: &Sink) -> Result<(), String> {
+        ev.phase(Phase::Probe);
+        // a failed check is marked on the panel; its value goes in the error
+        let fail = |k: &str, v: String| -> String {
+            ev.probe(k, v.clone(), Some(false));
+            v
+        };
+        let cpu_fail = |id: u32| err!(E262, "CPU check failed: {}", fail("CPU", format!("CPUID {id:08x}")));
+        let low_battery = |mv: u32| err!(E270, "battery too low to flash safely ({})", mv_text(Some(mv)));
+        match d {
+            Dev::Yp3(y) => {
+                let inq = y.inquiry()?;
+                if !inq.contains("SMTLINK") {
+                    return Err(err!(E260, "USB check failed: {}", fail("USB", format!("301a:2800 {inq}"))));
+                }
+                ev.probe("USB", format!("301a:2800 {inq}"), Some(true));
+                let serial = y.serial.clone().unwrap_or_default();
+                ev.probe(
+                    "CHIP",
+                    format!("SL6801 (serial {serial})"),
+                    Some(serial.starts_with("2020111100")).filter(|_| !serial.is_empty()),
+                );
+                let info = y.info()?;
+                ev.probe("PAYLOAD", "svc @0x806000 ONLINE", Some(true));
+                if info[8] != yp3::CPUID {
+                    return Err(cpu_fail(info[8]));
+                }
+                ev.probe("CPU", format!("CORTEX-M4 r0p1 (0x{:08X})", info[8]), Some(true));
+                let j = y.jedec()?;
+                if j != yp3::JEDEC {
+                    let v = format!("JEDEC {:02x} {:02x} {:02x}", j[0], j[1], j[2]);
+                    return Err(err!(E263, "FLASH check failed: {}", fail("FLASH", v)));
+                }
+                ev.probe("FLASH", format!("P25Q16H 2 MiB ({:02x} {:02x} {:02x})", j[0], j[1], j[2]), Some(true));
+                let (mv, charging, stopped) = y.battery_guard()?;
+                let what = if stopped {
+                    "CHARGER STOPPED"
+                } else if charging {
+                    "CHARGING"
+                } else {
+                    "CHARGER OFF"
+                };
+                ev.probe("CELL", format!("{}  {what}", mv_text(Some(mv))), Some(mv > 3300));
+                if mv < 3300 {
+                    return Err(low_battery(mv));
+                }
+            }
+            Dev::Ts17(t) => {
+                let chip = t.identify()?;
+                ev.probe("USB", "10d6:10d6 ADFU", Some(true));
+                if chip != ts17::CHIP {
+                    return Err(err!(E261, "CHIP check failed: {}", fail("CHIP", format!("0x{chip:04x}"))));
+                }
+                ev.probe("CHIP", format!("ACTIONS LARK 0x{chip:04X}"), Some(true));
+                let (_, vtor) = t.install()?;
+                ev.probe("HOOK", format!("gadget bus @0x01018000, VTOR {vtor:08x}"), Some(true));
+                let cpuid = t.read32(0xE000_ED00)?;
+                if cpuid != ts17::CPUID {
+                    return Err(cpu_fail(cpuid));
+                }
+                ev.probe("CPU", format!("CORTEX-M4F r0p1 (0x{cpuid:08X})"), Some(true));
+                t.nor_setup(false)?;
+                let head = t.read_chunk(0)?;
+                if &head[0x1000..0x1004] != b"ACPT" {
+                    return Err(err!(E264, "NOR check failed: {}", fail("NOR", "no ACPT partition table at 0x1000".into())));
+                }
+                // the TS28 has the same chip and layout: only its model name differs
+                match ts17::model(&head) {
+                    Some(m) if ts17::is_ts17(&m) => {}
+                    m => {
+                        let v = format!("model {}, not a TS17", m.as_deref().unwrap_or("unnamed"));
+                        return Err(err!(E266, "NOR check failed: {}", fail("NOR", v)));
+                    }
+                }
+                // the firmware goes in fw0_sys: refuse a player whose table
+                // puts it anywhere else (another model, another layout)
+                match ts17::partition(&head[0x1000..], "fw0_sys") {
+                    Some((off, size)) if (off, off + size) == ts17::WRITABLE => {}
+                    p => {
+                        let v = match p {
+                            Some((o, s)) => format!("fw0_sys at 0x{o:X} +0x{s:X}, not 0x{:X} +0x{:X}", ts17::SYS, ts17::WRITABLE.1 - ts17::SYS),
+                            None => "no fw0_sys in the partition table".into(),
+                        };
+                        return Err(err!(E265, "NOR check failed: {}", fail("NOR", v)));
+                    }
+                }
+                ev.probe("NOR", "4 MiB, fw0_sys @ 0x14000", Some(true));
+                let (mv, charging, stopped) = t.charger_guard()?;
+                let what = if stopped {
+                    "CHARGER STOPPED"
+                } else if charging {
+                    "CHARGER GUARDED"
+                } else {
+                    "CHARGER OFF"
+                };
+                ev.probe("CELL", format!("{}  {what}", mv_text(mv)), Some(mv.map(|m| m > 3300).unwrap_or(true)));
+                if let Some(m) = mv.filter(|&m| m < 3300) {
+                    return Err(low_battery(m));
+                }
+            }
+        }
+        Ok(())
+    }
+
+    /// The whole flash, as stored (TS17: raw cells). Reuses sectors from
+    /// earlier backups when the player's own CRCs say they are identical.
+    fn dump(&mut self, d: &mut Dev, ev: &Sink) -> Result<Vec<u8>, String> {
+        ev.phase(Phase::Backup);
+        match d {
+            Dev::Yp3(y) => {
+                let g = Kind::Yp3.geometry();
+                let n = g.size / g.sector;
+                ev.info("sector CRC32 scan on the player");
+                let crcs = y.flash_crcs(0, n)?;
+                // known sectors: erased, or in a backup already on disk
+                let mut known: HashMap<u32, Vec<u8>> = HashMap::new();
+                let blank = vec![0xffu8; g.sector as usize];
+                known.insert(crc32(&blank), blank);
+                for b in backup::list(Kind::Yp3).iter().take(4) {
+                    if let Ok(img) = std::fs::read(&b.path) {
+                        for s in img.chunks(g.sector as usize) {
+                            known.entry(crc32(s)).or_insert_with(|| s.to_vec());
+                        }
+                    }
+                }
+                let mut img = Vec::with_capacity(g.size as usize);
+                let mut read = 0;
+                ev.info(format!("dumping {} KiB", g.size / 1024));
+                for i in 0..n {
+                    let addr = i * g.sector;
+                    ev.sector(i, Sect::Read);
+                    let data = match known.get(&crcs[i as usize]) {
+                        Some(s) => s.clone(),
+                        None => {
+                            read += 1;
+                            let mut s = y.read_sector(addr)?;
+                            if crc32(&s) != crcs[i as usize] {
+                                s = y.read_sector(addr)?;
+                                if crc32(&s) != crcs[i as usize] {
+                                    ev.sector(i, Sect::Bad);
+                                    return Err(err!(E401, "sector 0x{addr:06x} reads inconsistently"));
+                                }
+                            }
+                            s
+                        }
+                    };
+                    hex_feed(ev, addr, &data[..256], 4);
+                    img.extend_from_slice(&data);
+                    let w = addr >= g.writable.0 && addr < g.writable.1;
+                    ev.sector(i, if w { Sect::Same } else { Sect::Protected });
+                    ev.progress((i + 1) as f32 / n as f32);
+                }
+                ev.ok(format!("{n} sectors captured ({read} read, {} already known); CRC32 verified", n - read));
+                Ok(img)
+            }
+            Dev::Ts17(t) => {
+                let g = Kind::Ts17.geometry();
+                t.nor_setup(true)?;
+                let chunk = Ts17::chunk_size();
+                let per = chunk / g.sector;
+                let mut img = Vec::with_capacity(g.size as usize);
+                ev.info(format!("dumping {} KiB of raw NOR cells", g.size / 1024));
+                for c in 0..g.size / chunk {
+                    let off = c * chunk;
+                    for k in 0..per {
+                        ev.sector(c * per + k, Sect::Read);
+                    }
+                    let data = t.read_chunk(off)?;
+                    hex_feed(ev, off, &data[..512], 2);
+                    img.extend_from_slice(&data);
+                    for k in 0..per {
+                        let a = off + k * g.sector;
+                        let w = a >= g.writable.0 && a < g.writable.1;
+                        ev.sector(c * per + k, if w { Sect::Same } else { Sect::Protected });
+                    }
+                    ev.progress((c + 1) as f32 * 0.5 / (g.size / chunk) as f32);
+                }
+                ev.info("second pass: comparing");
+                for c in 0..g.size / chunk {
+                    let off = c * chunk;
+                    if t.read_chunk(off)? != img[off as usize..(off + chunk) as usize] {
+                        return Err(err!(E402, "flash at 0x{off:06x} reads inconsistently"));
+                    }
+                    ev.progress(0.5 + (c + 1) as f32 * 0.5 / (g.size / chunk) as f32);
+                }
+                ev.ok(format!("{} sectors captured; two reads agree", g.size / g.sector));
+                Ok(img)
+            }
+        }
+    }
+
+    fn keep_backup(&mut self, kind: Kind, img: &[u8], ev: &Sink) -> Result<Backup, String> {
+        let fp = backup::fingerprint(kind, img);
+        let stock = backup::is_stock(kind, img);
+        ev.probe("UNIT", format!("fingerprint {fp:08x}"), None);
+        ev.probe("FIRMWARE", if stock { "STOCK" } else { "ROCKBOX / MODIFIED" }, None);
+        if let Some(b) = backup::find_same(kind, fp, img) {
+            ev.ok(format!("identical backup already on file: {}", b.path.display()));
+            return Ok(b);
+        }
+        let b = backup::save(kind, fp, stock, img)?;
+        ev.ok(format!("backup -> {}", b.path.display()));
+        Ok(b)
+    }
+
+    /// The target image: the current flash with the package's segments laid
+    /// over it. Refuses anything outside the writable window (on the TS17,
+    /// from Rockbox's place behind the rescue stub on).
+    fn compose(&self, kind: Kind, cur: &[u8], segs: &[(crate::pkg::Seg, Vec<u8>)]) -> Result<Vec<u8>, String> {
+        let g = kind.geometry();
+        let lo = if kind == Kind::Ts17 { ts17::APP } else { g.writable.0 };
+        let mut img = cur.to_vec();
+        for (seg, data) in segs {
+            let cells = match kind {
+                Kind::Yp3 => data.clone(),
+                Kind::Ts17 => {
+                    let mut p = data.clone();
+                    p.resize(p.len().div_ceil(XIP_RUN) * XIP_RUN, 0xff);
+                    self.rdm.encode(&p, XIP_RUN)
+                }
+            };
+            let start = seg.offset;
+            let end = start as usize + cells.len().div_ceil(g.sector as usize) * g.sector as usize;
+            if start < lo || end > g.writable.1 as usize || start % g.sector != 0 {
+                return Err(err!(E153, "package writes 0x{start:06x}..0x{end:06x}, outside the safe window 0x{lo:06x}..0x{:06x}", g.writable.1));
+            }
+            img[start as usize..start as usize + cells.len()].copy_from_slice(&cells);
+            img[start as usize + cells.len()..end].fill(0xff);
+        }
+        Ok(img)
+    }
+
+    /// Write every sector of `want` that differs from `cur` (writable window
+    /// only), then checksum the result against the player.
+    fn program(&mut self, d: &mut Dev, kind: Kind, cur: &[u8], want: &[u8], ev: &Sink) -> Result<usize, String> {
+        let g = kind.geometry();
+        let ss = g.sector as usize;
+        let todo: Vec<u32> = (g.writable.0 / g.sector..g.writable.1 / g.sector)
+            .filter(|&i| cur[i as usize * ss..(i as usize + 1) * ss] != want[i as usize * ss..(i as usize + 1) * ss])
+            .collect();
+        ev.phase(Phase::Write);
+        ev.info(format!("{} of {} sectors differ", todo.len(), (g.writable.1 - g.writable.0) / g.sector));
+        if let Dev::Ts17(t) = d {
+            t.nor_setup(true)?;
+        }
+        for (k, &i) in todo.iter().enumerate() {
+            let addr = i * g.sector;
+            let data = &want[i as usize * ss..(i as usize + 1) * ss];
+            ev.sector(i, Sect::Erase);
+            ev.send(Event::Hex(addr, data[..16].to_vec()));
+            let r = match d {
+                Dev::Yp3(y) => y.write_sector(addr, data).map(|_| ()),
+                Dev::Ts17(t) => t.write_sector(addr, data),
+            };
+            if let Err(e) = r {
+                ev.sector(i, Sect::Bad);
+                return Err(e);
+            }
+            ev.sector(i, Sect::Good);
+            ev.progress((k + 1) as f32 / todo.len().max(1) as f32);
+            if k % 32 == 0 {
+                ev.dim(format!("0x{addr:06x} erase / program / verify ok"));
+            }
+        }
+        ev.phase(Phase::Check);
+        let (lo, hi) = (g.writable.0 / g.sector, g.writable.1 / g.sector);
+        let mismatch = |a: u32| err!(E321, "checksum mismatch at 0x{a:06x}");
+        match d {
+            Dev::Yp3(y) => {
+                ev.info("CRC32 of every writable sector, computed on the player");
+                let crcs = y.flash_crcs(lo, hi - lo)?;
+                for (k, c) in crcs.iter().enumerate() {
+                    let i = lo + k as u32;
+                    if *c != crc32(&want[i as usize * ss..(i as usize + 1) * ss]) {
+                        ev.sector(i, Sect::Bad);
+                        return Err(mismatch(i * g.sector));
+                    }
+                    ev.progress((k + 1) as f32 / (hi - lo) as f32);
+                }
+            }
+            Dev::Ts17(t) => {
+                ev.info("reading the writable window back");
+                let chunk = Ts17::chunk_size();
+                let mut off = g.writable.0 & !(chunk - 1);
+                while off < g.writable.1 {
+                    let data = t.read_chunk(off)?;
+                    for (k, s) in data.chunks(ss).enumerate() {
+                        let a = off + (k * ss) as u32;
+                        if a >= g.writable.0 && a < g.writable.1 && s != &want[a as usize..a as usize + ss] {
+                            ev.sector(a / g.sector, Sect::Bad);
+                            return Err(mismatch(a));
+                        }
+                    }
+                    off += chunk;
+                    ev.progress((off - g.writable.0) as f32 / (g.writable.1 - g.writable.0) as f32);
+                }
+            }
+        }
+        let sum = sha256(&want[g.writable.0 as usize..g.writable.1 as usize]);
+        ev.ok(format!("flash checksum OK  sha256 {}..{}", &hex(&sum)[..8], &hex(&sum)[56..]));
+        Ok(todo.len())
+    }
+
+    fn reboot(&mut self, d: Dev, kind: Kind, into: Mode, ev: &Sink) -> Result<bool, String> {
+        ev.phase(Phase::Reboot);
+        match d {
+            Dev::Yp3(mut y) => y.boot()?,
+            Dev::Ts17(mut t) => t.boot()?,
+        }
+        ev.warn(if into == Mode::Rockbox { "rebooting into Rockbox" } else { "rebooting into stock firmware" });
+        std::thread::sleep(Duration::from_millis(800));
+        let got = wait_mode(kind, &[into, Mode::Rom], Duration::from_secs(45), |_| {});
+        match got {
+            Some(Mode::Rom) => Err(err!(E331, "the player came back in download mode: the new firmware did not start")),
+            Some(_) => {
+                ev.ok("firmware is up");
+                Ok(true)
+            }
+            None => Ok(false),
+        }
+    }
+
+    /// TS17: Rockbox only ever goes in behind the rescue stub. A stub that's
+    /// there is never touched (one that isn't rockslop's frozen stub is
+    /// only noted). Where there's none (stock, or a Rockbox from before the
+    /// stub), rockslop's own goes into `want`: program() writes sectors in
+    /// order, so the stub is written and verified before any of Rockbox,
+    /// and a flash cut short after that leaves the stub in charge.
+    fn rescue(&self, cur: &[u8], want: &mut [u8], ev: &Sink) -> Result<(), String> {
+        let s = ts17::RESCUE as usize..(ts17::RESCUE + ts17::SECTOR) as usize;
+        if ts17::has_stub(&self.rdm, &cur[s.clone()]) {
+            if ts17::is_frozen(&self.rdm, &cur[s]) {
+                ev.ok("rescue stub in place: left alone");
+            } else {
+                ev.warn("a rescue stub that isn't rockslop's is in place: left alone");
+            }
+            return Ok(());
+        }
+        want[s].copy_from_slice(&self.rdm.encode(ts17::stub()?, XIP_RUN));
+        ev.info("new install: the rescue stub goes in first");
+        Ok(())
+    }
+
+    fn flash(&mut self, kind: Kind, path: &Path, ev: &Sink) -> Result<(), String> {
+        let t0 = Instant::now();
+        let mut pkg = package_for(kind, path)?;
+        ev.phase(Phase::Connect);
+        let mut d = self.connect(kind, ev)?;
+        let g = kind.geometry();
+        ev.send(Event::Layout { sectors: g.size / g.sector, sector_size: g.sector });
+        self.probe(&mut d, ev)?;
+        self.guarded.insert(kind, Instant::now());
+
+        let cur = self.dump(&mut d, ev)?;
+        let bk = self.keep_backup(kind, &cur, ev)?;
+        // what goes on the card for the way back
+        let stock = if bk.stock { Some(bk.clone()) } else { backup::stock_for(kind, Some(bk.fingerprint)) };
+        match &stock {
+            Some(b) => self.stock.insert(kind, b.clone()),
+            None => self.stock.remove(&kind),
+        };
+
+        ev.phase(Phase::Verify);
+        for e in &pkg.expect {
+            let (a, b) = (e.offset as usize, e.offset as usize + e.size as usize);
+            if b > cur.len() || sha256(&cur[a..b]) != e.sha256 {
+                ev.probe("BOOTLOADER", format!("0x{a:06x}+{:x} UNKNOWN", e.size), Some(false));
+                return Err(err!(E301, "this player's flash at 0x{a:06x} is not what the package was built for; nothing was written"));
+            }
+            ev.probe("BOOTLOADER", format!("sha256 {}..{} KNOWN", &hex(&e.sha256)[..4], &hex(&e.sha256)[60..]), Some(true));
+        }
+        if pkg.files.is_empty() {
+            pkg.verify(|f, _| ev.progress(f))?;
+        }
+        let segs = pkg.read_flash()?;
+        if segs.is_empty() {
+            return Err(err!(E152, "the package has no firmware image"));
+        }
+        if kind == Kind::Ts17 {
+            match segs.iter().find(|(s, _)| s.offset == ts17::APP) {
+                Some((_, data)) => ts17::check_app(data)?,
+                None => return Err(err!(E157, "this TS17 package has no Rockbox image for 0x{:06x}", ts17::APP)),
+            }
+        }
+        let mut want = self.compose(kind, &cur, &segs)?;
+        ev.ok(format!("{} image(s), {} KiB, sha256 verified", segs.len(), segs.iter().map(|s| s.1.len()).sum::<usize>() / 1024));
+        if kind == Kind::Ts17 {
+            self.rescue(&cur, &mut want, ev)?;
+        }
+
+        let written = self.program(&mut d, kind, &cur, &want, ev)?;
+        ev.dim(format!("{written} sectors rewritten"));
+
+        let up = self.reboot(d, kind, Mode::Rockbox, ev)?;
+        let mut out = Outcome { backup: Some(bk.path.clone()), ..Default::default() };
+        if pkg.files.is_empty() {
+            ev.phase(Phase::Done);
+            ev.send(Event::Done(out));
+            return Ok(());
+        }
+        if !up {
+            ev.warn("Rockbox did not show up as a USB disk; the card was not updated");
+            ev.phase(Phase::Done);
+            ev.send(Event::Done(out));
+            return Ok(());
+        }
+        let (files, bytes) = sync_card(kind, &pkg, stock.as_ref(), ev)?;
+        out.files = files;
+        out.bytes = bytes;
+        out.card = true;
+        ev.phase(Phase::Done);
+        ev.dim(format!("total {:.1} s", t0.elapsed().as_secs_f32()));
+        ev.send(Event::Done(out));
+        Ok(())
+    }
+
+    /// Only the card, for a player whose flash holds the package's firmware
+    /// already: no download mode, so no Down+RESET.
+    fn sync(&mut self, kind: Kind, path: &Path, ev: &Sink) -> Result<(), String> {
+        let t0 = Instant::now();
+        let pkg = package_for(kind, path)?;
+        let stock = self.stock.get(&kind).cloned().or_else(|| backup::stock_for(kind, None));
+        let (files, bytes) = sync_card(kind, &pkg, stock.as_ref(), ev)?;
+        ev.phase(Phase::Done);
+        ev.dim(format!("total {:.1} s", t0.elapsed().as_secs_f32()));
+        ev.send(Event::Done(Outcome { files, bytes, card: true, ..Default::default() }));
+        Ok(())
+    }
+
+    fn restore(&mut self, kind: Kind, image: &Path, ev: &Sink) -> Result<(), String> {
+        let g = kind.geometry();
+        ev.phase(Phase::Connect);
+        let mut d = self.connect(kind, ev)?;
+        ev.send(Event::Layout { sectors: g.size / g.sector, sector_size: g.sector });
+        for i in 0..g.size / g.sector {
+            let a = i * g.sector;
+            if a < g.writable.0 || a >= g.writable.1 {
+                ev.sector(i, Sect::Protected);
+            }
+        }
+        self.probe(&mut d, ev)?;
+        ev.phase(Phase::Verify);
+        let img = backup::load(image, g.size as usize)?;
+        ev.ok(format!("{} loaded, checksum OK", image.file_name().map(|n| n.to_string_lossy()).unwrap_or_default()));
+        match backup::known(kind, &img) {
+            Some(v) => ev.ok(format!("known stock firmware: {v}")),
+            None => ev.warn("rockslop does not recognise this firmware"),
+        }
+        let cur = self.dump(&mut d, ev)?;
+        if backup::fingerprint(kind, &cur) != backup::fingerprint(kind, &img) {
+            ev.warn("backup is from another unit; its per-unit sectors are left alone");
+        }
+        // only the writable window comes from the backup
+        let mut want = cur.clone();
+        let (a, b) = (g.writable.0 as usize, g.writable.1 as usize);
+        want[a..b].copy_from_slice(&img[a..b]);
+        self.program(&mut d, kind, &cur, &want, ev)?;
+        self.reboot(d, kind, Mode::Stock, ev)?;
+        ev.phase(Phase::Done);
+        ev.send(Event::Done(Outcome { restored: true, ..Default::default() }));
+        Ok(())
+    }
+}
+
+fn package_for(kind: Kind, path: &Path) -> Result<Package, String> {
+    let pkg = Package::open(path)?;
+    if pkg.get("target") != Some(kind.id()) {
+        return Err(err!(E150, "this package is for {}, not {}", pkg.get("target").unwrap_or("?"), kind.name()));
+    }
+    Ok(pkg)
+}
+
+/// Copy the package's card tree onto the player's card (a file it holds
+/// already, unchanged, stays as it is) and read what was written back;
+/// then put the stock backup there too, or take it from there when this
+/// computer has none.
+fn sync_card(kind: Kind, pkg: &Package, stock: Option<&Backup>, ev: &Sink) -> Result<(usize, u64), String> {
+    ev.phase(Phase::Sync);
+    ev.info("waiting for Rockbox's USB disk");
+    let mut asked = false;
+    let mut no_disk = false;
+    let mut hinted = 0.0;
+    let mut card = sdcard::wait_card(Duration::from_secs(600), |look, el| {
+        // Rockbox is up but offers no disk: the card's settings can keep
+        // it to charging (USB Mode, on both players), or it missed the
+        // connect. Said again every two minutes: one line is easily missed.
+        let absent = matches!(look, Look::Absent) && el > 25.0;
+        if absent != no_disk {
+            no_disk = absent;
+            ev.send(Event::NeedDisk(absent));
+        }
+        if absent && el >= hinted {
+            hinted = el + 120.0;
+            ev.warn("no USB disk from Rockbox yet: if it is set to charge only, unplug the player, hold any key and plug it back in (or set Settings > General Settings > System > USB > USB Mode to Mass Storage)");
+        }
+        let none = matches!(look, Look::NoMedia);
+        if none != asked {
+            asked = none;
+            ev.send(Event::NeedCard(none));
+            if none {
+                ev.warn("no microSD card in the player: insert one, then press RESET");
+            }
+        }
+        true
+    })?;
+    if asked {
+        ev.send(Event::NeedCard(false));
+    }
+    if no_disk {
+        ev.send(Event::NeedDisk(false));
+    }
+    ev.ok(format!("card online: {}", card.mount.display()));
+    let total = pkg.card_bytes();
+    if let Some(free) = sdcard::free_space(&card) {
+        let old = dir_size(&card.mount.join(".rockbox"));
+        if free + old < total + (1 << 20) {
+            return Err(err!(E510, "the card needs {} MiB free; it has {} MiB", total >> 20, (free + old) >> 20));
+        }
+    }
+    // Plugins and codecs are tied to the core's exact build: stale ones
+    // left from an older build would refuse to load, so remove them.
+    let keep: std::collections::HashSet<&str> = pkg.files.iter().map(|f| f.path.as_str()).collect();
+    // The firmware is in flash. A copy on the card (Rockbox's own packaging
+    // puts one there) makes Rockbox offer, once USB lets go, to reboot into
+    // it from the card, which these players can't do ("ROLO error").
+    let boot = format!(".rockbox/rockbox.{}", kind.id());
+    if !keep.contains(boot.as_str()) && std::fs::remove_file(card.mount.join(&boot)).is_ok() {
+        ev.dim(format!("removed {boot}: the firmware is in flash, not on the card"));
+    }
+    let stale = prune(&card.mount, &keep);
+    if stale > 0 {
+        ev.dim(format!("removed {stale} stale plugin/codec files"));
+    }
+    for dir in &pkg.dirs {
+        let _ = std::fs::create_dir_all(card.mount.join(dir));
+    }
+    // A file the card already holds as the package has it stays as it is:
+    // reading it is much quicker than writing it, and checks it as well.
+    // Only the files written are read back afterwards.
+    let mut done = 0u64;
+    let mut sums: Vec<(String, [u8; 32])> = Vec::new();
+    let (mut same, mut same_bytes) = (0usize, 0u64);
+    let wrote = Rc::new(Cell::new(false));
+    let mount = card.mount.clone();
+    pkg.for_each_card_file(
+        |rel, size| {
+            let (ev, name) = (ev.clone(), rel.to_string());
+            card_file(mount.join(rel), size, wrote.clone(), move || ev.send(Event::File(name.clone(), size)))
+        },
+        |rel, sum| {
+            let size = pkg.files.iter().find(|f| f.path == rel).map(|f| f.size).unwrap_or(0);
+            done += size;
+            ev.progress(done as f32 / total.max(1) as f32 * 0.7);
+            if wrote.get() {
+                sums.push((rel.to_string(), sum));
+            } else {
+                same += 1;
+                same_bytes += size;
+                ev.send(Event::Unchanged(rel.to_string(), size));
+            }
+            Ok(())
+        },
+    )?;
+    ev.ok(format!("{} files written", sums.len()));
+    if same > 0 {
+        ev.ok(format!("{same} files already on the card match the package: left as they are"));
+    }
+    let stock_copy = match stock.map(|b| stock_to_card(&card, b, ev)) {
+        Some(Err(e)) => {
+            ev.warn(format!("could not copy the stock firmware to the card: {e}"));
+            None
+        }
+        Some(Ok(c)) => c,
+        None => None,
+    };
+    if !sums.is_empty() || stock_copy.is_some() {
+        sdcard::drop_cache(&mut card)?;
+    }
+    if !sums.is_empty() {
+        ev.info("reading the written files back from the card");
+    }
+    // the files left as they were are checked already
+    let mut checked = same_bytes;
+    for (k, (rel, sum)) in sums.iter().enumerate() {
+        let data = sdcard::read_back(&card.mount.join(rel)).map_err(|e| err!(E540, "{rel}: {e}"))?;
+        if sha256(&data) != *sum {
+            return Err(err!(E541, "{rel} did not read back correctly from the card"));
+        }
+        checked += data.len() as u64;
+        if k % 4 == 0 {
+            ev.send(Event::ReadBack(rel.clone(), data.len() as u64));
+        }
+        ev.progress(0.7 + 0.3 * checked as f32 / total.max(1) as f32);
+    }
+    if !sums.is_empty() {
+        ev.ok(format!("{} files read back: sha256 OK", sums.len()));
+    }
+    if let Some((rel, img)) = stock_copy {
+        let p = card.mount.join(&rel);
+        if sdcard::read_back(&p).is_ok_and(|d| d == img) {
+            ev.send(Event::ReadBack(rel.clone(), img.len() as u64));
+            ev.ok(format!("stock firmware copied to the card: {rel}"));
+        } else {
+            // without its checksum file, nothing takes the copy for good
+            let _ = std::fs::remove_file(backup::sidecar(&p));
+            ev.warn("the stock firmware did not read back correctly from the card");
+        }
+    } else if stock.is_none() {
+        if let Some(b) = backup::on_card(kind, &card.mount).iter().find_map(|p| backup::import(kind, p).ok()) {
+            ev.ok(format!("stock firmware found on the card: {}", b.path.display()));
+        }
+    }
+    ev.phase(Phase::Eject);
+    match sdcard::eject(&card) {
+        Ok(()) => ev.ok("card ejected"),
+        Err(e) => ev.warn(format!("could not eject the card ({e}); eject it before unplugging")),
+    }
+    Ok((sums.len() + same, total))
+}
+
+type Chunks = Box<dyn FnMut(&[u8]) -> Result<(), String>>;
+
+/// Where one card file's bytes go. Where the card holds a file of the same
+/// size, they are compared with it as they come and written only from the
+/// first difference on (a rebuilt plugin differs in its first few KiB, so
+/// that costs little); otherwise the file is written whole. `wrote` says
+/// whether anything was written; `writing` runs as the first write starts.
+fn card_file(p: PathBuf, size: u64, wrote: Rc<Cell<bool>>, mut writing: impl FnMut() + 'static) -> Result<Chunks, String> {
+    use std::io::{BufReader, BufWriter, Read, Seek, SeekFrom};
+    // at 0 the file is made afresh; past 0, written over from there
+    fn open_at(p: &Path, at: u64) -> Result<BufWriter<std::fs::File>, String> {
+        if at == 0 {
+            if let Some(parent) = p.parent() {
+                std::fs::create_dir_all(parent).map_err(|e| err!(E520, "{}: {e}", parent.display()))?;
+            }
+        }
+        let f = if at == 0 {
+            std::fs::File::create(p)
+        } else {
+            std::fs::OpenOptions::new().write(true).open(p).and_then(|mut f| f.seek(SeekFrom::Start(at)).map(|_| f))
+        };
+        Ok(BufWriter::with_capacity(256 << 10, f.map_err(|e| err!(E521, "{}: {e}", p.display()))?))
+    }
+    enum To {
+        /// the card's copy, how far it matches, a buffer for its bytes
+        Compare(BufReader<std::fs::File>, u64, Vec<u8>),
+        Write(BufWriter<std::fs::File>),
+    }
+    let same_size = std::fs::metadata(&p).is_ok_and(|m| m.is_file() && m.len() == size);
+    let mut to = match same_size.then(|| sdcard::open_back(&p).ok()).flatten() {
+        Some(f) => To::Compare(BufReader::with_capacity(256 << 10, f), 0, Vec::new()),
+        None => {
+            writing();
+            To::Write(open_at(&p, 0)?)
+        }
+    };
+    wrote.set(matches!(to, To::Write(_)));
+    let mut left = size;
+    Ok(Box::new(move |chunk: &[u8]| {
+        if let To::Compare(card, at, buf) = &mut to {
+            buf.resize(chunk.len(), 0);
+            if card.read_exact(buf).is_ok() && buf[..] == *chunk {
+                *at += chunk.len() as u64;
+            } else {
+                let at = *at;
+                writing();
+                wrote.set(true);
+                to = To::Write(open_at(&p, at)?);
+            }
+        }
+        if let To::Write(w) = &mut to {
+            let write_err = |e: std::io::Error| err!(E522, "card write: {e}");
+            w.write_all(chunk).map_err(write_err)?;
+            left = left.saturating_sub(chunk.len() as u64);
+            if left == 0 {
+                w.flush().map_err(write_err)?;
+                sdcard::sync_file(w.get_ref()).map_err(|e| err!(E523, "card sync: {e}"))?;
+            }
+        }
+        Ok(())
+    }))
+}
+
+/// Write a copy of the stock backup to the card (`.rockbox/<its name>`,
+/// with its checksum file), where another computer can find it: the path
+/// and image to read back, or None when it is there already. Errors are
+/// plain reasons: a failure here only warns.
+fn stock_to_card(card: &sdcard::Card, b: &Backup, ev: &Sink) -> Result<Option<(String, Vec<u8>)>, String> {
+    let name = b.path.file_name().map(|n| n.to_string_lossy().to_string()).unwrap_or_default();
+    let rel = format!(".rockbox/{name}");
+    let (dst, dst_sum) = (card.mount.join(&rel), backup::sidecar(&card.mount.join(&rel)));
+    let img = std::fs::read(&b.path).map_err(|e| e.to_string())?;
+    let sum = std::fs::read(backup::sidecar(&b.path)).map_err(|e| e.to_string())?;
+    let len = std::fs::metadata(&dst).map(|m| m.len()).ok();
+    if len == Some(img.len() as u64) && std::fs::read(&dst_sum).is_ok_and(|s| s == sum) {
+        ev.dim(format!("stock firmware already on the card: {rel}"));
+        return Ok(None);
+    }
+    if let Some(free) = sdcard::free_space(card).filter(|&f| f < img.len() as u64 + (64 << 10)) {
+        ev.warn(format!("no room on the card for the stock firmware ({} KiB free)", free >> 10));
+        return Ok(None);
+    }
+    ev.send(Event::File(rel.clone(), img.len() as u64));
+    for (p, data) in [(&dst, &img), (&dst_sum, &sum)] {
+        let mut f = std::fs::File::create(p).map_err(|e| e.to_string())?;
+        f.write_all(data).map_err(|e| e.to_string())?;
+        sdcard::sync_file(&f).map_err(|e| e.to_string())?;
+    }
+    Ok(Some((rel, img)))
+}
+
+fn dir_size(p: &Path) -> u64 {
+    let Ok(rd) = std::fs::read_dir(p) else { return 0 };
+    rd.flatten()
+        .map(|e| match e.file_type() {
+            Ok(t) if t.is_dir() => dir_size(&e.path()),
+            Ok(_) => e.metadata().map(|m| m.len()).unwrap_or(0),
+            Err(_) => 0,
+        })
+        .sum()
+}
+
+fn prune(mount: &Path, keep: &std::collections::HashSet<&str>) -> usize {
+    fn walk(root: &Path, dir: &Path, keep: &std::collections::HashSet<&str>, n: &mut usize) {
+        let Ok(rd) = std::fs::read_dir(dir) else { return };
+        for e in rd.flatten() {
+            let p = e.path();
+            if p.is_dir() {
+                walk(root, &p, keep, n);
+                continue;
+            }
+            let Ok(rel) = p.strip_prefix(root) else { continue };
+            let rel = rel.to_string_lossy().replace('\\', "/");
+            let binary = rel.ends_with(".rock") || rel.ends_with(".codec") || rel.ends_with(".ovl");
+            if binary && !keep.contains(rel.as_str()) && std::fs::remove_file(&p).is_ok() {
+                *n += 1;
+            }
+        }
+    }
+    let mut n = 0;
+    for sub in [".rockbox/rocks", ".rockbox/codecs"] {
+        walk(mount, &mount.join(sub), keep, &mut n);
+    }
+    n
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Feeds `chunks` to a card file at `p` the way a sync does; says
+    /// whether it wrote and how often `writing` ran.
+    fn feed(p: &Path, chunks: &[&[u8]]) -> (bool, usize) {
+        let wrote = Rc::new(Cell::new(false));
+        let starts = Rc::new(Cell::new(0));
+        let s = starts.clone();
+        let size = chunks.iter().map(|c| c.len() as u64).sum();
+        let mut sink = card_file(p.to_path_buf(), size, wrote.clone(), move || s.set(s.get() + 1)).unwrap();
+        for c in chunks {
+            sink(c).unwrap();
+        }
+        drop(sink);
+        (wrote.get(), starts.get())
+    }
+
+    #[test]
+    fn a_card_file_is_written_only_from_where_it_differs() {
+        let dir = std::env::temp_dir().join(format!("rockslop-test-cardfile-{}", std::process::id()));
+        let p = dir.join(".rockbox/rocks/x.rock");
+        let chunks: [&[u8]; 3] = [b"abcd", b"efgh", b"ij"];
+        // missing, directory and all: made
+        assert_eq!(feed(&p, &chunks), (true, 1));
+        assert_eq!(std::fs::read(&p).unwrap(), b"abcdefghij");
+        // as the package has it: left alone
+        assert_eq!(feed(&p, &chunks), (false, 0));
+        assert_eq!(std::fs::read(&p).unwrap(), b"abcdefghij");
+        // the same size, different in the second chunk: written from there
+        std::fs::write(&p, b"abcdeXghij").unwrap();
+        assert_eq!(feed(&p, &chunks), (true, 1));
+        assert_eq!(std::fs::read(&p).unwrap(), b"abcdefghij");
+        // different only in the last byte
+        std::fs::write(&p, b"abcdefghiJ").unwrap();
+        assert_eq!(feed(&p, &chunks), (true, 1));
+        assert_eq!(std::fs::read(&p).unwrap(), b"abcdefghij");
+        // longer or shorter: written afresh
+        std::fs::write(&p, b"abcdefghijkl").unwrap();
+        assert_eq!(feed(&p, &chunks), (true, 1));
+        assert_eq!(std::fs::read(&p).unwrap(), b"abcdefghij");
+        std::fs::write(&p, b"abcd").unwrap();
+        assert_eq!(feed(&p, &chunks), (true, 1));
+        assert_eq!(std::fs::read(&p).unwrap(), b"abcdefghij");
+        std::fs::remove_dir_all(&dir).unwrap();
+    }
+}

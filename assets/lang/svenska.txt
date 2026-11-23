@@ -1,0 +1,690 @@
+# Svenska: rockslop UI
+TARGET
+= MÅL
+LINK
+= LÄNK
+PAYLOAD
+= PAYLOAD
+EXECUTE
+= KÖR
+BUS IDLE
+= BUSS TOM
+STOCK
+= ORIGINAL
+awaiting target
+= väntar på mål
+scanning usb
+= söker usb
+awaiting payload
+= väntar på payload
+executing
+= kör
+session complete
+= session klar
+session aborted
+= session avbruten
+rolling credits
+= eftertexter rullar
+SND
+= LJUD
+MUTED
+= TYST
+NO SND
+= INGET LJUD
+audio muted
+= ljud av
+audio on
+= ljud på
+neural uplink
+= neural uplink
+usb stack
+= usb-stack
+flash maps
+= flashkartor
+payloads
+= payloads
+glyph cache
+= glyfcache
+SELECT TARGET
+= VÄLJ MÅL
+DOWNLOAD MODE
+= NEDLADDNINGSLÄGE
+STOCK FIRMWARE
+= ORIGINALFIRMWARE
+ENGAGE
+= STARTA
+CLICK TO ENGAGE
+= KLICKA FÖR ATT STARTA
+RESET
+= RESET
+HEADPHONE
+= HÖRLURAR
+VOL
+= VOL
+POWER
+= POWER
+POWER OFF
+= STÄNG AV
+unplugged: hold the centre key
+= urkopplad: håll mittknappen nedtryckt
+HOLD DOWN
+= HÅLL DOWN
+bottom of the wheel
+= nederst på hjulet
+CONNECT USB
+= ANSLUT USB
+keep holding
+= håll kvar
+RELEASE
+= SLÄPP
+once linked
+= när länken är uppe
+OR
+= ELLER
+hold DOWN and tap RESET
+= håll DOWN och tryck på RESET
+STAND BY
+= VÄNTA
+it reboots into download mode
+= den startar om i nedladdningsläge
+ROCKBOX?
+= ROCKBOX?
+switch it off, then hold POWER ~4 s while connecting
+= stäng av den och håll sedan POWER ~4 s vid anslutning
+LINK FAILED
+= LÄNK MISSLYCKAD
+SCANNING
+= SÖKER
+no player on the bus yet
+= ingen spelare på bussen ännu
+ACCESS DENIED
+= ÅTKOMST NEKAD
+no permission: install the udev rule (see README)
+= ingen behörighet: installera udev-regeln (se README)
+macOS: run rockslop with sudo to take the device
+= macOS: kör rockslop med sudo för att ta över enheten
+install the WinUSB driver for it (Zadig)
+= installera WinUSB-drivrutinen för den (Zadig)
+LINK ESTABLISHED
+= LÄNK UPPRÄTTAD
+identity verified
+= identitet verifierad
+PROBING
+= SONDERAR
+boot ROM online
+= boot-ROM online
+forcing download mode
+= tvingar nedladdningsläge
+ROCKBOX RUNNING
+= ROCKBOX KÖRS
+BACK
+= TILLBAKA
+RETRY
+= FÖRSÖK IGEN
+Rockbox package
+= Rockbox-paket
+SELECT IMAGE
+= VÄLJ IMAGE
+or drop it here
+= eller släpp den här
+IMAGE
+= IMAGE
+REJECTED
+= NEKAD
+BUILD
+= BUILD
+FLASH
+= FLASH
+CARD
+= KORT
+{0} files  ·  {1}
+= {0} filer  ·  {1}
+every member verified
+= alla delar verifierade
+BACKUP
+= BACKUP
+stock flash saved first
+= originalflash sparad först
+CHANGE
+= ÄNDRA
+INSERT SD CARD
+= SÄTT I SD-KORT
+RETURN TO STOCK
+= TILLBAKA TILL ORIGINAL
+built for {0}, not {1}
+= byggd för {0}, inte {1}
+LAYOUT
+= LAYOUT
+LOCKED
+= LÅST
+VERSION
+= VERSION
+DOWNLOAD
+= NEDLADDNING
+LATEST
+= SENASTE
+PRE
+= TEST
+DOWNLOAD FAILED
+= NEDLADDNINGSFEL
+USE A FILE
+= ANVÄND FIL
+LATEST RELEASE
+= SENASTE RELEASE
+ASKING GITHUB
+= FRÅGAR GITHUB
+the latest {0} release
+= senaste releasen för {0}
+no {0} release on GitHub yet: use a package file
+= ingen release för {0} på GitHub än: använd en paketfil
+ALL RELEASES
+= ALLA RELEASER
+PROBE
+= SOND
+VERIFY
+= VERIFIERA
+WRITE
+= SKRIV
+CHECKSUM
+= CHECKSUMMA
+CHECK
+= KONTROLL
+REBOOT
+= OMSTART
+SD SYNC
+= SD SYNC
+EJECT
+= MATA UT
+DONE
+= KLART
+FLASH MAP
+= FLASHKARTA
+SAME
+= SAMMA
+READ
+= LÄS
+ERASE
+= RADERA
+WRITTEN
+= SKRIVEN
+BAD
+= DÅLIG
+FILES
+= FILER
+BUS TAP
+= BUSS TAP
+THEN PRESS RESET
+= TRYCK SEDAN RESET
+NO USB DISK
+= INGEN USB-DISK
+SET USB MODE TO MASS STORAGE
+= SÄTT USB-LÄGE TILL MASSLAGRING
+SD CARD
+= SD-KORT
+NO CARD
+= INGET KORT
+READ BACK
+= LÄS TILLBAKA
+MOUNT
+= MONTERA
+CHECKED
+= KONTROLLERAD
+DATA
+= DATA
+RATE
+= HASTIGHET
+ETA
+= ETA
+ACCESS GRANTED
+= ÅTKOMST BEVILJAD
+STOCK RESTORED
+= ORIGINAL ÅTERSTÄLLT
+the player boots stock firmware again
+= spelaren startar originalfirmware igen
+rockbox is live on the player
+= Rockbox är igång på spelaren
+SESSION
+= SESSION
+{0} sectors rewritten, checksummed
+= {0} sektorer omskrivna, checksumma OK
+{0} files  ·  {1}  ·  read back OK
+= {0} filer  ·  {1}  ·  återläst OK
+not updated
+= inte uppdaterad
+TIME
+= TID
+UNPLUG TO FINISH
+= KOPPLA UR FÖR ATT AVSLUTA
+EJECTED
+= UTMATAD
+UNPLUG AND ROCK
+= KOPPLA UR OCH ROCKA
+AGAIN
+= IGEN
+CREDITS
+= MEDARBETARE
+the flash was partly rewritten: a backup is safe on disk
+= flashen skrevs delvis om: en backup finns säkert på disk
+nothing was written
+= inget skrevs
+the flash was rewritten: a backup is safe on disk
+= flashen skrevs om: en backup finns säkert på disk
+the firmware is in flash and checked; the card was not fully updated
+= firmwaren ligger i flash och är kontrollerad; kortet uppdaterades inte helt
+SYNC THE CARD
+= SYNKRONISERA KORTET
+FAULT
+= FEL
+COPY REPORT
+= KOPIERA RAPPORT
+REPORT COPIED
+= RAPPORT KOPIERAD
+rockslop could not open its window. It needs OpenGL 2.1 or newer, which a virtual machine, Remote Desktop or a missing graphics driver may not offer; rockslop-cli does the same job in a terminal.
+= rockslop kunde inte öppna sitt fönster. Det behöver OpenGL 2.1 eller nyare, vilket en virtuell maskin, Fjärrskrivbord eller en saknad grafikdrivrutin kanske inte erbjuder; rockslop-cli gör samma jobb i en terminal.
+rockslop crashed. The log: {0}
+= rockslop kraschade. Loggen: {0}
+NOW PLAYING
+= SPELAS NU
+THIS FLASHER
+= DEN HÄR FLASHERN
+ROCKBOX CONTRIBUTORS
+= ROCKBOX-MEDARBETARE
+{0} contributors
+= {0} medarbetare
+People that have contributed to the project, one way or another. Friends!
+= Personer som har bidragit till projektet, på ett eller annat sätt. Vänner!
+links open in your browser
+= länkar öppnas i din webbläsare
+Made by
+= Skapad av
+Device protocols and payloads
+= Enhetsprotokoll och payloads
+Music
+= Musik
+Voice lines
+= Röstrepliker
+Sound effects
+= Ljudeffekter
+Fonts
+= Typsnitt
+Rust crates
+= Rust-crates
+Reference photos
+= Referensfoton
+LANGUAGE
+= SPRÅK
+AUTOMATIC
+= AUTOMATISKT
+stock firmware on the bus: asking it for download mode
+= originalfirmware på bussen: ber om nedladdningsläge
+{0} acknowledged 0xCB: rebooting into ADFU
+= {0} kvitterade 0xCB: startar om till ADFU
+attaching to {0}
+= ansluter till {0}
+sector CRC32 scan on the player
+= sektor-CRC32-skanning på spelaren
+dumping {0} KiB
+= läser ut {0} KiB
+{0} sectors captured ({1} read, {2} already known); CRC32 verified
+= {0} sektorer fångade ({1} lästa, {2} redan kända); CRC32 verifierad
+dumping {0} KiB of raw NOR cells
+= läser ut {0} KiB råa NOR-celler
+second pass: comparing
+= andra passet: jämför
+{0} sectors captured; two reads agree
+= {0} sektorer fångade; två läsningar stämmer överens
+identical backup already on file: {0}
+= identisk backup finns redan: {0}
+backup -> {0}
+= backup -> {0}
+{0} of {1} sectors differ
+= {0} av {1} sektorer skiljer sig
+0x{0} erase / program / verify ok
+= 0x{0} radera / programmera / verifiera ok
+CRC32 of every writable sector, computed on the player
+= CRC32 för varje skrivbar sektor, beräknad på spelaren
+reading the writable window back
+= läser tillbaka det skrivbara fönstret
+flash checksum OK  sha256 {0}..{1}
+= flashchecksumma OK  sha256 {0}..{1}
+rebooting into Rockbox
+= startar om till Rockbox
+rebooting into stock firmware
+= startar om till originalfirmware
+firmware is up
+= firmware är igång
+{0} image(s), {1} KiB, sha256 verified
+= {0} image(s), {1} KiB, sha256 verifierad
+{0} sectors rewritten
+= {0} sektorer omskrivna
+Rockbox did not show up as a USB disk; the card was not updated
+= Rockbox dök inte upp som USB-disk; kortet uppdaterades inte
+total {0} s
+= totalt {0} s
+{0} loaded, checksum OK
+= {0} laddad, checksumma OK
+backup is from another unit; its per-unit sectors are left alone
+= backupen är från en annan enhet; dess enhetsspecifika sektorer lämnas orörda
+waiting for Rockbox's USB disk
+= väntar på Rockbox USB-disk
+no USB disk from Rockbox yet: if it is set to charge only, unplug the player, hold any key and plug it back in (or set Settings > General Settings > System > USB > USB Mode to Mass Storage)
+= ingen USB-disk från Rockbox ännu: om den är inställd på endast laddning, koppla ur spelaren, håll valfri knapp och anslut den igen (eller sätt Inställningar > Generella > System > USB > USB-läge till Masslagring)
+no microSD card in the player: insert one, then press RESET
+= inget microSD-kort i spelaren: sätt i ett och tryck sedan på RESET
+card online: {0}
+= kort online: {0}
+removed {0} stale plugin/codec files
+= tog bort {0} föråldrade plugin-/codec-filer
+removed {0}: the firmware is in flash, not on the card
+= tog bort {0}: firmwaren ligger i flash, inte på kortet
+{0} files written
+= {0} filer skrivna
+{0} files already on the card match the package: left as they are
+= {0} filer på kortet stämmer redan med paketet: lämnas som de är
+reading the written files back from the card
+= läser tillbaka de skrivna filerna från kortet
+{0} files read back: sha256 OK
+= {0} filer återlästa: sha256 OK
+card ejected
+= kortet utmatat
+could not eject the card ({0}); eject it before unplugging
+= kunde inte mata ut kortet ({0}); mata ut det innan du kopplar ur
+stock firmware detected: ACTIONSUSBD
+= originalfirmware upptäckt: ACTIONSUSBD
+injecting vendor command 0xCB -> ADFU
+= injicerar tillverkarkommando 0xCB -> ADFU
+opening {0} download mode
+= öppnar {0}-nedladdningsläge
+reattaching to download mode
+= återansluter till nedladdningsläge
+dumping {0} KiB of stock flash
+= läser ut {0} KiB originalflash
+re-reading CRC32 of every sector
+= läser om CRC32 för varje sektor
+backup verified: {0}/{1} sectors match
+= backup verifierad: {0}/{1} sektorer stämmer
+{0} sectors differ; writing
+= {0} sektorer skiljer sig; skriver
+sector 0x{0} erase/program/verify ok
+= sektor 0x{0} radera/programmera/verifiera ok
+full flash CRC scan
+= fullständig flash-CRC-skanning
+flash checksum OK
+= flashchecksumma OK
+waiting for Rockbox USB mass storage
+= väntar på Rockbox USB-masslagring
+no media: insert a microSD card
+= inget medium: sätt i ett microSD-kort
+syncing and ejecting card
+= synkroniserar och matar ut kortet
+another tool holds the player ({0})
+= ett annat verktyg håller spelaren ({0})
+the player did not come back in download mode
+= spelaren kom inte tillbaka i nedladdningsläge
+the YP3 enters download mode by hand: hold Down while connecting USB
+= YP3 går in i nedladdningsläge för hand: håll DOWN medan du ansluter USB
+battery too low to flash safely ({0})
+= batteriet är för svagt för säker flashning ({0})
+the player came back in download mode: the new firmware did not start
+= spelaren kom tillbaka i nedladdningsläge: den nya firmwaren startade inte
+this package is for {0}, not {1}
+= det här paketet är för {0}, inte {1}
+this player's flash at 0x{0} is not what the package was built for; nothing was written
+= den här spelarens flash vid 0x{0} är inte vad paketet byggdes för; inget skrevs
+the package has no firmware image
+= paketet saknar firmware-image
+the card needs {0} MiB free; it has {1} MiB
+= kortet behöver {0} MiB ledigt; det har {1} MiB
+{0} did not read back correctly from the card
+= {0} lästes inte tillbaka korrekt från kortet
+could not mount the player's card: {0}
+= kunde inte montera spelarens kort: {0}
+Rockbox never showed its USB disk. If its USB Mode is Charge Only, set it to Mass Storage (Settings > General Settings > System > USB), or unplug the player, hold any key and plug it back in
+= Rockbox visade aldrig sin USB-disk. Om USB-läge är inställt på endast laddning, sätt det till Masslagring (Inställningar > Generella > System > USB), eller koppla ur spelaren, håll valfri knapp och anslut den igen
+the card is in use by another program
+= kortet används av ett annat program
+cancelled
+= avbrutet
+checksum mismatch at 0x{0}
+= checksummefel vid 0x{0}
+sector 0x{0} reads inconsistently
+= sektor 0x{0} läses inkonsekvent
+flash at 0x{0} reads inconsistently
+= flash vid 0x{0} läses inkonsekvent
+backup did not read back from disk
+= backupen gick inte att läsa tillbaka från disk
+{0} is damaged (checksum mismatch)
+= {0} är skadad (checksummefel)
+{0} is {1} bytes; a full flash image is {2}
+= {0} är {1} byte; en full flash-image är {2}
+not a tar.xz release: {0}
+= inte en tar.xz-release: {0}
+this package (format {0}) needs a newer rockslop than {1}: update rockslop
+= det här paketet (format {0}) kräver en nyare rockslop än {1}: uppdatera rockslop
+this package (format {0}) is too old for rockslop {1}: get a newer release
+= det här paketet (format {0}) är för gammalt för rockslop {1}: hämta en nyare release
+MANIFEST has no format
+= MANIFEST saknar format
+MANIFEST names no target
+= MANIFEST nämner inget mål
+unsafe path in archive: {0}
+= osäker sökväg i arkivet: {0}
+{0}: links and special files are not allowed
+= {0}: länkar och specialfiler är inte tillåtna
+{0}: checksum mismatch, the download is corrupt
+= {0}: checksummefel, nedladdningen är korrupt
+unexpected member {0}
+= oväntad del {0}
+archive is missing {0} file(s) listed in SHA256SUMS
+= arkivet saknar {0} fil(er) som listas i SHA256SUMS
+release contains no flash image
+= releasen innehåller ingen flash-image
+{0}: checksum mismatch
+= {0}: checksummefel
+archive member too large
+= arkivdel för stor
+internal error: {0}
+= internt fel: {0}
+{0}: permission denied. {1}
+= {0}: åtkomst nekad. {1}
+Install the udev rule (see README) or run as root.
+= Installera udev-regeln (se README) eller kör som root.
+macOS needs root to take the device from its mass storage driver: run from Terminal with sudo.
+= macOS behöver root för att ta enheten från dess masslagringsdrivrutin: kör från Terminal med sudo.
+The device needs the WinUSB driver (Zadig).
+= Enheten behöver WinUSB-drivrutinen (Zadig).
+{0}: the device is busy (another tool is using it?)
+= {0}: enheten är upptagen (används den av ett annat verktyg?)
+{0}: the device went away
+= {0}: enheten försvann
+{0}: timed out
+= {0}: tidsgränsen överskreds
+Windows shows no disk for the player in download mode
+= Windows visar ingen disk för spelaren i nedladdningsläge
+Windows refused to open the player's disk (error {0})
+= Windows vägrade öppna spelarens disk (fel {0})
+a command through Windows' disk driver failed (Windows error {0})
+= ett kommando genom Windows diskdrivrutin misslyckades (Windows-fel {0})
+can't reach GitHub: {0}
+= når inte GitHub: {0}
+GitHub answered {0}
+= GitHub svarade {0}
+GitHub's list of releases makes no sense: {0}
+= listan över releaser från GitHub är obegriplig: {0}
+GitHub gave the package an odd name: {0}
+= GitHub gav paketet ett konstigt namn: {0}
+can't save the download: {0}
+= kan inte spara nedladdningen: {0}
+the download stopped: {0}
+= nedladdningen avbröts: {0}
+the download is the wrong size: {0} bytes, not {1}
+= nedladdningen har fel storlek: {0} byte, inte {1}
+the download doesn't match GitHub's checksum: sha256 {0}
+= nedladdningen stämmer inte med checksumman från GitHub: sha256 {0}
+# Clippy, and the new download-mode steps
+DRAG TO SPIN
+= DRA FÖR ATT SNURRA
+UNPLUG
+= KOPPLA UR
+pull the USB cable out
+= dra ut USB-kabeln
+POWER ON
+= SLÅ PÅ
+hold POWER, on the bottom edge
+= håll POWER, på nederkanten
+stock firmware
+= originalfirmware
+SWITCH OFF
+= STÄNG AV
+hold POWER until the screen goes dark
+= håll POWER tills skärmen slocknar
+HOLD POWER
+= HÅLL POWER
+plug in while holding, ~4 s
+= anslut medan du håller, ~4 s
+on the player: System > Debug > {0}
+= på spelaren: System > Felsök > {0}
+follow the steps above
+= följ stegen ovan
+THE {0} PACKAGE
+= PAKETET FÖR {0}
+NEEDS A MICROSD CARD
+= KRÄVER ETT MICROSD-KORT
+It looks like you're trying to hack an MP3 player. Would you like help?
+= Det verkar som om du försöker hacka en MP3-spelare. Vill du ha hjälp?
+GOT IT
+= UPPFATTAT
+There's no model number on these players. Compare the wireframes instead: the buttons and ports differ. Drag a player to spin it.
+= De här spelarna har inget modellnummer. Jämför trådmodellerna i stället: knapparna och portarna skiljer sig åt. Dra i en spelare för att snurra den.
+Power the player off first, then hold DOWN before the cable goes in, and keep holding.
+= Stäng av spelaren först, håll sedan DOWN innan kabeln sätts i, och håll kvar.
+Hold POWER while you plug the cable in, and keep holding for about 4 seconds.
+= Håll POWER medan du ansluter kabeln, och håll kvar i ungefär 4 sekunder.
+Switch the player on first: hold POWER on its bottom edge.
+= Slå på spelaren först: håll POWER på dess nederkant.
+Still nothing? Try another cable: some only charge.
+= Fortfarande inget? Prova en annan kabel: vissa kan bara ladda.
+Your computer won't let rockslop use the player.
+= Din dator låter inte rockslop använda spelaren.
+Unplug the cable first: the player only listens in download mode. The steps say how.
+= Koppla ur kabeln först: spelaren lyssnar bara i nedladdningsläge. Stegen visar hur.
+You need the Rockbox package built for the {0}: a .tar.xz file. Click SELECT IMAGE, or drop it on the panel.
+= Du behöver Rockbox-paketet byggt för {0}: en .tar.xz-fil. Klicka på VÄLJ IMAGE, eller släpp den på panelen.
+Push a microSD card all the way into the player's slot, then press RESET.
+= Tryck in ett microSD-kort hela vägen i spelarens kortplats och tryck sedan på RESET.
+Rockbox hasn't shown its USB disk yet. If the player only charges, unplug it, hold any key and plug it back in.
+= Rockbox har inte visat sin USB-disk än. Om spelaren bara laddar: koppla ur den, håll valfri knapp och anslut den igen.
+RETRY usually sorts it out. Still stuck? COPY REPORT puts the details on the clipboard for a bug report.
+= FÖRSÖK IGEN brukar lösa det. Fortfarande fast? KOPIERA RAPPORT lägger detaljerna i urklipp för en felrapport.
+It looks like you watched all the credits. Nobody does that. Respect.
+= Det verkar som om du har sett hela eftertexten. Det gör ingen. Respekt.
+DEAL WITH IT
+= DEAL WITH IT
+
+# return to stock without a backup on this computer
+no stock backup on this computer
+= ingen backup av originalfirmware på den här datorn
+When rockslop flashes a player, it puts a copy of the stock firmware on the player's microSD card: .rockbox/{0}
+= När rockslop flashar en spelare lägger den en kopia av originalfirmware på spelarens microSD-kort: .rockbox/{0}
+Start the player in Rockbox and plug it in, and rockslop looks there itself. Or find the file and select it.
+= Starta spelaren i Rockbox och anslut den, så tittar rockslop där själv. Eller hitta filen och välj den.
+looking on the player's card
+= letar på spelarens kort
+no stock firmware on the player's card
+= ingen originalfirmware på spelarens kort
+checking the image
+= kontrollerar avbilden
+stock firmware: {0}
+= originalfirmware: {0}
+UNKNOWN FIRMWARE
+= OKÄND FIRMWARE
+It isn't a stock firmware rockslop knows: a newer version, or not stock at all.
+= Det är inte en originalfirmware som rockslop känner till: en nyare version, eller inte original alls.
+It has Rockbox in it, so it isn't stock firmware.
+= Den innehåller Rockbox, så det är inte originalfirmware.
+Flash it only if you're sure it came from a {0}.
+= Flasha den bara om du är säker på att den kommer från en {0}.
+FLASH ANYWAY
+= FLASHA ÄNDÅ
+The .rockbox folder is hidden: turn on hidden files in your file browser to see it.
+= Mappen .rockbox är dold: slå på visning av dolda filer i din filhanterare för att se den.
+stock firmware copied to the card: {0}
+= originalfirmware kopierad till kortet: {0}
+stock firmware already on the card: {0}
+= originalfirmware finns redan på kortet: {0}
+could not copy the stock firmware to the card: {0}
+= kunde inte kopiera originalfirmware till kortet: {0}
+no room on the card for the stock firmware ({0} KiB free)
+= inget utrymme på kortet för originalfirmware ({0} KiB ledigt)
+the stock firmware did not read back correctly from the card
+= originalfirmware lästes inte tillbaka rätt från kortet
+stock firmware found on the card: {0}
+= originalfirmware hittad på kortet: {0}
+known stock firmware: {0}
+= känd originalfirmware: {0}
+rockslop does not recognise this firmware
+= rockslop känner inte igen den här firmwaren
+{0} is not a {1} flash backup (no partition table)
+= {0} är inte en {1}-flashbackup (ingen partitionstabell)
+{0} has no firmware in it (that part is blank)
+= {0} har ingen firmware i sig (den delen är tom)
+{0} has Rockbox in it: it is not stock firmware
+= {0} innehåller Rockbox: det är inte originalfirmware
+BEFORE THE FIRST FLASH
+= INNAN FÖRSTA FLASHEN
+POINT OF NO RETURN
+= INGEN VÄG TILLBAKA
+rockslop is about to write Rockbox to your {0}. Read each of these and tick it, then hold to sign.
+= rockslop är på väg att skriva Rockbox till din {0}. Läs varje punkt och kryssa i den, och håll sedan knappen intryckt för att signera.
+rockslop and this player's Rockbox port are 100% vibe-coded: no human has ever looked at the code. It has been tested on real players, but that's all.
+= rockslop och Rockbox-porten för den här spelaren är 100 % vibe-kodade: ingen människa har någonsin tittat på koden. Det har testats på riktiga spelare, men det är allt.
+THIS CAN BRICK YOUR PLAYER
+= DET HÄR KAN FÖRSTÖRA DIN SPELARE
+Rockbox on this player is unofficial and experimental. A flash that goes wrong (a loose cable, a crash, a bug of ours) can leave the player dead, and there may be no way to bring it back. rockslop keeps a backup of the stock firmware, but a backup can't save every player. The risk is yours alone.
+= Rockbox på den här spelaren är inofficiellt och experimentellt. Går en flashning fel (en glappande kabel, en krasch, en bugg hos oss) kan spelaren dö, och det kanske inte går att få liv i den igen. rockslop sparar en backup av originalfirmware, men en backup kan inte rädda varje spelare. Risken är helt och hållet din.
+YOUR WARRANTY IS VOID
+= DIN GARANTI UPPHÖR
+Flashing firmware the maker didn't write voids the warranty. Whatever happens to this player from now on is yours to deal with: no repair, no replacement, no refund. Going back to stock doesn't change that.
+= Om du flashar firmware som tillverkaren inte har skrivit upphör garantin. Allt som händer med den här spelaren från och med nu är ditt problem: ingen reparation, inget utbyte, inga pengar tillbaka. Att gå tillbaka till originalfirmware ändrar inte på det.
+DON'T TAKE IT BACK
+= LÄMNA INTE TILLBAKA
+Never return a flashed player, claim on it, or complain to the seller or the maker about it. Rockbox runs on these players because nobody has locked them down. If flashed players start coming back, the next batch will be locked, and that's the end of Rockbox on them for everyone. If yours breaks, bring it to rockslop, never to the shop.
+= Lämna aldrig tillbaka en flashad spelare, reklamera den aldrig och klaga aldrig på den hos säljaren eller tillverkaren. Rockbox fungerar på de här spelarna för att ingen har låst dem. Om flashade spelare börjar komma tillbaka blir nästa parti låst, och då är det slut med Rockbox på dem för alla. Om din går sönder, vänd dig till rockslop, aldrig till butiken.
+I UNDERSTAND
+= JAG FÖRSTÅR
+I've read all three. If it bricks, that's on me. The warranty is gone. It never goes back to the seller. No backsies.
+= Jag har läst alla tre. Om den dör är det mitt ansvar. Garantin är borta. Den går aldrig tillbaka till säljaren. Byta byta, aldrig ta tillbaka.
+HOLD TO SIGN
+= HÅLL FÖR ATT SIGNERA
+KEEP HOLDING
+= HÅLL KVAR
+SIGNED
+= SIGNERAT
+NOT NOW
+= INTE NU
+tick all three boxes first
+= kryssa i alla tre rutorna först
+Signing is final. rockslop won't ask again on this computer.
+= Signeringen är slutgiltig. rockslop frågar inte igen på den här datorn.
+NO BACKSIES
+= ALDRIG TA TILLBAKA
+waiver signed: rockslop won't ask again on this computer
+= friskrivning signerad: rockslop frågar inte igen på den här datorn
+waiver signed (demo: not saved)
+= friskrivning signerad (demo: inte sparad)
+could not save the waiver: {0}
+= kunde inte spara friskrivningen: {0}
+EPILEPSY WARNING
+= EPILEPSIVARNING
+It's a flasher. It flashes.
+= Det är en flasher. Den blinkar.
+If the player won't start: hold the D-pad's Down button (or the power button), plug in USB, and keep holding about 3 seconds. The screen stays dark; rockslop will find it. Holding the power button about 7 seconds restarts the player.
+= Om spelaren inte startar: håll in styrkorsets Ned-knapp (eller strömknappen), anslut USB och fortsätt hålla i ungefär 3 sekunder. Skärmen förblir mörk; rockslop hittar den. Håller du in strömknappen i ungefär 7 sekunder startar spelaren om.
+this TS17 package is in an older format ({0}) that rockslop no longer flashes: get a newer release
+= det här TS17-paketet har ett äldre format ({0}) som rockslop inte längre flashar: hämta en nyare utgåva
+new install: the rescue stub goes in first
+= ny installation: räddningskoden skrivs först
+rescue stub in place: left alone
+= räddningskoden finns på plats: orörd
+a rescue stub that isn't rockslop's is in place: left alone
+= en räddningskod som inte är rockslops finns på plats: orörd

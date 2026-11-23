@@ -1,0 +1,690 @@
+# Latviešu: rockslop UI
+TARGET
+= MĒRĶIS
+LINK
+= SAITE
+PAYLOAD
+= KRAVA
+EXECUTE
+= PALAIST
+BUS IDLE
+= KOPNE TUKŠA
+STOCK
+= RŪPN.
+awaiting target
+= gaida mērķi
+scanning usb
+= skenē usb
+awaiting payload
+= gaida kravu
+executing
+= izpilda
+session complete
+= sesija pabeigta
+session aborted
+= sesija pārtraukta
+rolling credits
+= titri ritinās
+SND
+= SKŅ
+MUTED
+= KLUSS
+NO SND
+= NAV SKŅ
+audio muted
+= audio izslēgts
+audio on
+= audio ieslēgts
+neural uplink
+= neirālā saite
+usb stack
+= usb steks
+flash maps
+= flash kartes
+payloads
+= kravas
+glyph cache
+= glifu kešatmiņa
+SELECT TARGET
+= IZVĒLIES MĒRĶI
+DOWNLOAD MODE
+= LEJUPL. REŽĪMS
+STOCK FIRMWARE
+= RŪPN. FIRMWARE
+ENGAGE
+= AKTIVIZĒT
+CLICK TO ENGAGE
+= KLIKŠĶINI
+RESET
+= RESET
+HEADPHONE
+= AUSTIŅAS
+VOL
+= SKAĻ.
+POWER
+= BAROŠANA
+POWER OFF
+= IZSLĒDZ
+unplugged: hold the centre key
+= atvienots: tur centra taustiņu
+HOLD DOWN
+= TURI DOWN
+bottom of the wheel
+= riteņa apakša
+CONNECT USB
+= PIEVIENO USB
+keep holding
+= turpini turēt
+RELEASE
+= ATLAIDE
+once linked
+= kad saite izveidota
+OR
+= VAI
+hold DOWN and tap RESET
+= turi DOWN un piespied RESET
+STAND BY
+= GAIDI
+it reboots into download mode
+= tas pārstartējas lejupielādes režīmā
+ROCKBOX?
+= ROCKBOX?
+switch it off, then hold POWER ~4 s while connecting
+= izslēdz to, tad turi POWER ~4 s, kamēr pievieno
+LINK FAILED
+= SAITE NEIZDEVĀS
+SCANNING
+= SKENĒ
+no player on the bus yet
+= atskaņotāja vēl nav kopnē
+ACCESS DENIED
+= PIEKĻUVE NOLIEGTA
+no permission: install the udev rule (see README)
+= nav atļaujas: instalē udev noteikumu (skat. README)
+macOS: run rockslop with sudo to take the device
+= macOS: palaid rockslop ar sudo, lai pārņemtu ierīci
+install the WinUSB driver for it (Zadig)
+= instalē tai WinUSB draiveri (Zadig)
+LINK ESTABLISHED
+= SAITE IZVEIDOTA
+identity verified
+= identitāte pārbaudīta
+PROBING
+= ZONDĒ
+boot ROM online
+= ROM darbojas
+forcing download mode
+= piespiež lejupielādes režīmu
+ROCKBOX RUNNING
+= ROCKBOX DARBOJAS
+BACK
+= ATPAKAĻ
+RETRY
+= ATKĀRTOT
+Rockbox package
+= Rockbox pakotne
+SELECT IMAGE
+= IZVĒLIES PAKOTNI
+or drop it here
+= vai nomet to šeit
+IMAGE
+= PAKOTNE
+REJECTED
+= NOLIEGTS
+BUILD
+= BŪVE
+FLASH
+= FLASH
+CARD
+= KARTE
+{0} files  ·  {1}
+= faili: {0}  ·  {1}
+every member verified
+= visi elementi pārbaudīti
+BACKUP
+= KOPIJA
+stock flash saved first
+= rūpnīcas flash vispirms saglabāts
+CHANGE
+= MAINĪT
+INSERT SD CARD
+= IEVIETO SD KARTI
+RETURN TO STOCK
+= ATGRIEZT RŪPN.
+built for {0}, not {1}
+= būvēts priekš {0}, nevis {1}
+LAYOUT
+= SHĒMA
+LOCKED
+= BLOĶĒTS
+VERSION
+= VERSIJA
+DOWNLOAD
+= LEJUPIELĀDE
+LATEST
+= JAUNĀKAIS
+PRE
+= TESTS
+DOWNLOAD FAILED
+= LEJUPIELĀDE NEIZDEVĀS
+USE A FILE
+= IZMANTOT FAILU
+LATEST RELEASE
+= JAUNĀKAIS IZLAIDUMS
+ASKING GITHUB
+= JAUTĀ GITHUB
+the latest {0} release
+= jaunākais {0} izlaidums
+no {0} release on GitHub yet: use a package file
+= GitHub vēl nav {0} izlaiduma: izmanto pakotnes failu
+ALL RELEASES
+= VISI IZLAIDUMI
+PROBE
+= ZONDĒT
+VERIFY
+= PĀRBAUDĪT
+WRITE
+= RAKSTĪT
+CHECKSUM
+= KONTRSUMMA
+CHECK
+= PĀRBAUDE
+REBOOT
+= PĀRSTARTS
+SD SYNC
+= SD SINHR.
+EJECT
+= IZŅEMT
+DONE
+= GATAVS
+FLASH MAP
+= FLASH KARTE
+SAME
+= NEMAINĪTS
+READ
+= LASĪTS
+ERASE
+= DZĒSTS
+WRITTEN
+= RAKSTĪTS
+BAD
+= BOJĀTS
+FILES
+= FAILI
+BUS TAP
+= KOPNES PLŪSMA
+THEN PRESS RESET
+= TAD SPIED RESET
+NO USB DISK
+= NAV USB DISKA
+SET USB MODE TO MASS STORAGE
+= USB REŽĪMS: PIEKĻUVE KRĀTUVEI
+SD CARD
+= SD KARTE
+NO CARD
+= NAV KARTES
+READ BACK
+= ATKAL LASĪTS
+MOUNT
+= PIEMONT.
+CHECKED
+= PĀRBAUDĪTS
+DATA
+= DATI
+RATE
+= ĀTRUMS
+ETA
+= ATLIKUSI
+ACCESS GRANTED
+= PIEKĻUVE ATĻAUTA
+STOCK RESTORED
+= RŪPN. ATJAUNOTS
+the player boots stock firmware again
+= atskaņotājs atkal startē ar rūpnīcas firmware
+rockbox is live on the player
+= rockbox ir dzīvs atskaņotājā
+SESSION
+= SESIJA
+{0} sectors rewritten, checksummed
+= pārrakstīti sektori: {0}, kontrolsumma sakrīt
+{0} files  ·  {1}  ·  read back OK
+= faili: {0}  ·  {1}  ·  nolasīti OK
+not updated
+= nav atjaunināts
+TIME
+= LAIKS
+UNPLUG TO FINISH
+= ATVIENO, LAI PABEIGTU
+EJECTED
+= IZŅEMTS
+UNPLUG AND ROCK
+= ATVIENO UN ROKO
+AGAIN
+= VĒLREIZ
+CREDITS
+= PATEICĪBAS
+the flash was partly rewritten: a backup is safe on disk
+= flash daļēji pārrakstīts: dublējums droši saglabāts diskā
+nothing was written
+= nekas netika rakstīts
+the flash was rewritten: a backup is safe on disk
+= flash pārrakstīts: dublējums droši saglabāts diskā
+the firmware is in flash and checked; the card was not fully updated
+= firmware ir zibatmiņā un pārbaudīts; karte nav pilnībā atjaunināta
+SYNC THE CARD
+= SINHRONIZĒT KARTI
+FAULT
+= KĻŪDA
+COPY REPORT
+= KOPĒT ATSKAITI
+REPORT COPIED
+= ATSKAITE NOKOPĒTA
+rockslop could not open its window. It needs OpenGL 2.1 or newer, which a virtual machine, Remote Desktop or a missing graphics driver may not offer; rockslop-cli does the same job in a terminal.
+= rockslop nevarēja atvērt savu logu. Tam vajag OpenGL 2.1 vai jaunāku, ko virtuālā mašīna, attālā darbvirsma vai trūkstošs grafikas draiveris var nepiedāvāt; rockslop-cli to pašu dara terminālī.
+rockslop crashed. The log: {0}
+= rockslop avarēja. Žurnāls: {0}
+NOW PLAYING
+= ŠOBRĪD ATSKAŅO
+THIS FLASHER
+= ŠĪ PROGRAMMA
+ROCKBOX CONTRIBUTORS
+= ROCKBOX AUTORI
+{0} contributors
+= autoru skaits: {0}
+People that have contributed to the project, one way or another. Friends!
+= Cilvēki, kas ar savu ieguldījumu palīdzējuši projektam, tā vai citādi. Draugi!
+links open in your browser
+= saites atveras pārlūkā
+Made by
+= Veidoja
+Device protocols and payloads
+= Ierīču protokoli un kravas
+Music
+= Mūzika
+Voice lines
+= Balss rindas
+Sound effects
+= Skaņas efekti
+Fonts
+= Fonti
+Rust crates
+= Rust bibliotēkas
+Reference photos
+= Atsauces foto
+LANGUAGE
+= VALODA
+AUTOMATIC
+= AUTOMĀTISKI
+stock firmware on the bus: asking it for download mode
+= rūpnīcas firmware kopnē: lūdz lejupielādes režīmu
+{0} acknowledged 0xCB: rebooting into ADFU
+= {0} apstiprināja 0xCB: pārstartējas ADFU
+attaching to {0}
+= pievienojas {0}
+sector CRC32 scan on the player
+= sektoru CRC32 skenēšana atskaņotājā
+dumping {0} KiB
+= nolasa {0} KiB
+{0} sectors captured ({1} read, {2} already known); CRC32 verified
+= nolasīti sektori: {0} ({1} nolasīti, {2} jau zināmi); CRC32 pārbaudīts
+dumping {0} KiB of raw NOR cells
+= nolasa {0} KiB neapstrādātu NOR šūnu
+second pass: comparing
+= otrais piegājiens: salīdzina
+{0} sectors captured; two reads agree
+= nolasīti sektori: {0}; abi nolasījumi sakrīt
+identical backup already on file: {0}
+= identisks dublējums jau ir: {0}
+backup -> {0}
+= dublējums -> {0}
+{0} of {1} sectors differ
+= atšķiras sektori: {0} no {1}
+0x{0} erase / program / verify ok
+= 0x{0} dzēšana / programmēšana / pārbaude ok
+CRC32 of every writable sector, computed on the player
+= visu rakstāmo sektoru CRC32, aprēķināts atskaņotājā
+reading the writable window back
+= nolasa rakstāmo logu atpakaļ
+flash checksum OK  sha256 {0}..{1}
+= flash kontrolsumma OK  sha256 {0}..{1}
+rebooting into Rockbox
+= pārstartējas Rockbox
+rebooting into stock firmware
+= pārstartējas rūpnīcas firmware
+firmware is up
+= firmware darbojas
+{0} image(s), {1} KiB, sha256 verified
+= attēli: {0}, {1} KiB, sha256 pārbaudīts
+{0} sectors rewritten
+= pārrakstīti sektori: {0}
+Rockbox did not show up as a USB disk; the card was not updated
+= Rockbox neparādījās kā USB disks; karte netika atjaunināta
+total {0} s
+= kopā {0} s
+{0} loaded, checksum OK
+= {0} ielādēts, kontrolsumma OK
+backup is from another unit; its per-unit sectors are left alone
+= dublējums ir no citas ierīces; tās individuālie sektori netiek aiztikti
+waiting for Rockbox's USB disk
+= gaida Rockbox USB disku
+no USB disk from Rockbox yet: if it is set to charge only, unplug the player, hold any key and plug it back in (or set Settings > General Settings > System > USB > USB Mode to Mass Storage)
+= vēl nav Rockbox USB diska: ja iestatīta tikai uzlāde, atvieno atskaņotāju, turi jebkuru taustiņu un pievieno to vēlreiz (vai iestati Iestatījumi > Vispārīgi iestatījumi > Sistēma > USB > USB režīms uz Piekļuve krātuvei)
+no microSD card in the player: insert one, then press RESET
+= atskaņotājā nav microSD kartes: ievieto un spied RESET
+card online: {0}
+= karte tiešsaistē: {0}
+removed {0} stale plugin/codec files
+= novecojuši spraudņi/kodeki noņemti: {0}
+removed {0}: the firmware is in flash, not on the card
+= noņemts {0}: firmware ir zibatmiņā, nevis kartē
+{0} files written
+= ierakstīti faili: {0}
+{0} files already on the card match the package: left as they are
+= kartē jau ir pakotnei atbilstoši faili: {0}, atstāti, kā ir
+reading the written files back from the card
+= ierakstītie faili tiek lasīti atpakaļ no kartes
+{0} files read back: sha256 OK
+= nolasīti faili: {0}: sha256 OK
+card ejected
+= karte izņemta
+could not eject the card ({0}); eject it before unplugging
+= nevarēja izņemt karti ({0}); izņem to pirms atvienošanas
+stock firmware detected: ACTIONSUSBD
+= atklāts rūpnīcas firmware: ACTIONSUSBD
+injecting vendor command 0xCB -> ADFU
+= ievada ražotāja komandu 0xCB -> ADFU
+opening {0} download mode
+= atver {0} lejupielādes režīmu
+reattaching to download mode
+= atkārtoti pievienojas lejupielādes režīmam
+dumping {0} KiB of stock flash
+= nolasa {0} KiB rūpnīcas flash
+re-reading CRC32 of every sector
+= atkārtoti nolasa katra sektora CRC32
+backup verified: {0}/{1} sectors match
+= dublējums pārbaudīts: sakrīt {0}/{1} sektoru
+{0} sectors differ; writing
+= atšķiras sektori: {0}; raksta
+sector 0x{0} erase/program/verify ok
+= sektors 0x{0} dzēšana/programmēšana/pārbaude ok
+full flash CRC scan
+= pilna flash CRC skenēšana
+flash checksum OK
+= flash kontrolsumma OK
+waiting for Rockbox USB mass storage
+= gaida Rockbox USB masu atmiņu
+no media: insert a microSD card
+= nav datu nesēja: ievieto microSD karti
+syncing and ejecting card
+= sinhronizē un izņem karti
+another tool holds the player ({0})
+= cits rīks tur atskaņotāju ({0})
+the player did not come back in download mode
+= atskaņotājs neatgriezās lejupielādes režīmā
+the YP3 enters download mode by hand: hold Down while connecting USB
+= YP3 lejupielādes režīmā ieiet manuāli: turi Down, pievienojot USB
+battery too low to flash safely ({0})
+= baterija pārāk vāja drošai ierakstīšanai ({0})
+the player came back in download mode: the new firmware did not start
+= atskaņotājs atgriezās lejupielādes režīmā: jaunais firmware nestartēja
+this package is for {0}, not {1}
+= šī pakotne ir paredzēta {0}, nevis {1}
+this player's flash at 0x{0} is not what the package was built for; nothing was written
+= atskaņotāja flash pie 0x{0} neatbilst tam, kam pakotne būvēta; nekas netika rakstīts
+the package has no firmware image
+= pakotnē nav firmware attēla
+the card needs {0} MiB free; it has {1} MiB
+= kartei vajag {0} MiB brīvas vietas; ir {1} MiB
+{0} did not read back correctly from the card
+= {0} no kartes nolasījās nepareizi
+could not mount the player's card: {0}
+= nevarēja piemontēt atskaņotāja karti: {0}
+Rockbox never showed its USB disk. If its USB Mode is Charge Only, set it to Mass Storage (Settings > General Settings > System > USB), or unplug the player, hold any key and plug it back in
+= Rockbox tā arī neparādīja savu USB disku. Ja USB režīms ir tikai uzlāde, iestati to uz Piekļuve krātuvei (Iestatījumi > Vispārīgi iestatījumi > Sistēma > USB) vai atvieno atskaņotāju, turi jebkuru taustiņu un pievieno to vēlreiz
+the card is in use by another program
+= karti lieto cita programma
+cancelled
+= atcelts
+checksum mismatch at 0x{0}
+= kontrolsummas kļūda pie 0x{0}
+sector 0x{0} reads inconsistently
+= sektors 0x{0} nolasās nekonsekventi
+flash at 0x{0} reads inconsistently
+= flash pie 0x{0} nolasās nekonsekventi
+backup did not read back from disk
+= dublējums no diska nenolasījās
+{0} is damaged (checksum mismatch)
+= {0} ir bojāts (kontrolsumma nesakrīt)
+{0} is {1} bytes; a full flash image is {2}
+= {0} ir {1} baitu; pilns flash attēls ir {2}
+not a tar.xz release: {0}
+= nav tar.xz izlaidums: {0}
+this package (format {0}) needs a newer rockslop than {1}: update rockslop
+= šai pakotnei (formāts {0}) vajag jaunāku rockslop par {1}: atjaunini rockslop
+this package (format {0}) is too old for rockslop {1}: get a newer release
+= šī pakotne (formāts {0}) ir par vecu rockslop {1}: iegūsti jaunāku izlaidumu
+MANIFEST has no format
+= MANIFEST nav formāta
+MANIFEST names no target
+= MANIFEST nenorāda mērķi
+unsafe path in archive: {0}
+= nedrošs ceļš arhīvā: {0}
+{0}: links and special files are not allowed
+= {0}: saites un speciālie faili nav atļauti
+{0}: checksum mismatch, the download is corrupt
+= {0}: kontrolsumma nesakrīt, lejupielāde bojāta
+unexpected member {0}
+= negaidīts elements {0}
+archive is missing {0} file(s) listed in SHA256SUMS
+= arhīvā trūkst failu, kas minēti SHA256SUMS: {0}
+release contains no flash image
+= izlaidumā nav flash attēla
+{0}: checksum mismatch
+= {0}: kontrolsumma nesakrīt
+archive member too large
+= arhīva elements pārāk liels
+internal error: {0}
+= iekšēja kļūda: {0}
+{0}: permission denied. {1}
+= {0}: piekļuve liegta. {1}
+Install the udev rule (see README) or run as root.
+= Instalē udev noteikumu (skat. README) vai palaid kā root.
+macOS needs root to take the device from its mass storage driver: run from Terminal with sudo.
+= macOS nepieciešamas root tiesības, lai pārņemtu ierīci no tās masu atmiņas draivera: palaid no Terminal ar sudo.
+The device needs the WinUSB driver (Zadig).
+= Ierīcei nepieciešams WinUSB draiveris (Zadig).
+{0}: the device is busy (another tool is using it?)
+= {0}: ierīce ir aizņemta (vai to lieto cits rīks?)
+{0}: the device went away
+= {0}: ierīce pazuda
+{0}: timed out
+= {0}: noildze
+Windows shows no disk for the player in download mode
+= Windows nerāda disku atskaņotājam lejupielādes režīmā
+Windows refused to open the player's disk (error {0})
+= Windows atteicās atvērt atskaņotāja disku (kļūda {0})
+a command through Windows' disk driver failed (Windows error {0})
+= komanda caur Windows diska draiveri neizdevās (Windows kļūda {0})
+can't reach GitHub: {0}
+= nevar sazināties ar GitHub: {0}
+GitHub answered {0}
+= GitHub atbildēja {0}
+GitHub's list of releases makes no sense: {0}
+= GitHub atdeva bezjēdzīgu izlaidumu sarakstu: {0}
+GitHub gave the package an odd name: {0}
+= GitHub pakotnei devis dīvainu nosaukumu: {0}
+can't save the download: {0}
+= nevar saglabāt lejupielādi: {0}
+the download stopped: {0}
+= lejupielāde apstājās: {0}
+the download is the wrong size: {0} bytes, not {1}
+= lejupielādei nepareizs izmērs: {0} baitu, nevis {1}
+the download doesn't match GitHub's checksum: sha256 {0}
+= lejupielāde nesakrīt ar GitHub kontrolsummu: sha256 {0}
+# Clippy, and the new download-mode steps
+DRAG TO SPIN
+= VELC, LAI GROZĪTU
+UNPLUG
+= ATVIENO
+pull the USB cable out
+= izvelc USB kabeli
+POWER ON
+= IESLĒDZ
+hold POWER, on the bottom edge
+= turi pogu BAROŠANA, apakšējā malā
+stock firmware
+= rūpnīcas firmware
+SWITCH OFF
+= IZSLĒDZ
+hold POWER until the screen goes dark
+= turi pogu BAROŠANA, līdz ekrāns nodziest
+HOLD POWER
+= TURI BAROŠANA
+plug in while holding, ~4 s
+= pievieno, turot, ~4 s
+on the player: System > Debug > {0}
+= atskaņotājā: Sistēma > Atkļūdošana > {0}
+follow the steps above
+= seko soļiem augstāk
+THE {0} PACKAGE
+= {0} PAKOTNE
+NEEDS A MICROSD CARD
+= VAJAG MICROSD KARTI
+It looks like you're trying to hack an MP3 player. Would you like help?
+= Izskatās, ka tu mēģini uzlauzt MP3 atskaņotāju. Vai vēlies palīdzību?
+GOT IT
+= SAPRATU
+There's no model number on these players. Compare the wireframes instead: the buttons and ports differ. Drag a player to spin it.
+= Šiem atskaņotājiem nav modeļa numura. Tā vietā salīdzini karkasa modeļus: pogas un pieslēgvietas atšķiras. Velc atskaņotāju, lai to pagrieztu.
+Power the player off first, then hold DOWN before the cable goes in, and keep holding.
+= Vispirms izslēdz atskaņotāju, tad turi DOWN, pirms kabelis tiek pievienots, un turpini turēt.
+Hold POWER while you plug the cable in, and keep holding for about 4 seconds.
+= Turi pogu BAROŠANA, kamēr pievieno kabeli, un turpini turēt apmēram 4 sekundes.
+Switch the player on first: hold POWER on its bottom edge.
+= Vispirms ieslēdz atskaņotāju: turi pogu BAROŠANA tā apakšējā malā.
+Still nothing? Try another cable: some only charge.
+= Joprojām nekā? Pamēģini citu kabeli: daži tikai lādē.
+Your computer won't let rockslop use the player.
+= Tavs dators neļauj rockslop izmantot atskaņotāju.
+Unplug the cable first: the player only listens in download mode. The steps say how.
+= Vispirms atvieno kabeli: atskaņotājs klausās tikai lejupielādes režīmā. Soļos ir aprakstīts, kā.
+You need the Rockbox package built for the {0}: a .tar.xz file. Click SELECT IMAGE, or drop it on the panel.
+= Tev vajag Rockbox pakotni, kas būvēta {0} atskaņotājam: .tar.xz failu. Noklikšķini IZVĒLIES PAKOTNI vai nomet to uz paneļa.
+Push a microSD card all the way into the player's slot, then press RESET.
+= Iebīdi microSD karti līdz galam atskaņotāja slotā, tad spied RESET.
+Rockbox hasn't shown its USB disk yet. If the player only charges, unplug it, hold any key and plug it back in.
+= Rockbox vēl nav parādījis savu USB disku. Ja atskaņotājs tikai lādējas, atvieno to, turi jebkuru taustiņu un pievieno atkal.
+RETRY usually sorts it out. Still stuck? COPY REPORT puts the details on the clipboard for a bug report.
+= ATKĀRTOT parasti to atrisina. Joprojām iestrēdzis? KOPĒT ATSKAITI ieliek sīkāku informāciju starpliktuvē kļūdas ziņojumam.
+It looks like you watched all the credits. Nobody does that. Respect.
+= Izskatās, ka tu noskatījies visus titrus. Neviens tā nedara. Cieņa.
+DEAL WITH IT
+= DEAL WITH IT
+
+# return to stock without a backup on this computer
+no stock backup on this computer
+= nav rūpnīcas firmware kopijas šajā datorā
+When rockslop flashes a player, it puts a copy of the stock firmware on the player's microSD card: .rockbox/{0}
+= Kad rockslop ieflešo atskaņotāju, tas atskaņotāja microSD kartē ieliek rūpnīcas firmware kopiju: .rockbox/{0}
+Start the player in Rockbox and plug it in, and rockslop looks there itself. Or find the file and select it.
+= Palaid atskaņotāju Rockbox režīmā un pievieno to, un rockslop pats meklēs tur. Vai arī atrodi failu un izvēlies to.
+looking on the player's card
+= meklē atskaņotāja kartē
+no stock firmware on the player's card
+= atskaņotāja kartē nav rūpnīcas firmware
+checking the image
+= pārbauda attēlu
+stock firmware: {0}
+= rūpnīcas firmware: {0}
+UNKNOWN FIRMWARE
+= NEZINĀMS FIRMWARE
+It isn't a stock firmware rockslop knows: a newer version, or not stock at all.
+= Šis nav rūpnīcas firmware, ko rockslop pazīst: vai nu jaunāka versija, vai vispār nav rūpnīcas.
+It has Rockbox in it, so it isn't stock firmware.
+= Tajā ir Rockbox, tāpēc tas nav rūpnīcas firmware.
+Flash it only if you're sure it came from a {0}.
+= Ieflešo to tikai tad, ja esi drošs, ka tas nāk no {0}.
+FLASH ANYWAY
+= IEFLEŠOT TOMĒR
+The .rockbox folder is hidden: turn on hidden files in your file browser to see it.
+= Mape .rockbox ir slēpta: ieslēdz slēpto failu rādīšanu savā failu pārlūkā, lai to redzētu.
+stock firmware copied to the card: {0}
+= rūpnīcas firmware nokopēts uz karti: {0}
+stock firmware already on the card: {0}
+= rūpnīcas firmware kartē jau ir: {0}
+could not copy the stock firmware to the card: {0}
+= neizdevās nokopēt rūpnīcas firmware uz karti: {0}
+no room on the card for the stock firmware ({0} KiB free)
+= kartē nav vietas rūpnīcas firmware ({0} KiB brīvi)
+the stock firmware did not read back correctly from the card
+= rūpnīcas firmware no kartes nolasījās nepareizi
+stock firmware found on the card: {0}
+= rūpnīcas firmware atrasts kartē: {0}
+known stock firmware: {0}
+= zināms rūpnīcas firmware: {0}
+rockslop does not recognise this firmware
+= rockslop neatpazīst šo firmware
+{0} is not a {1} flash backup (no partition table)
+= {0} nav {1} flash dublējums (nav partīciju tabulas)
+{0} has no firmware in it (that part is blank)
+= {0} nesatur firmware (šī daļa ir tukša)
+{0} has Rockbox in it: it is not stock firmware
+= {0} satur Rockbox: tas nav rūpnīcas firmware
+BEFORE THE FIRST FLASH
+= PIRMS PIRMĀS IEFLEŠOŠANAS
+POINT OF NO RETURN
+= ATPAKAĻCEĻA NAV
+rockslop is about to write Rockbox to your {0}. Read each of these and tick it, then hold to sign.
+= rockslop tūlīt ierakstīs Rockbox tavā {0} atskaņotājā. Izlasi katru punktu un atzīmē to, tad turi pogu, lai parakstītu.
+rockslop and this player's Rockbox port are 100% vibe-coded: no human has ever looked at the code. It has been tested on real players, but that's all.
+= rockslop un šī atskaņotāja Rockbox ports ir 100% vibe-coded: neviens cilvēks nekad nav ielūkojies kodā. Tie ir pārbaudīti īstos atskaņotājos, bet tas arī viss.
+THIS CAN BRICK YOUR PLAYER
+= TAS VAR SABOJĀT TAVU ATSKAŅOTĀJU
+Rockbox on this player is unofficial and experimental. A flash that goes wrong (a loose cable, a crash, a bug of ours) can leave the player dead, and there may be no way to bring it back. rockslop keeps a backup of the stock firmware, but a backup can't save every player. The risk is yours alone.
+= Rockbox šajā atskaņotājā ir neoficiāls un eksperimentāls. Neveiksmīga ieflešošana (vaļīgs kabelis, avārija, kļūda mūsu kodā) var atstāt atskaņotāju nedzīvu, un var nebūt nekādas iespējas to atdzīvināt. rockslop glabā rūpnīcas firmware kopiju, bet kopija nevar izglābt katru atskaņotāju. Risks ir tikai tavs.
+YOUR WARRANTY IS VOID
+= TAVA GARANTIJA ZAUDĒ SPĒKU
+Flashing firmware the maker didn't write voids the warranty. Whatever happens to this player from now on is yours to deal with: no repair, no replacement, no refund. Going back to stock doesn't change that.
+= Ja ieflešo firmware, ko nav rakstījis ražotājs, garantija zaudē spēku. Lai kas ar šo atskaņotāju turpmāk notiktu, tā ir tava problēma: ne remonta, ne nomaiņas, ne naudas atmaksas. Atgriešanās pie rūpnīcas firmware to nemaina.
+DON'T TAKE IT BACK
+= NENES TO ATPAKAĻ
+Never return a flashed player, claim on it, or complain to the seller or the maker about it. Rockbox runs on these players because nobody has locked them down. If flashed players start coming back, the next batch will be locked, and that's the end of Rockbox on them for everyone. If yours breaks, bring it to rockslop, never to the shop.
+= Nekad neatgriez ieflešotu atskaņotāju, nepiesaki garantijas prasību un nesūdzies par to pārdevējam vai ražotājam. Rockbox darbojas šajos atskaņotājos tāpēc, ka neviens tos nav nobloķējis. Ja ieflešoti atskaņotāji sāks nākt atpakaļ, nākamā partija tiks nobloķēta, un tas būs Rockbox gals šajos atskaņotājos visiem. Ja tavējais saplīst, vērsies pie rockslop, nekad ne veikalā.
+I UNDERSTAND
+= SAPROTU
+I've read all three. If it bricks, that's on me. The warranty is gone. It never goes back to the seller. No backsies.
+= Visi trīs punkti ir izlasīti. Ja tas sabojājas, tā ir mana atbildība. Garantijas vairs nav. Tas nekad neatgriezīsies pie pārdevēja. Atpakaļ neņem.
+HOLD TO SIGN
+= TURI, LAI PARAKSTĪTU
+KEEP HOLDING
+= TURPINI TURĒT
+SIGNED
+= PARAKSTĪTS
+NOT NOW
+= NE TAGAD
+tick all three boxes first
+= vispirms atzīmē visas trīs rūtiņas
+Signing is final. rockslop won't ask again on this computer.
+= Paraksts ir galīgs. rockslop šajā datorā vairs nejautās.
+NO BACKSIES
+= ATPAKAĻ NEŅEM
+waiver signed: rockslop won't ask again on this computer
+= apliecinājums parakstīts: rockslop šajā datorā vairs nejautās
+waiver signed (demo: not saved)
+= apliecinājums parakstīts (demo: nav saglabāts)
+could not save the waiver: {0}
+= neizdevās saglabāt apliecinājumu: {0}
+EPILEPSY WARNING
+= BRĪDINĀJUMS PAR EPILEPSIJU
+It's a flasher. It flashes.
+= Tas ir flešotājs. Tas mirgo.
+If the player won't start: hold the D-pad's Down button (or the power button), plug in USB, and keep holding about 3 seconds. The screen stays dark; rockslop will find it. Holding the power button about 7 seconds restarts the player.
+= Ja atskaņotājs neieslēdzas: turi nospiestu virzienu pogas Lejup taustiņu (vai ieslēgšanas pogu), pievieno USB un turi vēl apmēram 3 sekundes. Ekrāns paliek tumšs; rockslop to atradīs. Turot ieslēgšanas pogu apmēram 7 sekundes, atskaņotājs pārstartējas.
+this TS17 package is in an older format ({0}) that rockslop no longer flashes: get a newer release
+= šī TS17 pakotne ir vecākā formātā ({0}), ko rockslop vairs neieflešo: iegūsti jaunāku laidienu
+new install: the rescue stub goes in first
+= jauna instalācija: vispirms tiek ierakstīts glābšanas kods
+rescue stub in place: left alone
+= glābšanas kods vietā: neaiztikts
+a rescue stub that isn't rockslop's is in place: left alone
+= vietā ir glābšanas kods, kas nav no rockslop: neaiztikts
