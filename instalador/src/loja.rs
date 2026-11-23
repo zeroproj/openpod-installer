@@ -335,8 +335,9 @@ impl Loja {
             storepod::Botao::Instalar => textos::t(idioma, "instalar").to_string(),
             storepod::Botao::Remover => textos::t(idioma, "store_remover").to_string(),
             storepod::Botao::Atualizar => textos::t(idioma, "store_atualizar").to_string(),
+            storepod::Botao::Instalado => textos::t(idioma, "store_instalado").to_string(),
         };
-        let pode = self.cartao.is_some() && !self.ocupado && item.pode();
+        let pode = self.cartao.is_some() && !self.ocupado && item.pode() && botao != storepod::Botao::Instalado;
         let print = self.prints.get(&item.id).map(|t| t.id());
 
         let clicou = estilo::cartao(false).inner_margin(egui::Margin::symmetric(16, 14)).show(ui, |ui| {

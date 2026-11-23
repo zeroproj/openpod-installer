@@ -275,6 +275,7 @@ pub const TEXTOS: &[(&str, &str, &str)] = &[
     ("store_procurando", "Procurando a StorePod…", "Looking for the StorePod…"),
     ("store_vazia", "A StorePod ainda não tem itens", "The StorePod has no items yet"),
     ("store_remover", "Remover", "Remove"),
+    ("store_instalado", "Instalado", "Installed"),
     ("store_atualizar", "Atualizar", "Update"),
     ("store_tema", "Tema", "Theme"),
     ("store_app", "App", "App"),

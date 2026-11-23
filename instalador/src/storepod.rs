@@ -89,6 +89,10 @@ pub struct Item {
     /// O que o item exige ("rockbox").
     #[serde(default)]
     pub requer: Option<String>,
+    /// Item do sistema (ex.: o tema OpenPod, padrão do OpenPod RockBox): instala e atualiza, mas
+    /// não se remove pela loja, senão o Rockbox fica sem o tema escolhido.
+    #[serde(default)]
+    pub sistema: bool,
 }
 
 impl Item {
@@ -475,6 +479,8 @@ pub enum Botao {
     Instalar,
     Remover,
     Atualizar,
+    /// item do sistema já instalado na versão do catálogo: nada a fazer
+    Instalado,
 }
 
 /// O botão do item, dado o que já está instalado no cartão: se a versão do
@@ -482,7 +488,13 @@ pub enum Botao {
 pub fn botao(item: &Item, reg: &Registro) -> Botao {
     match reg.get(&item.id) {
         None => Botao::Instalar,
-        Some(i) if i.versao == item.versao => Botao::Remover,
+        Some(i) if i.versao == item.versao => {
+            if item.sistema {
+                Botao::Instalado
+            } else {
+                Botao::Remover
+            }
+        }
         Some(_) => Botao::Atualizar,
     }
 }
@@ -501,6 +513,8 @@ impl Acao {
             Botao::Instalar => Acao::Instalar,
             Botao::Remover => Acao::Remover,
             Botao::Atualizar => Acao::Atualizar,
+            // o botão fica desativado; se chegar aqui, reinstalar é inofensivo
+            Botao::Instalado => Acao::Instalar,
         }
     }
 }
@@ -953,5 +967,24 @@ mod testes {
         let erro = String::from_utf8_lossy(&s.stderr);
         assert!(erro.contains(".rockbox"), "o gerador precisa dizer o que está fora: {erro}");
         let _ = std::fs::remove_dir_all(&d);
+    }
+}
+
+#[cfg(test)]
+mod testes_sistema {
+    use super::*;
+
+    #[test]
+    fn item_do_sistema_nao_vira_remover() {
+        let mut item: Item = serde_json::from_str(r#"{"id":"tema-openpod","versao":"1.2","sistema":true}"#).unwrap();
+        let mut reg = Registro::new();
+        assert_eq!(botao(&item, &reg), Botao::Instalar);
+        reg.insert("tema-openpod".to_string(), Instalado { versao: "1.2".to_string(), arquivos: vec![] });
+        assert_eq!(botao(&item, &reg), Botao::Instalado);
+        item.versao = "1.3".to_string();
+        assert_eq!(botao(&item, &reg), Botao::Atualizar);
+        item.sistema = false;
+        item.versao = "1.2".to_string();
+        assert_eq!(botao(&item, &reg), Botao::Remover);
     }
 }

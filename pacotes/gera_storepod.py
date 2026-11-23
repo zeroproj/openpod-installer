@@ -110,6 +110,7 @@ def main() -> int:
     p.add_argument("--desc-en", required=True, help="a descrição curta em inglês")
     p.add_argument("--print", help="a imagem do item (png)")
     p.add_argument("--requer", default="rockbox", help="o que o item exige (padrão: rockbox)")
+    p.add_argument("--sistema", action="store_true", help="item do sistema: instala e atualiza, sem Remover na loja")
     p.add_argument("--chave", default="~/.openpod/chave-pacotes-ed25519.pem", help="chave secreta Ed25519 (PEM)")
     p.add_argument("--saida", default="pacotes/saida/storepod", help="onde o pacote e o índice são gravados")
     p.add_argument("--url-base", default=URL_BASE, help="o começo da URL dos itens")
@@ -150,6 +151,7 @@ def main() -> int:
         "url": f"{args.url_base}{nome_pacote}",
         "sha256": soma,
         "requer": args.requer,
+        "sistema": bool(getattr(args, "sistema", False)),
     }
     if print_item:
         item["print"] = print_item
