@@ -45,9 +45,10 @@ impl Indice {
     }
 }
 
-fn agente() -> ureq::Agent {
+/// O agente que fala com o site (o mesmo para o índice e para a StorePod).
+pub(crate) fn agente() -> ureq::Agent {
     ureq::Agent::config_builder()
-        .user_agent("openpod-instalador/0.1")
+        .user_agent("openpod-tune/0.1")
         .https_only(true)
         .http_status_as_error(false)
         .timeout_connect(Some(Duration::from_secs(10)))

@@ -61,7 +61,8 @@ fn assinatura_bytes(bytes: &[u8]) -> Option<[u8; 64]> {
     Some(out)
 }
 
-fn conferir_assinatura(chave: &[u8; 32], manifesto: &[u8], sums: &[u8], assinatura: &[u8]) -> bool {
+/// Confere a assinatura Ed25519 de MANIFEST+SHA256SUMS com a chave dada.
+pub fn conferir_assinatura(chave: &[u8; 32], manifesto: &[u8], sums: &[u8], assinatura: &[u8]) -> bool {
     let Ok(chave) = VerifyingKey::from_bytes(chave) else { return false };
     let Some(bytes) = assinatura_bytes(assinatura) else { return false };
     let mut mensagem = Vec::with_capacity(manifesto.len() + sums.len());
@@ -239,19 +240,22 @@ pub fn ler_up(dados: &[u8]) -> Result<Vec<u8>, String> {
 
 type ArquivoTar = tar::Archive<GzDecoder<BufReader<File>>>;
 
-fn abrir_tar(caminho: &Path) -> Result<ArquivoTar, String> {
+/// Abre um `.tar.gz` para ler os membros.
+pub(crate) fn abrir_tar(caminho: &Path) -> Result<ArquivoTar, String> {
     let f = File::open(caminho).map_err(|e| erro_abrir(caminho, e))?;
     Ok(tar::Archive::new(GzDecoder::new(BufReader::with_capacity(1 << 16, f))))
 }
 
-fn nome_entrada(e: &tar::Entry<impl Read>) -> Result<String, String> {
+/// O nome do membro do tar, sem o `./` da frente e sem a barra do fim.
+pub(crate) fn nome_entrada(e: &tar::Entry<impl Read>) -> Result<String, String> {
     let bruto = e.path_bytes();
     let s = std::str::from_utf8(&bruto).map_err(|_| err!(E104, "o pacote tem um caminho que não é UTF-8"))?;
     let s = s.strip_prefix("./").unwrap_or(s);
     Ok(s.trim_end_matches('/').to_string())
 }
 
-fn ler_tudo(mut r: impl Read, limite: u64) -> Result<Vec<u8>, String> {
+/// Lê um membro do tar inteiro, com um limite de tamanho.
+pub(crate) fn ler_tudo(mut r: impl Read, limite: u64) -> Result<Vec<u8>, String> {
     let mut v = Vec::new();
     r.by_ref().take(limite + 1).read_to_end(&mut v).map_err(erro_pacote)?;
     if v.len() as u64 > limite {

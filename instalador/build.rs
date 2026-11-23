@@ -52,19 +52,19 @@ fn recursos(root: &Path) {
     // números, e não os nomes de winver.h, para não precisar do cabeçalho:
     // 24 RT_MANIFEST, 0x40004 VOS_NT_WINDOWS32, 1 VFT_APP
     let fwd = |p: &Path| p.display().to_string().replace('\\', "/");
-    let bin = "openpod-instalador";
+    let bin = "openpod-tune";
     let rc = format!(
         "1 ICON \"{icone}\"\n1 24 \"{manifesto}\"\n\
          1 VERSIONINFO\nFILEVERSION {v}\nPRODUCTVERSION {v}\nFILEFLAGSMASK 0x3f\nFILEFLAGS 0\n\
          FILEOS 0x40004\nFILETYPE 1\nFILESUBTYPE 0\nBEGIN\n\
          BLOCK \"StringFileInfo\"\nBEGIN\nBLOCK \"040904b0\"\nBEGIN\n\
          VALUE \"CompanyName\", \"OpenPod\"\n\
-         VALUE \"FileDescription\", \"Instalador OpenPod\"\n\
+         VALUE \"FileDescription\", \"OpenPod Tune\"\n\
          VALUE \"FileVersion\", \"{versao}\"\n\
          VALUE \"InternalName\", \"{bin}\"\n\
          VALUE \"LegalCopyright\", \"GPL-2.0-or-later\"\n\
          VALUE \"OriginalFilename\", \"{bin}.exe\"\n\
-         VALUE \"ProductName\", \"Instalador OpenPod\"\n\
+         VALUE \"ProductName\", \"OpenPod Tune\"\n\
          VALUE \"ProductVersion\", \"{versao}\"\n\
          END\nEND\n\
          BLOCK \"VarFileInfo\"\nBEGIN\nVALUE \"Translation\", 0x409, 1200\nEND\nEND\n",

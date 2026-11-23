@@ -76,6 +76,21 @@ pub fn link(texto: &str) -> egui::RichText {
     egui::RichText::new(texto.to_string()).color(AZUL).size(13.5)
 }
 
+/// Uma aba do topo: a escolhida fica azul, a outra em branco com a borda
+/// cinza.
+pub fn aba(texto: &str, sel: bool) -> egui::Button<'static> {
+    egui::Button::new(
+        egui::RichText::new(texto.to_string())
+            .color(if sel { Color32::WHITE } else { CINZA })
+            .size(14.0)
+            .strong(),
+    )
+    .fill(if sel { AZUL } else { CARTAO })
+    .stroke(Stroke::new(1.0, if sel { AZUL } else { BORDA }))
+    .corner_radius(CornerRadius::same(10))
+    .min_size(egui::vec2(120.0, 34.0))
+}
+
 pub fn titulo(texto: &str) -> egui::RichText {
     egui::RichText::new(texto.to_string()).size(31.0).strong().color(TEXTO)
 }

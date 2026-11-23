@@ -149,6 +149,39 @@ def ler_tar_xz(caminho: Path) -> dict[str, bytes]:
         return {nome_limpo(m.name): tar.extractfile(m).read() for m in tar.getmembers() if m.isfile()}
 
 
+TEMAS_ENXUTO = {"OpenPod128", "cabbiev2", "rockbox_failsafe", "rockbox_default_icons"}
+SEM_PLUGINS = (".rockbox/rocks/games/", ".rockbox/rocks/apps/", ".rockbox/rocks/demos/")
+
+
+def enxugar(cartao: dict) -> dict:
+    """RockBox 1.2 (decisor, D41): so os temas OpenPod e os do proprio Rockbox, e sem jogos,
+    apps e demos, que estavam instaveis. Ficam os codecs, os idiomas, as fontes e os
+    visualizadores; o viewers.config perde as linhas dos plugins tirados."""
+    tirar_temas = set()
+    for nome in cartao:
+        if nome.startswith(".rockbox/themes/") and nome.endswith(".cfg"):
+            t = nome[len(".rockbox/themes/"):-4]
+            if t not in TEMAS_ENXUTO:
+                tirar_temas.add(t)
+    out = {}
+    for nome, dados in cartao.items():
+        if nome.startswith(SEM_PLUGINS):
+            continue
+        base = nome.split("/")
+        if len(base) >= 3 and base[1] in ("themes", "wps", "backdrops", "icons"):
+            raiz = base[2].split(".")[0]
+            if raiz in tirar_temas:
+                continue
+        out[nome] = dados
+    vc = out.get(".rockbox/viewers.config")
+    if vc is not None:
+        linhas = [l for l in vc.decode("utf-8", "replace").splitlines()
+                  if not any(f"/{d}/" in l for d in ("games", "apps", "demos"))]
+        out[".rockbox/viewers.config"] = ("\n".join(linhas) + "\n").encode()
+    print(f"enxuto: {len(cartao) - len(out)} arquivos fora; temas tirados: {len(tirar_temas)}")
+    return out
+
+
 def gera_rockbox(args) -> dict:
     entrada = ler_tar_xz(Path(args.rockbox))
     flash_nome = next((n for n in entrada if n.startswith("flash/") and n.endswith(".bin")), None)
@@ -174,6 +207,8 @@ def gera_rockbox(args) -> dict:
         raise SystemExit(f"{args.tema}: sem .rockbox/themes/OpenPod128.cfg")
     cartao.pop(".rockbox/config.cfg", None)
     cartao[".rockbox/config-openpod.cfg"] = modelo_config(cfg_tema)
+    if getattr(args, "enxuto", False):
+        cartao = enxugar(cartao)
     versao = args.versao
     data = args.data
     nome = f"openpod-rockbox-{versao}.tar.gz"
@@ -192,6 +227,7 @@ def main() -> int:
     p = argparse.ArgumentParser(description="Gera os pacotes .tar.gz do OpenPod.")
     p.add_argument("--system", help="o kit .up do OpenPod System")
     p.add_argument("--rockbox", help="o rockbox-yp3-*.tar.xz")
+    p.add_argument("--enxuto", action="store_true", help="RockBox 1.2+: so os temas OpenPod/Rockbox, sem jogos, apps e demos")
     p.add_argument("--tema", default="assets/openpod/OpenPod128.zip", help="o tema OpenPod128 (zip)")
     p.add_argument("--versao", required=True)
     p.add_argument("--chave", default="~/.openpod/chave-pacotes-ed25519.pem", help="chave secreta Ed25519 (PEM)")

@@ -1,6 +1,6 @@
 # Créditos
 
-O Instalador OpenPod é GPL-2.0-or-later. Ele fica de pé sobre o trabalho de
+O OpenPod Tune é GPL-2.0-or-later. Ele fica de pé sobre o trabalho de
 outras pessoas; os arquivos que adaptam código de fora dizem isso no
 cabeçalho.
 

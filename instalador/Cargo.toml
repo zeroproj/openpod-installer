@@ -1,13 +1,13 @@
 [package]
-name = "openpod-instalador"
+name = "openpod-tune"
 version = "0.1.0"
 edition = "2021"
-description = "Instalador OpenPod: OpenPod System ou OpenPod RockBox no player GN-438"
+description = "OpenPod Tune: OpenPod System ou OpenPod RockBox no player GN-438"
 license = "GPL-2.0-or-later"
 rust-version = "1.95"
 
 [[bin]]
-name = "openpod-instalador"
+name = "openpod-tune"
 path = "src/main.rs"
 
 [dependencies]
@@ -47,3 +47,7 @@ opt-level = "s"
 lto = true
 codegen-units = 1
 strip = true
+
+# Linux: a janela precisa do X11 e do Wayland (o eframe vem sem eles nas outras plataformas)
+[target.'cfg(target_os = "linux")'.dependencies]
+eframe = { version = "0.37", default-features = false, features = ["glow", "default_fonts", "x11", "wayland"] }

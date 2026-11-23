@@ -348,6 +348,7 @@ mod testes {
             ("aparelho/yp3.rs", include_str!("yp3.rs")),
             ("pacote.rs", include_str!("../pacote.rs")),
             ("site.rs", include_str!("../site.rs")),
+            ("storepod.rs", include_str!("../storepod.rs")),
             ("elevacao.rs", include_str!("../elevacao.rs")),
             ("trabalhador.rs", include_str!("../trabalhador.rs")),
         ];

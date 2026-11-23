@@ -1,0 +1,4 @@
+# OpenPod Tune: deixa o usuario falar com o player sem sudo (modo de download, sistema e Rockbox).
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="301a", ATTR{idProduct}=="2800", MODE="0660", TAG+="uaccess"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="301a", ATTR{idProduct}=="2801", MODE="0660", TAG+="uaccess"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="1209", ATTR{idProduct}=="0001", MODE="0660", TAG+="uaccess"

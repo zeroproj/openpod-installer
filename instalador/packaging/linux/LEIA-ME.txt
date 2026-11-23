@@ -1,0 +1,10 @@
+OpenPod Tune para Linux (x86_64)  ·  https://zeroproj.github.io/OpenPod/
+
+1. Uma vez so, instale a regra de USB (pede a senha):   sh instalar-regra.sh
+2. Abra o OpenPod Tune:                                   ./openpod-tune
+3. Escolha o sistema, desligue o player, segure o botao de baixo (play/pause) e ligue o cabo.
+
+Feito no Ubuntu 24.04 / Linux Mint 22 (glibc 2.39). Problemas: https://github.com/zeroproj/OpenPod/issues
+
+OpenPod Tune for Linux: 1) once, run "sh instalar-regra.sh" (asks for your password); 2) run ./openpod-tune;
+3) pick a system, turn the player off, hold Down (play/pause) and plug in the cable.

@@ -1,4 +1,4 @@
-# Instalador OpenPod
+# OpenPod Tune
 
 Um programa só, em Rust, para colocar no player GN-438 (chip SL6801):
 
@@ -11,6 +11,9 @@ sistema (português ou inglês) e tem um seletor **PT | EN** discreto no
 canto, que troca na hora. Os textos ficam numa tabela única em
 `instalador/src/textos.rs`.
 
+No topo da janela tem duas abas: **Instalar** (o fluxo de cima) e
+**StorePod** (a lojinha de temas, apps e jogos do OpenPod RockBox).
+
 ## Como compilar
 
 ```sh
@@ -19,7 +22,7 @@ cd instalador
 cargo build --release
 ```
 
-O binário fica em `instalador/target/release/openpod-instalador`.
+O binário fica em `instalador/target/release/openpod-tune`.
 
 Para o Windows (de qualquer sistema, com o Rust e o MinGW
 `x86_64-w64-mingw32` instalados):
@@ -30,7 +33,7 @@ cargo build --release --target x86_64-pc-windows-gnu
 ```
 
 O executável fica em
-`instalador/target/x86_64-pc-windows-gnu/release/openpod-instalador.exe`.
+`instalador/target/x86_64-pc-windows-gnu/release/openpod-tune.exe`.
 
 No macOS o instalador roda como **usuário comum**. Quando o macOS prende o
 player (acesso negado, driver do kernel ativo ou aparelho ocupado), a
@@ -98,8 +101,8 @@ cd instalador
 ./empacota-windows.sh
 ```
 
-Gera `dist/openpod-instalador-windows.exe`. O `.exe` já leva o ícone do
-OpenPod, o nome "Instalador OpenPod", a versão e o manifesto (o `build.rs`
+Gera `dist/openpod-tune-windows.exe`. O `.exe` já leva o ícone do
+OpenPod, o nome "OpenPod Tune", a versão e o manifesto (o `build.rs`
 monta o recurso e o `windres` do MinGW o compila).
 
 ## Testes
@@ -115,6 +118,13 @@ assinatura); `expect` certo e errado; o CRC16 do `.up` conferido contra o
 kit real em `assets/openpod/`; a diferença de setores; a recusa de
 endereço fora da faixa; o gerador de pacotes; e o fluxo completo no
 simulador (que só existe nos testes).
+
+Da StorePod: o catálogo (leitura, vazio e sem conexão); o pacote do item
+(assinado certo, assinatura trocada e arquivo fora do `.rockbox/`); o
+registro do cartão (instalar, remover — só os arquivos registrados, e o
+arquivo do usuário sobrevive —, atualizar e arquivo que já sumiu); o
+gerador de itens (que faz pacotes que o instalador lê); e o nome novo
+("OpenPod Tune") nos dois idiomas.
 
 Da permissão de administrador (macOS): o protocolo JSON de ida e volta
 (mesmos `Comando`/`Evento` do aparelho); a recusa do token errado; a
@@ -156,6 +166,74 @@ Cada um gera o `.tar.gz` em `pacotes/saida/` e imprime o trecho do
 `https://zeroproj.github.io/OpenPod/pacotes/index.json`, com
 `{"system":{...},"rockbox":{...}}`. Enquanto ele não estiver publicado, o
 instalador mostra "sem conexão com o site" e oferece "Escolher arquivo…".
+
+## A StorePod (a lojinha)
+
+A aba **StorePod** mostra o catálogo da lojinha
+(`https://zeroproj.github.io/OpenPod/storepod/index.json`):
+
+```json
+{"formato":1,"itens":[{"id":"tema-exemplo","tipo":"tema|app|jogo",
+  "nome":{"pt":"…","en":"…"},"descricao":{"pt":"…","en":"…"},
+  "versao":"1.0","tamanho":12345,
+  "url":"https://…/storepod/<id>-<versao>.tar.gz","sha256":"…",
+  "print":"https://…/storepod/<id>.png","requer":"rockbox"}]}
+```
+
+Sem conexão (ou sem o catálogo publicado), a tela mostra "Sem conexão com a
+StorePod"; com o catálogo vazio, "A StorePod ainda não tem itens".
+
+### O que é preciso para instalar
+
+O player **ligado no OpenPod RockBox** (não no modo de recuperação) e
+conectado no cabo USB: ele aparece como um disco, e a tela mostra "Conecte
+o player ligado no OpenPod RockBox" até achar o disco. A flash não é
+tocada.
+
+### O pacote de um item
+
+É um `.tar.gz` assinado com a **mesma chave Ed25519** dos pacotes (a
+secreta fica fora do repositório):
+
+```text
+MANIFEST      formato=1, linha=storepod, id=, versao=, tipo=
+SHA256SUMS    sha256sum de cada arquivo abaixo
+ASSINATURA    Ed25519 (64 B em hexadecimal) de MANIFEST+SHA256SUMS
+card/.rockbox/...   só caminhos dentro de `.rockbox/`
+```
+
+Sem assinatura válida o item é recusado ("Este arquivo não foi feito pelo
+OpenPod"). O sha256 do catálogo é conferido antes da assinatura.
+
+### O registro do cartão
+
+O que fica instalado é registrado no cartão, em
+`.rockbox/storepod/instalados.json`:
+
+```json
+{"<id>": {"versao": "1.0", "arquivos": [".rockbox/themes/exemplo.cfg"]}}
+```
+
+**Remover** apaga só os arquivos registrados daquele item (com caminho
+seguro dentro do `.rockbox`, sem seguir link simbólico; um arquivo que já
+sumiu não é erro). **Atualizar** (o botão vira "Atualizar" quando a versão
+do catálogo é diferente da registrada) remove o que era antigo e instala o
+novo.
+
+### O gerador dos itens
+
+```sh
+./pacotes/gera_storepod.py --item temas/meu-tema --id meu-tema --tipo tema \
+  --versao 1.0 --nome-pt "Meu tema" --nome-en "My theme" \
+  --desc-pt "Um tema" --desc-en "A theme" --print tema.png
+```
+
+A pasta do item tem que ter um `.rockbox/` dentro: só o que está nele vai
+para o pacote, e um arquivo fora do `.rockbox/` é recusado. O gerador
+assina com a chave de `--chave` (padrão
+`~/.openpod/chave-pacotes-ed25519.pem`), grava o `<id>-<versao>.tar.gz` e
+atualiza o `index.json` da StorePod na `--saida` (pelo `id`: a versão nova
+substitui a antiga).
 
 ## A tela "Escolha o sistema"
 
@@ -229,5 +307,5 @@ cd instalador
 ./empacota-macos.sh
 ```
 
-Gera `dist/OpenPod Instalador.app` (assinatura ad hoc) e
-`dist/openpod-instalador-macos.dmg`.
+Gera `dist/OpenPod Tune.app` (assinatura ad hoc) e
+`dist/openpod-tune-macos.dmg`.

@@ -14,3 +14,6 @@
 /instalador/dist/
 /pacotes/saida/
 .DS_Store
+
+# o pycache do python
+__pycache__/

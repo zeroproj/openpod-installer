@@ -1,26 +1,24 @@
-# OpenPod Installer / Instalador OpenPod
+# OpenPod Tune
 
 Installs **OpenPod System** or **OpenPod RockBox** on players with the **Smartlink SL6801** chip (tested on the Ligenai GN-438),
-on **macOS** and **Windows**, from a single executable. Download it at **<https://zeroproj.github.io/OpenPod/>**.
+on **macOS**, **Windows** and **Linux**, from a single program. It also has **StorePod**, a small store of tested themes, apps and
+games for OpenPod RockBox. Download it at **<https://zeroproj.github.io/OpenPod/>**.
 
-*Instala o **OpenPod System** ou o **OpenPod RockBox** em players com chip **Smartlink SL6801** (testado no Ligenai GN-438), no
-**macOS** e no **Windows**, com um executável só. Baixe em <https://zeroproj.github.io/OpenPod/>.*
+- It always makes a **full backup** of the flash before writing, and never writes the bootloader or the partition table.
+- It only accepts packages **signed by OpenPod** (Ed25519; the public key is in `assets/openpod/chave-publica-pacotes.hex`).
+- macOS asks for your password (the player's download mode needs `sudo`). Windows needs no driver. On Linux, a udev rule is
+  installed once.
 
-- Always makes a **full backup** of the flash before writing; never writes the bootloader or the partition table.
-- Only accepts packages **signed by OpenPod** (Ed25519; the public key is in `assets/openpod/chave-publica-pacotes.hex`).
-- macOS asks for your password (the player's download mode needs `sudo`); Windows needs no driver.
+**Support:** <https://github.com/zeroproj/OpenPod/issues>
 
-**Support / Suporte:** <https://github.com/zeroproj/OpenPod/issues>
+## Source
 
-## Source / Código
+- `instalador/` holds the app (Rust + egui). Build it with `cd instalador && cargo build --release`, and package it with
+  `empacota-macos.sh`, `empacota-windows.sh` or `empacota-linux.sh`.
+- `pacotes/` holds the package and StorePod item generators. Signing needs OpenPod's private key, which is not here.
+- The rest of the tree is **rockslop** by Jayden Milne, the base of the USB layer. Its original README is in `README-rockslop.md`.
 
-- `instalador/`: the installer (Rust + egui). Build: `cd instalador && cargo build --release`; packages: `empacota-macos.sh`,
-  `empacota-windows.sh`.
-- `pacotes/gera_pacotes.py`: builds the `.tar.gz` packages (signing needs OpenPod's private key, which is not here).
-- The rest of the tree is **rockslop** by Jayden Milne (original README in `README-rockslop.md`), the base of the USB layer.
+## License
 
-## License / Licença
-
-**GPL-2.0-or-later**, like rockslop, which it derives from. Credits are in `instalador/CREDITOS.md`: rockslop (Jayden Milne),
-smartlink_flash (Ilya Kurdyukov), Rockbox, the Inter font (SIL OFL 1.1). The OpenPod System firmware itself is not part of
-this repository.
+**GPL-2.0-or-later**, like rockslop. Credits are in `instalador/CREDITOS.md`: rockslop (Jayden Milne), smartlink_flash (Ilya
+Kurdyukov), Rockbox, and the Inter font (SIL OFL 1.1).

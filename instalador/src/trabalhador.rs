@@ -2,7 +2,7 @@
 //! aparelho com permissão de administrador. É o macOS que libera, com a
 //! senha do usuário; a janela continua rodando como usuário comum.
 //!
-//! Uso: `openpod-instalador --trabalhador <socket> <token> <uid> <gid>`
+//! Uso: `openpod-tune --trabalhador <socket> <token> <uid> <gid>`
 
 use crate::aparelho::canal::{self, Linha};
 use crate::aparelho::real::Real;
@@ -16,7 +16,7 @@ pub fn rodar(args: &[String]) -> i32 {
     let (socket, token, uid, gid) = match argumentos(args) {
         Some(a) => a,
         None => {
-            eprintln!("uso: openpod-instalador --trabalhador <socket> <token> <uid> <gid>");
+            eprintln!("uso: openpod-tune --trabalhador <socket> <token> <uid> <gid>");
             return 2;
         }
     };

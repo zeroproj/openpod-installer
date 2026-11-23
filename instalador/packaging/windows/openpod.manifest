@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- openpod-instalador.exe (build.rs): roda como o usuário que o abriu,
+<!-- openpod-tune.exe (build.rs): roda como o usuário que o abriu,
      no Windows 10 e 11.
 
      O SCSI pass-through pelo driver de disco do próprio Windows abre o

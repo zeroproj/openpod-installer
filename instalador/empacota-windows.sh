@@ -1,5 +1,5 @@
 #!/bin/sh
-# Gera o .exe do Instalador OpenPod para o Windows. Da para rodar em qualquer
+# Gera o .exe do OpenPod Tune para o Windows. Da para rodar em qualquer
 # sistema com o Rust e o MinGW (x86_64-w64-mingw32) instalados; o proprio
 # build.rs cuida do icone, do nome, da versao e do manifesto do .exe.
 #
@@ -14,7 +14,7 @@ alvo=x86_64-pc-windows-gnu
 cargo build --release --target "$alvo"
 
 mkdir -p dist
-cp "target/$alvo/release/openpod-instalador.exe" "dist/openpod-instalador-windows.exe"
+cp "target/$alvo/release/openpod-tune.exe" "dist/openpod-tune-windows.exe"
 
 echo "pronto:"
-ls -lh "dist/openpod-instalador-windows.exe"
+ls -lh "dist/openpod-tune-windows.exe"

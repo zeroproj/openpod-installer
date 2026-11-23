@@ -1,4 +1,4 @@
-//! Instalador OpenPod: OpenPod System ou OpenPod RockBox no player GN-438.
+//! OpenPod Tune: OpenPod System ou OpenPod RockBox no player GN-438.
 //! GPL-2.0-or-later. Veja CREDITOS.md.
 
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
@@ -8,17 +8,19 @@ mod app;
 #[cfg(target_os = "macos")]
 mod elevacao;
 mod estilo;
+mod loja;
 mod log;
 mod pacote;
 mod site;
+mod storepod;
 mod textos;
 #[cfg(unix)]
 mod trabalhador;
 
 fn uso() {
-    eprintln!("uso: openpod-instalador");
+    eprintln!("uso: openpod-tune");
     #[cfg(unix)]
-    eprintln!("     openpod-instalador --trabalhador <socket> <token> <uid> <gid>");
+    eprintln!("     openpod-tune --trabalhador <socket> <token> <uid> <gid>");
 }
 
 fn main() -> eframe::Result<()> {

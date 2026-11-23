@@ -156,9 +156,9 @@ mod imp {
         let (uid, gid) = (unsafe { libc::getuid() }, unsafe { libc::getgid() });
         let pt = crate::textos::Idioma::detectar() == crate::textos::Idioma::Pt;
         let (msg, titulo) = if pt {
-            ("O Instalador OpenPod precisa da sua senha do Mac para falar com o player.", "Instalador OpenPod")
+            ("O OpenPod Tune precisa da sua senha do Mac para falar com o player.", "OpenPod Tune")
         } else {
-            ("OpenPod Installer needs your Mac password to talk to the player.", "OpenPod Installer")
+            ("OpenPod Tune needs your Mac password to talk to the player.", "OpenPod Tune")
         };
         let askpass = dir.join("senha.sh");
         let corpo = format!(
@@ -303,7 +303,7 @@ mod imp {
             let _ = std::fs::remove_dir_all(&dir);
             std::fs::create_dir_all(&dir).unwrap();
             let script = applescript(
-                Path::new("/Applications/OpenPod Installer.app/Contents/MacOS/openpod-instalador"),
+                Path::new("/Applications/OpenPod Tune.app/Contents/MacOS/openpod-tune"),
                 Path::new("/Users/um/Library/Caches/OpenPod/trabalhador.sock"),
                 "a".repeat(64).as_str(),
                 501,

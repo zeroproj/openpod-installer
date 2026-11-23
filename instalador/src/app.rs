@@ -5,6 +5,7 @@ use crate::aparelho::cartao;
 use crate::aparelho::real::Real;
 use crate::aparelho::{backup, Backend, Comando, Evento, Fase, Hub, Modo, Resultado, Visto};
 use crate::estilo::{self, EstadoPasso};
+use crate::loja::Loja;
 use crate::pacote::{Pacote, Tipo};
 use crate::site;
 use crate::textos::{self, t, Idioma};
@@ -18,6 +19,15 @@ enum Tela {
     Conectar,
     Instalando,
     Pronto,
+}
+
+/// As duas abas do topo da janela.
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+enum Aba {
+    /// o fluxo de hoje: instalar o OpenPod System ou o OpenPod RockBox
+    Instalar,
+    /// a lojinha de temas, apps e jogos (a StorePod)
+    StorePod,
 }
 
 #[derive(Clone)]
@@ -37,6 +47,10 @@ struct IdiomaItem {
 pub struct App {
     idioma: Idioma,
     tela: Tela,
+    /// a aba do topo (Instalar ou StorePod)
+    aba: Aba,
+    /// a aba da StorePod: o catálogo, o cartão e o que está instalado
+    loja: Loja,
     tipo: Tipo,
     fonte: Fonte,
     hub: Hub,
@@ -129,6 +143,8 @@ impl App {
         App {
             idioma,
             tela: Tela::Escolha,
+            aba: Aba::Instalar,
+            loja: Loja::nova(),
             tipo: Tipo::System,
             fonte: Fonte::Site,
             hub: Hub::iniciar(backend),
@@ -611,6 +627,9 @@ fn progresso_geral(_tipo: Tipo, fase: Fase, p: f32) -> f32 {
 impl eframe::App for App {
     fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut eframe::Frame) {
         self.tratar_eventos();
+        // os eventos do aparelho chegam de outra thread: sem isto a janela so redesenhava com o
+        // mouse ou um clique, e o progresso da instalacao parecia parado (decisor, 2026-11-23)
+        ui.ctx().request_repaint_after(std::time::Duration::from_millis(150));
 
         egui::CentralPanel::default().frame(egui::Frame::new().fill(estilo::FUNDO)).show(ui, |ui| {
             let margem = ((ui.available_width() - 760.0) / 2.0).max(26.0);
@@ -621,12 +640,20 @@ impl eframe::App for App {
                         ui.set_width(760.0);
                         ui.add_space(22.0);
                         self.cabecalho(ui);
-                        ui.add_space(24.0);
-                        match self.tela {
-                            Tela::Escolha => self.tela_escolha(ui),
-                            Tela::Conectar => self.tela_conectar(ui),
-                            Tela::Instalando => self.tela_instalando(ui),
-                            Tela::Pronto => self.tela_pronto(ui),
+                        ui.add_space(14.0);
+                        self.abas(ui);
+                        ui.add_space(18.0);
+                        match self.aba {
+                            Aba::Instalar => match self.tela {
+                                Tela::Escolha => self.tela_escolha(ui),
+                                Tela::Conectar => self.tela_conectar(ui),
+                                Tela::Instalando => self.tela_instalando(ui),
+                                Tela::Pronto => self.tela_pronto(ui),
+                            },
+                            Aba::StorePod => {
+                                self.loja.atualizar(ui.ctx());
+                                self.loja.desenhar(ui, self.idioma);
+                            }
                         }
                         ui.add_space(26.0);
                         ui.add(egui::Hyperlink::from_label_and_url(
@@ -688,6 +715,24 @@ impl App {
                     ui.ctx().send_viewport_cmd(egui::ViewportCommand::Title(self.t("titulo_app").to_string()));
                 }
             });
+        });
+    }
+
+    /// As duas abas do topo: Instalar (o fluxo de hoje) e StorePod (a
+    /// lojinha de temas, apps e jogos).
+    fn abas(&mut self, ui: &mut egui::Ui) {
+        ui.horizontal(|ui| {
+            let instalar = self.t("aba_instalar").to_string();
+            let storepod = self.t("aba_storepod").to_string();
+            if ui.add(estilo::aba(&instalar, self.aba == Aba::Instalar)).clicked() {
+                self.aba = Aba::Instalar;
+            }
+            ui.add_space(8.0);
+            if ui.add(estilo::aba(&storepod, self.aba == Aba::StorePod)).clicked() {
+                self.aba = Aba::StorePod;
+                // a StorePod começa a procurar o catálogo e o cartão
+                self.loja.abrir();
+            }
         });
     }
 
@@ -1332,6 +1377,31 @@ mod testes {
     fn a_nota_da_capa_existe_nos_dois_idiomas() {
         assert_eq!(t(Idioma::Pt, "capa_beta"), "* Capa do álbum: em beta");
         assert_eq!(t(Idioma::En, "capa_beta"), "* Album art: in beta");
+    }
+
+    /// O nome novo do instalador nos dois idiomas (é o título da janela).
+    #[test]
+    fn o_nome_novo_nos_dois_idiomas() {
+        assert_eq!(t(Idioma::Pt, "titulo_app"), "OpenPod Tune");
+        assert_eq!(t(Idioma::En, "titulo_app"), "OpenPod Tune");
+    }
+
+    /// A janela tem as duas abas no topo: Instalar (o fluxo de hoje) e
+    /// StorePod (a lojinha).
+    #[test]
+    fn as_duas_abas_no_topo() {
+        let mut app = app_de_teste(Idioma::Pt);
+        assert_eq!(app.aba, Aba::Instalar, "a janela abre no fluxo de instalação");
+        for (idioma, instalar, storepod) in [
+            (Idioma::Pt, "Instalar", "StorePod"),
+            (Idioma::En, "Install", "StorePod"),
+        ] {
+            assert_eq!(t(idioma, "aba_instalar"), instalar);
+            assert_eq!(t(idioma, "aba_storepod"), storepod);
+        }
+        // a aba da StorePod começa a procurar o catálogo e o cartão
+        app.aba = Aba::StorePod;
+        assert_eq!(app.aba, Aba::StorePod);
     }
 
     #[test]
